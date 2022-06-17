@@ -1,6 +1,16 @@
+// Imports | React router
+// __________________________________________________
+import { Route, Routes } from 'react-router-dom';
+
+// CSS | My
+// __________________________________________________
+import './styles/App.scss';
+
 import { useRef, useState } from "react";
 
 import { signup, login, logout, useAuth } from "./firebase/firebase";
+import { Layout } from './components';
+import { HomePage } from './pages';
 
 const App = () => {
   const [ loading, setLoading ] = useState(false);
@@ -40,20 +50,11 @@ const App = () => {
   }
 
   return (
-    <div id="main">
-      
-      <div>Currently logged in as: {  currentUser?.email } </div>
-
-      <div id="fields">
-        <input ref={emailRef} placeholder="Email" />
-        <input ref={passwordRef} type="password" placeholder="Password" />
-      </div>
-
-      <button disabled={ loading || currentUser } onClick={handleSignup}>Sign Up</button>
-      <button disabled={ loading || currentUser } onClick={handleLogin}>Log In</button>
-      <button disabled={ loading || !currentUser } onClick={handleLogout}>Log Out</button>
-
-    </div>
+    <Routes>
+      <Route path='' element={<Layout />}>
+        <Route path='' element={<HomePage />}></Route>
+      </Route>
+    </Routes>
   );
 };
 
