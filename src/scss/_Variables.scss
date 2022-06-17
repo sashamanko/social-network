@@ -1,0 +1,99 @@
+// Variables
+// __________________________________________________
+
+// Prompt
+// ?━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// ? Create variable     | $name: value;
+// ? Use variable        | background: $name;                   | background: value;
+// ?━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// ? Create list         | $name: ( value1, value2, value3 );
+// ? Use list            | background: nth( $name, 1 );         | background: value1;
+// ?━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// ? Create map(Objekt)  | $name: ( key1: value3, "key2": "value3", 'key3': 'value3' );
+// ? Use map(Objekt)     | background: map-get( $name, key3 );  | background: 'value3';
+// ?━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//
+
+$mainWhite: #4F11BA;
+$mainDark: #A26AF6;
+
+$root: (
+  // :root {}
+  global: (
+    // Font
+    margin: breakpoint-get(margin),
+    padding: breakpoint-get(padding),
+    font-size: breakpoint-get(font-size),
+    transition: breakpoint-get(transition),
+    border-radius: breakpoint-get(border-radius),
+  ),
+  // :root theme
+  theme: (
+
+    // :root[data-theme="white"] {}
+    white: (
+        // Backgroun
+        main:                       $mainWhite,
+        bg-body:                    #D1D1D1,
+        bg-block:                   #FFFFFF,
+        
+        // Font
+        font-color:                 #212121,
+        font-white:                 #FFFFFF,
+
+        // Button | BG
+        button-bg-defaut:             #{$mainWhite},
+        button-bg-hover:       lighten($mainWhite, 10%),
+        button-bg-focused:     lighten($mainWhite, 10%),
+        button-bg-active:      lighten($mainWhite, 10%),
+        button-bg-disabled:    desaturate($mainWhite, 50%),
+        button-color-disabled: darken(#ffffff, 50%),
+        // button-bg-disabled:  #625775,
+
+        
+    ),
+
+    // :root[data-theme="dark"] {}
+    dark: (
+
+      // Backgroun
+      main:       $mainDark,
+      bg-body:    #1B1B1B,
+      bg-block:   #252525,
+      
+      // Font
+      font-color:  #BABABA,
+      font-white:  #FFFFFF,
+    ),
+  )
+);
+
+$typography: (
+  desctop: (
+    h1: 2.555rem,
+    h2: 2.111rem,
+    h3: 1.666rem,
+    h4: 1.333rem,
+    h5: 1.111rem,
+    h6: 1rem,
+    p:  1rem,
+  ),
+  tablet: (
+    h1: 2.111rem,
+    h2: 1.666rem,
+    h3: 1.333rem,
+    h4: 1.111rem,
+    h5: 1rem,
+    h6: .888rem,
+    p:  .888rem,
+  ),
+  mobile: (
+    h1: 1.444rem,
+    h2: 1.222rem,
+    h3: 1.111rem,
+    h4: 1rem,
+    h5: .888rem,
+    h6: .777rem,
+    p:  .777rem
+  ),
+);

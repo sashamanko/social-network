@@ -1,0 +1,19 @@
+// Breakpoints
+// __________________________________________________
+
+// Sizes breakpoints 
+$sizes-breakpoints: (
+  margin: 12px,
+  padding: 12px,  
+  font-size: 18px,
+  border-radius: 10px,
+  transition: .3s,
+) !default;
+
+// Container breakpoints
+$container-breakpoints: (
+  sm: 320px,   // Small devices
+  md: 768px,   // Medium devices
+  ld: 1024px,  // Large devices
+  xl: 1300px,  // Extra large devices
+) !default;

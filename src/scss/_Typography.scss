@@ -1,0 +1,12 @@
+/* Typography
+__________________________________________________ */
+
+@each $key, $value in map-get($typography, 'desctop') {
+  #{$key} {
+    font-size: $value;
+  }
+}
+
+a {
+  text-decoration: none;
+}
