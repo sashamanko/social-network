@@ -37,17 +37,8 @@ const Header = () => {
 
         <h3 className=''>Title</h3>
 
-        <nav className="header__nav flex ml-auto">
-          <ul className='ls-none flex'>
-            <li><NavLink className='header__nav__link py-2 px-1' to='/'>Item 1</NavLink></li>
-            <li><NavLink className='header__nav__link py-2 px-1' to='a'>Item 2</NavLink></li>
-            <li><NavLink className='header__nav__link py-2 px-1' to='b'>Item 3</NavLink></li>
-          </ul>
-        </nav>
-
-
         <Dropdown
-          className='ml-1'
+          className='ml-auto'
           controllerContent={ <UserLineIcon /> }
           options={ options }
         />

@@ -10,13 +10,18 @@ import './styles/index.scss';
 // Imports | App
 // __________________________________________________
 import App from './App';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './store';
+import "./firebase";
 
 const root = ReactDOM.createRoot(document.querySelector('#root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <HashRouter>
+      <Provider store={ store }>
+        <App />
+      </Provider>
+    </HashRouter>
   </React.StrictMode>
 );

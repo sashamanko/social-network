@@ -8,8 +8,6 @@ const Dropdown = ({ className, controllerContent, options, ...props }) => {
 
   const {ref, isShow, setIsShow} = useOutside(false);
 
-  console.log(isShow);
-
   return (
     <div className={ `Dropdown ${className}` } { ...props }>
       <button className={ `Dropdown__controller ${isShow ? 'active' : ''}`} onClick={() => setIsShow(!isShow)}>
