@@ -18,8 +18,8 @@ const Dropdown = ({ className, controllerContent, options, ...props }) => {
       <nav ref={ ref } className='Dropdown__navbar'>
         <ul className='Dropdown__list'>
           {
-            Object.keys(options).map( item => {
-              return <DropdownItem options={ options[item] }/>;
+            Object.keys(options).map( (item, id) => {
+              return <DropdownItem key={id} options={ options[item] }/>;
             })
           }
         </ul>

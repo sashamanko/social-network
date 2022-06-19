@@ -8,6 +8,12 @@ const DropdownItem = ({ options }) => {
         <a href={ options.url }>{ options.label }</a>
       </li>
     );
+  } else if (typeof options === 'object' && options.type.toLowerCase() === 'button') {
+    return (
+      <li className="Dropdown__list__item" role='menuitem'>
+        <button onClick={ () => options.onClick() }>{ options.label }</button>
+      </li>
+    );
   } else if (typeof options === 'string' && options.toLowerCase() === 'separator') {
     return (
       <li className="Dropdown__list__item" role='none'>
@@ -20,8 +26,3 @@ const DropdownItem = ({ options }) => {
 };
 
 export default DropdownItem;
-
-// {
-//    &&
-//   <hr className="Dropdown__list__item__separator" />
-// }

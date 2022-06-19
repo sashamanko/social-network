@@ -1,4 +1,5 @@
 import { getApps, initializeApp } from "firebase/app";
+import { getAuth, signOut } from "firebase/auth";
 
 const firebaseConfig: any = initializeApp({
   apiKey: process.env.REACT_APP_FIRABASE_API_KEY,
@@ -14,7 +15,3 @@ const firebaseConfig: any = initializeApp({
 if (!getApps().length) {
   const app = initializeApp(firebaseConfig);
 }
-
-// export const logout = () => {
-//   return signOut(auth);
-// };

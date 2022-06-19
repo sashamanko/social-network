@@ -50,6 +50,9 @@ $root: (
         button-color-disabled: darken(#ffffff, 50%),
         // button-bg-disabled:  #625775,
 
+        // Shadow
+        shadow: 0px 4px 5px 1px #403c4336,
+
         
     ),
 
@@ -64,6 +67,9 @@ $root: (
       // Font
       font-color:  #BABABA,
       font-white:  #FFFFFF,
+
+      // Shadow
+      shadow: 0 2px 5px 1px #00000035,
     ),
   )
 );

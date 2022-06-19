@@ -8,10 +8,10 @@ $utilities: (
     values: (
       '0': 0,
       '1': var(--margin),
-      '2': var(--margin) / 2,
-      '3': var(--margin) / 3,
-      '4': var(--margin) / 4,
-      '5': var(--margin) / 6,
+      '2': calc(var(--margin) / 2),
+      '3': calc(var(--margin) / 3),
+      '4': calc(var(--margin) / 4),
+      '5': calc(var(--margin) / 6),
     )
   ),
   margin-top: (
@@ -20,10 +20,10 @@ $utilities: (
     values: (
       '0': 0,
       '1': var(--margin),
-      '2': var(--margin) / 2,
-      '3': var(--margin) / 3,
-      '4': var(--margin) / 4,
-      '5': var(--margin) / 6,
+      '2': calc(var(--margin) / 2),
+      '3': calc(var(--margin) / 3),
+      '4': calc(var(--margin) / 4),
+      '5': calc(var(--margin) / 6),
       'auto': auto,
     )
   ),
@@ -33,10 +33,10 @@ $utilities: (
     values: (
       '0': 0,
       '1': var(--margin),
-      '2': var(--margin) / 2,
-      '3': var(--margin) / 3,
-      '4': var(--margin) / 4,
-      '5': var(--margin) / 6,
+      '2': calc(var(--margin) / 2),
+      '3': calc(var(--margin) / 3),
+      '4': calc(var(--margin) / 4),
+      '5': calc(var(--margin) / 6),
       'auto': auto,
     )
   ),
@@ -46,10 +46,10 @@ $utilities: (
     values: (
       '0': 0,
       '1': var(--margin),
-      '2': var(--margin) / 2,
-      '3': var(--margin) / 3,
-      '4': var(--margin) / 4,
-      '5': var(--margin) / 6,
+      '2': calc(var(--margin) / 2),
+      '3': calc(var(--margin) / 3),
+      '4': calc(var(--margin) / 4),
+      '5': calc(var(--margin) / 6),
       'auto': auto,
     )
   ),
@@ -59,10 +59,10 @@ $utilities: (
     values: (
       '0': 0,
       '1': var(--margin),
-      '2': var(--margin) / 2,
-      '3': var(--margin) / 3,
-      '4': var(--margin) / 4,
-      '5': var(--margin) / 6,
+      '2': calc(var(--margin) / 2),
+      '3': calc(var(--margin) / 3),
+      '4': calc(var(--margin) / 4),
+      '5': calc(var(--margin) / 6),
       'auto': auto,
     )
   ),
@@ -72,10 +72,10 @@ $utilities: (
     values: (
       '0': (0, 0),
       '1': (var(--margin), var(--margin)),
-      '2': (var(--margin) / 2, var(--margin) / 2),
-      '3': (var(--margin) / 3, var(--margin) / 3),
-      '4': (var(--margin) / 4, var(--margin) / 4),
-      '5': (var(--margin) / 6, var(--margin) / 6),
+      '2': (calc(var(--margin) / 2), calc(var(--margin) / 2)),
+      '3': (calc(var(--margin) / 3), calc(var(--margin) / 3)),
+      '4': (calc(var(--margin) / 4), calc(var(--margin) / 4)),
+      '5': (calc(var(--margin) / 6), calc(var(--margin) / 6)),
       'auto': (auto, auto),
     )
   ),
@@ -85,10 +85,10 @@ $utilities: (
     values: (
       '0': (0, 0),
       '1': (var(--margin), var(--margin)),
-      '2': (var(--margin) / 2, var(--margin) / 2),
-      '3': (var(--margin) / 3, var(--margin) / 3),
-      '4': (var(--margin) / 4, var(--margin) / 4),
-      '5': (var(--margin) / 6, var(--margin) / 6),
+      '2': (calc(var(--margin) / 2), calc(var(--margin) / 2)),
+      '3': (calc(var(--margin) / 3), calc(var(--margin) / 3)),
+      '4': (calc(var(--margin) / 4), calc(var(--margin) / 4)),
+      '5': (calc(var(--margin) / 6), calc(var(--margin) / 6)),
       'auto': (auto, auto),
     )
   ),
@@ -98,10 +98,10 @@ $utilities: (
     values: (
       '0': 0,
       '1': var(--padding),
-      '2': var(--padding) / 2,
-      '3': var(--padding) / 3,
-      '4': var(--padding) / 4,
-      '5': var(--padding) / 6,
+      '2': calc(var(--padding) / 2),
+      '3': calc(var(--padding) / 3),
+      '4': calc(var(--padding) / 4),
+      '5': calc(var(--padding) / 6),
     )
   ),
   padding-top: (
@@ -110,10 +110,10 @@ $utilities: (
     values: (
       '0': 0,
       '1': var(--padding),
-      '2': var(--padding) / 2,
-      '3': var(--padding) / 3,
-      '4': var(--padding) / 4,
-      '5': var(--padding) / 6,
+      '2': calc(var(--padding) / 2),
+      '3': calc(var(--padding) / 3),
+      '4': calc(var(--padding) / 4),
+      '5': calc(var(--padding) / 6),
       'auto': auto,
     )
   ),
@@ -123,10 +123,10 @@ $utilities: (
     values: (
       '0': 0,
       '1': var(--padding),
-      '2': var(--padding) / 2,
-      '3': var(--padding) / 3,
-      '4': var(--padding) / 4,
-      '5': var(--padding) / 6,
+      '2': calc(var(--padding) / 2),
+      '3': calc(var(--padding) / 3),
+      '4': calc(var(--padding) / 4),
+      '5': calc(var(--padding) / 6),
       'auto': auto,
     )
   ),
@@ -136,10 +136,10 @@ $utilities: (
     values: (
       '0': 0,
       '1': var(--padding),
-      '2': var(--padding) / 2,
-      '3': var(--padding) / 3,
-      '4': var(--padding) / 4,
-      '5': var(--padding) / 6,
+      '2': calc(var(--padding) / 2),
+      '3': calc(var(--padding) / 3),
+      '4': calc(var(--padding) / 4),
+      '5': calc(var(--padding) / 6),
       'auto': auto,
     )
   ),
@@ -149,10 +149,10 @@ $utilities: (
     values: (
       '0': 0,
       '1': var(--padding),
-      '2': var(--padding) / 2,
-      '3': var(--padding) / 3,
-      '4': var(--padding) / 4,
-      '5': var(--padding) / 6,
+      '2': calc(var(--padding) / 2),
+      '3': calc(var(--padding) / 3),
+      '4': calc(var(--padding) / 4),
+      '5': calc(var(--padding) / 6),
       'auto': auto,
     )
   ),
@@ -162,10 +162,10 @@ $utilities: (
     values: (
       '0': (0, 0),
       '1': (var(--padding), var(--margin)),
-      '2': (var(--padding) / 2, var(--margin) / 2),
-      '3': (var(--padding) / 3, var(--margin) / 3),
-      '4': (var(--padding) / 4, var(--margin) / 4),
-      '5': (var(--padding) / 6, var(--margin) / 6),
+      '2': (calc(var(--padding) / 2), calc(var(--margin) / 2)),
+      '3': (calc(var(--padding) / 3), calc(var(--margin) / 3)),
+      '4': (calc(var(--padding) / 4), calc(var(--margin) / 4)),
+      '5': (calc(var(--padding) / 6), calc(var(--margin) / 6)),
       'auto': (auto, auto),
     )
   ),
@@ -175,10 +175,10 @@ $utilities: (
     values: (
       '0': (0, 0),
       '1': (var(--padding), var(--margin)),
-      '2': (var(--padding) / 2, var(--margin) / 2),
-      '3': (var(--padding) / 3, var(--margin) / 3),
-      '4': (var(--padding) / 4, var(--margin) / 4),
-      '5': (var(--padding) / 6, var(--margin) / 6),
+      '2': (calc(var(--padding) / 2), calc(var(--margin) / 2)),
+      '3': (calc(var(--padding) / 3), calc(var(--margin) / 3)),
+      '4': (calc(var(--padding) / 4), calc(var(--margin) / 4)),
+      '5': (calc(var(--padding) / 6), calc(var(--margin) / 6)),
       'auto': (auto, auto),
     )
   ),
@@ -187,6 +187,7 @@ $utilities: (
     prefix: '',
     values: (
       'flex': flex,
+      'block': block,
     )
   ),
   flex-direction: (
@@ -250,6 +251,13 @@ $utilities: (
     prefix: '',
     values: (
       'container': (breakpoint-get(xl), 100%, auto, auto, var(--padding), var(--padding))
+    )
+  ),
+  block: (
+    property: ('background', 'padding', 'border-radius', 'box-shadow' ),
+    prefix: '',
+    values: (
+      'item-block': (var(--bg-block), var(--padding), var(--border-radius), var(--shadow))
     )
   )
 );

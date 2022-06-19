@@ -2,7 +2,7 @@
 // __________________________________________________
 import classes from "./Button.ui.module.scss";
 
-const Button = ({ children, type, ...props }) => {
+const Button = ({ children, type, className = '', ...props }) => {
 
   const { Btn, Primary, Secondary } = classes;
   const classList = [ Btn, ];
@@ -16,7 +16,7 @@ const Button = ({ children, type, ...props }) => {
 
 
   return (
-    <button className={ classList.join(' ') } { ...props } type="button">
+    <button className={ classList.join(' ') + ` ${className}` } { ...props } type="button">
       { children }
     </button>
   );

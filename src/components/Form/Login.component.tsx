@@ -16,8 +16,6 @@ const Login = () => {
         dispatch(setUser({email: user.email}));
       })
       .catch(() => alert('Invalid user'));
-
-
   };
   
   return (

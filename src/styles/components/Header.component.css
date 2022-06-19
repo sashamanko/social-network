@@ -4,18 +4,15 @@
   max-width: 1350px;
   width: 100%;
 }
-
 .header__nav__link {
   font-weight: 600;
   color: var(--main);
 }
-
 .header__nav__link:not(:first-child) {
   margin-left: var(--margin);
 }
-
 .header__nav__link.active {
-  padding: calc( var(--padding) / 2) var(--padding);
+  padding: calc(var(--padding) / 2) var(--padding);
   color: #fff;
   background: var(--main);
   border-radius: 30px;

@@ -1,15 +1,19 @@
-// import './LoginPage.css';
+// import './Login.page.scss';
 
 import { Link } from "react-router-dom";
 import Login from "../components/Form/Login.component";
 
 const LoginPage = () => {
   return (
-    <>
-      <Login />
+    <div style={{height: 'calc(100vh - 60px)'}} className="LoginPage flex align-center justify-center">
+      
+      <div className="item-block flex align-center justify-center flex-col p-1">
+        <Login />
 
-      <p>or <Link to='/register'>Register</Link></p>
-    </>
+        <p>Or <Link to='/register'>register</Link></p>
+      </div>
+
+    </div>
   );
 };
 

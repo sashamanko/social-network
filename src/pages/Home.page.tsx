@@ -2,10 +2,14 @@
 // __________________________________________________
 // import './Home.page.scss';
 
+import { useSelector } from "react-redux";
+
 const HomePage = () => {
+  const {email} = useSelector((state: any) => state.user);
+  
   return (
     <>
-      Home
+      Home { email }
     </>
   );
 };
