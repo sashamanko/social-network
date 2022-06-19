@@ -259,7 +259,34 @@ $utilities: (
     values: (
       'item-block': (var(--bg-block), var(--padding), var(--border-radius), var(--shadow))
     )
-  )
+  ),
+  width: (
+    property: 'width',
+    prefix: 'w',
+    values: (
+      '100': 100%,
+      '75': 75%,
+      '50': 50%,
+      '25': 25%,
+    )
+  ),
+  height: (
+    property: 'height',
+    prefix: 'h',
+    values: (
+      '100': 100vh,
+      '50': 50vh,
+    )
+  ),
+  text-align: (
+    property: 'text-align',
+    prefix: 'ta',
+    values: (
+      'left': left,
+      'right': right,
+      'center': center,
+    )
+  ),
 );
 
 
