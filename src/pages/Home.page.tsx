@@ -9,7 +9,7 @@ const HomePage = () => {
   
   return (
     <>
-      Home { email }
+      
     </>
   );
 };

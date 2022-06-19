@@ -1,25 +1,25 @@
 // import './Form.css';
 
 import useInput from "../../hooks/useInput";
-import { Button } from "../ui";
+import { Button, Input } from "../ui";
 
 const Form = ({title, handleClick}: any) => {
   const [bindEmail, email]: any = useInput('');
   const [bindPassword, password]: any = useInput('');
 
   return (
-    <form className="flex flex-col">
-      <input 
+    <form className="flex flex-col align-center w-100">
+      <Input 
         type="email"
-        {...bindEmail}
         placeholder='Email'
-        className="px-2 py-2"
+        view='primary'
+        {...bindEmail}
       />
-      <input 
+      <Input 
         type='password'
-        {...bindPassword}
         placeholder='Password'
-        className="px-2 py-2 my-1"
+        className="my-1"
+        {...bindPassword}
       />
       <Button
         type='primary'
@@ -27,6 +27,7 @@ const Form = ({title, handleClick}: any) => {
           e.preventDefault();
           handleClick(email, password);
         }}
+        className='my-1 w-50'
       >
         { title }
       </Button>

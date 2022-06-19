@@ -6,7 +6,7 @@ const RegisterPage = () => {
   return (
     <div style={{height: 'calc(100vh - 60px)'}} className="LoginPage flex align-center justify-center">
       
-      <div className="item-block flex align-center justify-center flex-col p-1">
+      <div style={{width: '320px'}} className="item-block flex align-center justify-center flex-col p-1">
         <Register />
         <p>Or <Link to='/login'>login</Link></p>
       </div>

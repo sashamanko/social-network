@@ -5,9 +5,9 @@ import Login from "../components/Form/Login.component";
 
 const LoginPage = () => {
   return (
-    <div style={{height: 'calc(100vh - 60px)'}} className="LoginPage flex align-center justify-center">
+    <div style={{height: 'calc(100vh - 60px)'}} className="flex align-center justify-center">
       
-      <div className="item-block flex align-center justify-center flex-col p-1">
+      <div style={{width: '320px'}} className="item-block flex align-center justify-center flex-col p-1">
         <Login />
 
         <p>Or <Link to='/register'>register</Link></p>
