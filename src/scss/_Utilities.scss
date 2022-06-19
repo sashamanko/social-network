@@ -287,6 +287,69 @@ $utilities: (
       'center': center,
     )
   ),
+  text-transform: (
+    property: 'text-transform'
+    values: (
+      'uppercase': uppercase,
+      'lowercase': lowercase,
+      'capitalize': capitalize
+    )
+  ),
+  text-decoration: (
+    property: 'text-decoration'
+    valuer: (
+      'none': none,
+      'underline': underline,
+      'line-through': line-through,
+    )
+  ),
+  font-weight: (
+    property: 'font-weight',
+    prefix: 'fw',
+    values: (
+      '100': 100
+      '200': 200
+      '300': 300
+      '400': 400
+      '500': 500
+      '600': 600
+      '700': 700
+      '800': 800
+      '900': 900
+    )
+  ),
+  font-size: (
+    property: 'font-size',
+    prefix: 'fz',
+    values: (
+      'base': 18px,
+      'xs': x-small,
+      's': small,
+      'm': medium,
+      'l': large,
+      'xl': x-large,
+    )
+  ),
+  border-radius: (
+    property: 'border-radius',
+    values: (
+      'circle': 50%,
+      '10': 10px,
+      '12': 12px,
+      '14': 14px,
+      '16': 16px,
+      '18': 18px,
+      '20': 20px,
+    )
+  ),
+  border-width: (
+    property: 'border-width',
+    values: (
+      'thin': thin,
+      'thick': thick,
+      'medium': medium,
+    )
+  )
 );
 
 
