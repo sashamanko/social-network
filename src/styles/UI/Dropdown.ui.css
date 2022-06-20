@@ -27,7 +27,10 @@ __________________________________________________ */
   border-radius: var(--border-radius);
   z-index: 1;
 }
-.Dropdown__list__item {
+.Dropdown__list__item > * {
+  display: flex;
+  width: 100%;
+  font-size: 18px;
   font-weight: 600;
 }
 .Dropdown__list__item[role=menuitem] {

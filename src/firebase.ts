@@ -1,7 +1,8 @@
 import { getApps, initializeApp } from "firebase/app";
 import { getAuth, signOut } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
-const firebaseConfig: any = initializeApp({
+const app: any = initializeApp({
   apiKey: process.env.REACT_APP_FIRABASE_API_KEY,
   authDomain: process.env.REACT_APP_FIRABASE_AUTH_DOMAIN,
   projectId: process.env.REACT_APP_FIRABASE_PROJECT_ID,
@@ -11,7 +12,8 @@ const firebaseConfig: any = initializeApp({
   measurementId: process.env.REACT_APP_FIRABASE_MEASUREMENT_ID,
 });
 
+const db = getFirestore();
 
-if (!getApps().length) {
-  const app = initializeApp(firebaseConfig);
-}
+export {
+  db
+};

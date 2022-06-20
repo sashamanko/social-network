@@ -1,3 +1,6 @@
+.header {
+  box-shadow: var(--shadow);
+}
 .header__container {
   min-height: 60px;
   max-height: 60px;

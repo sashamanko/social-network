@@ -33,7 +33,13 @@ __________________________________________________ */
       z-index: 1;
 
       &__item {
-        font-weight: 600;
+        
+        & > * {
+          display: flex;
+          width: 100%;
+          font-size: 18px;
+          font-weight: 600;
+        }
 
         &[role='menuitem'] {
           padding: calc(var(--padding) / 3) calc(var(--padding) / 2);
