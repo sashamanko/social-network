@@ -51,7 +51,7 @@ const HomePage = () => {
   }, []);
   
   return (
-    <div style={{maxHeight: 'calc(97vh - 60px)', overflow: 'hidden'}} className="flex justify-center self-end">
+    <div style={{minHeight: 'calc(97vh - 60px)', overflow: 'hidden'}} className="flex justify-center self-end">
       <div className="flex w-50 flex-col align-end">
         <ul style={{ overflowY: 'scroll', maxHeight: 'calc(97vh - 110px)'}} className="flex flex-col w-100 pt-1">
           {messages && messages.map(((m: any) => {
