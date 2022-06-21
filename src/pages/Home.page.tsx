@@ -63,8 +63,8 @@ const HomePage = () => {
                   background: m.data.userFrom === email ? 'var(--main)' : '',
                   color: m.data.userFrom === email ? 'var(--font-white)' : ''}}
                 className={`flex ${ m.data.userFrom === email ? 'ml-auto' : 'mr-auto' } p-2 bg-block rounded align-end mt-3`}>
-                <p className="mr-3">{m.data.text}</p>
-                {m.data.createAt?.seconds && <span style={{wordBreak: 'normal'}} className="font-xs">{  date(m.data.createAt.seconds).h }:{date(m.data.createAt.seconds).m }</span>}
+                <p className="mr-3 font-500">{m.data.text}</p>
+                {m.data.createAt?.seconds && <span style={{wordBreak: 'normal'}} className="font-xs font-500">{  date(m.data.createAt.seconds).h }:{date(m.data.createAt.seconds).m }</span>}
               </li>
             );
           }))}
