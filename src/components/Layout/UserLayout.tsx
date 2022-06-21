@@ -1,16 +1,21 @@
 // Imports | React router
 // __________________________________________________
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 // Imports | Components
 // __________________________________________________
 import { Header } from "..";
+import { useAuth } from "../../hooks";
+import { SignInOrSignUpPage } from "../../pages";
 
 // SCSS | My
 // __________________________________________________
 // import './Layout.scss';
 
-const Layout = () => {
+const UserLayout = () => {
+
+  const {isAuth} = useAuth();
+
   return (
     <>
       <Header/>
@@ -22,4 +27,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default UserLayout;

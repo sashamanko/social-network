@@ -1,17 +1,21 @@
 // import './Form.css';
 
-import { useNavigate } from "react-router-dom";
 import useInput from "../../hooks/useInput";
 import { Button, Input } from "../ui";
 
-const Form = ({title, handleClick}: any) => {
+const FormSignUp = ({handleClick}: any) => {
+  const [bindDisplayName, displayName]: any = useInput('');
   const [bindEmail, email]: any = useInput('');
   const [bindPassword, password]: any = useInput('');
 
-  const navigate = useNavigate();
-
   return (
     <form className="flex flex-col align-center w-100">
+      <Input 
+        type="text"
+        placeholder='Display Name'
+        view='primary'
+        {...bindDisplayName}
+      />
       <Input 
         type="email"
         placeholder='Email'
@@ -29,15 +33,14 @@ const Form = ({title, handleClick}: any) => {
         variant='primary'
         onClick={(e: any) => {
           e.preventDefault();
-          handleClick(email, password);
-          navigate('/', { replace: true });
+          handleClick(displayName, email, password);
         }}
         className='my-1 w-50'
       >
-        { title }
+        Sign Up
       </Button>
     </form>
   );
 };
 
-export default Form;
+export default FormSignUp;

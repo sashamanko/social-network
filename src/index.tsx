@@ -11,7 +11,7 @@ import "./utils/firebase";
 
 // Redux | My store
 // __________________________________________________
-import { store } from './store';
+import { store } from './redux';
 
 // CSS | My
 // __________________________________________________

@@ -1,23 +1,31 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../store/slices/userSlice";
+import { setUser } from "../redux/slices/userSlice";
 
-const useAuth = () => {
-  const {email} = useSelector((state: any) => state.user);
+interface IUseAuth {
+  isAuth: boolean;
+  email: string;
+  displayName: string;
+}
+
+const useAuth = (): IUseAuth => {
+  const {email, displayName} = useSelector((state: any) => state.user);
 
   const auth: any = getAuth();
   const dispatch = useDispatch();
 
+  
   useEffect(() => {
     const isAuth = onAuthStateChanged(auth, (user: any) => {
-      dispatch(setUser({email: user.email}));
+      dispatch(setUser({email: user?.email, displayName: user?.displayName}));
     });
   });
 
   return {
     isAuth: !!email,
-    email
+    email,
+    displayName
   };
 };
 

@@ -1,5 +1,7 @@
-import Layout from "./Layout/Layout";
+import UserLayout from "./Layout/UserLayout";
+import GuestLayout from "./Layout/GuestLayout";
 import Header from "./Header/Header.component";
 import Form from "./Form/Form.component";
+import FormSignUp from "./Form/FirmSignUp.component";
 
-export { Layout, Header, Form };
+export { UserLayout, GuestLayout, Header, Form, FormSignUp };
