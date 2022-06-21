@@ -1,3 +1,56 @@
-// Impor | Buttons UI
+// Button UI
 // __________________________________________________
-@import '../../../styles/UI/Buttons.ui.scss';
+
+.btn {
+  padding: calc(var(--padding) / 2)  var(--padding);
+  font-weight: 600;
+  font-size: 20px;
+  box-shadow: 0px 4px 5px 1px #403c4335;
+  border-radius: 30px;
+  transition: background-color var(--transition);
+  outline: none;
+  cursor: pointer;
+ 
+  // Button | Primary
+  // __________________________________________________
+  
+  &.primary {
+    color: #FFFFFF;
+    background: #4F11BA;
+    
+    &:hover,
+    &:focus,
+    &:active {
+      background: var(--button-bg-hover);
+    }
+
+    &:focus {
+      border: 2px solid #A26AF6;
+    }
+    
+    &:active {
+      transform: scale(.95);
+    }
+    
+    &:disabled {
+      color: var(--button-color-disabled);
+      background: var(--button-bg-disabled);
+      border: none;
+      cursor: default;
+      
+      &:active {
+        transform: scale(1);
+      }
+    }
+    
+  };
+  
+  // Button | Secondary
+  // __________________________________________________
+  
+  &.secondary {
+    color: #212121;
+    background: #FFFFFF;
+  };
+
+};

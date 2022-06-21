@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import UserLineIcon from 'remixicon-react/UserLineIcon';
 import useAuth from '../../hooks/useAuth';
 import { removeUser } from '../../store/slices/userSlice';
-import Dropdown from '../ui/Dropdown/Dropdown.ui';
+import { Dropdown } from '../ui';
 
 // SCSS | My
 // __________________________________________________
@@ -47,11 +47,13 @@ const Header = () => {
 
         <h3 className=''>Title</h3>
 
-        {isAuth && <Dropdown
+        {isAuth && 
+        <Dropdown
           className='ml-auto'
-          controllerContent={ <UserLineIcon /> }
           options={ options }
-        />}
+        >
+          <UserLineIcon />
+        </Dropdown>}
       
       </div>
     </header>  

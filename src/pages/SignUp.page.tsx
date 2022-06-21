@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Register from '../components/Form/Register.component';
 // import './Login.page.scss';
 
-const RegisterPage = () => {
+const SignUpPage = () => {
   return (
     <div style={{height: 'calc(100vh - 60px)'}} className="LoginPage flex align-center justify-center">
       
@@ -14,4 +14,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default SignUpPage;

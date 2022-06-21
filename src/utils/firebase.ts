@@ -1,5 +1,6 @@
-import { getApps, initializeApp } from "firebase/app";
-import { getAuth, signOut } from "firebase/auth";
+// Imports | Firebase
+// __________________________________________________
+import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const app: any = initializeApp({

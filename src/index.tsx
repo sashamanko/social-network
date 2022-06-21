@@ -1,7 +1,17 @@
-// Imports | React
+// Imports | React, React router, React redux 
 // __________________________________________________
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { HashRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+// Imports | Firebase
+// __________________________________________________
+import "./utils/firebase";
+
+// Redux | My store
+// __________________________________________________
+import { store } from './store';
 
 // CSS | My
 // __________________________________________________
@@ -10,13 +20,8 @@ import './styles/index.scss';
 // Imports | App
 // __________________________________________________
 import App from './App';
-import { HashRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { store } from './store';
-import "./firebase";
 
-const root = ReactDOM.createRoot(document.querySelector('#root') as HTMLElement);
-root.render(
+ReactDOM.createRoot(document.querySelector('#root') as HTMLElement).render(
   <React.StrictMode>
     <HashRouter>
       <Provider store={ store }>

@@ -1,6 +1,6 @@
 // import './DropdownItem.css';
 
-const DropdownItem = ({ options }) => {
+const DropdownItem = ({ options }: any): any => {
   
   if (typeof options === 'object' && options.type.toLowerCase() === 'link') {
     return (

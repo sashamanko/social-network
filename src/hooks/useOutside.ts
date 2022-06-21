@@ -2,13 +2,15 @@ import { useState, useEffect, useRef } from 'react';
 
 // Use 
 // const {ref, isShow, setIsShow} = useOutside(false)
-const useOutside = initialIsVisible => {
+const useOutside = (initialIsVisible: boolean, ignoredRef: any) => {
   const [isShow, setIsShow] = useState(initialIsVisible);
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement>(null);
+  
 
-  const handleClickOutside = event => {
-    if (ref.current && !ref.current.contains(event.target)) {
-      setIsShow(false);
+  const handleClickOutside = (e: any) => {
+    if (ref.current && !ref.current.contains(e.target) && ignoredRef.current && !ignoredRef.current.contains(e.target)) {
+
+      isShow && setIsShow(false);
     }
   };
 

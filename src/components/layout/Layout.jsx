@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 // Imports | Components
 // __________________________________________________
-import { Header } from "../";
+import { Header } from "..";
 
 // SCSS | My
 // __________________________________________________

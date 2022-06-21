@@ -22,7 +22,7 @@ const Form = ({title, handleClick}: any) => {
         {...bindPassword}
       />
       <Button
-        type='primary'
+        variant='primary'
         onClick={(e: any) => {
           e.preventDefault();
           handleClick(email, password);

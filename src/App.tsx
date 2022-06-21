@@ -2,14 +2,20 @@
 // __________________________________________________
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-// CSS | My
+// SCSS | My
 // __________________________________________________
 import './styles/App.scss';
 
-import { Layout, LoginLayout } from './components';
-import { HomePage, LoginOrRegisterPage } from './pages';
-import LoginPage from './pages/Login.page';
-import RegisterPage from './pages/Register.page';
+// Impotrs | Pages
+// __________________________________________________
+import { HomePage, SignInOrSignUpPage, SignInPage, SignUpPage } from './pages';
+
+// Components | My
+// __________________________________________________
+import { Layout } from './components';
+
+// Hooks | My
+// __________________________________________________
 import useAuth from './hooks/useAuth';
 
 
@@ -20,10 +26,10 @@ const App = () => {
   return (
     <Routes>
       <Route path='/' element={<Layout />}>
-        <Route path="/" element={isAuth ? <HomePage /> : <LoginOrRegisterPage />} />
+        <Route path="/" element={isAuth ? <HomePage /> : <SignInOrSignUpPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/login" element={isAuth ? <Navigate to="/" replace /> :  <LoginPage />}  />
-        <Route path = "/register" element={isAuth ? <Navigate to="/" replace /> :  <RegisterPage />} />
+        <Route path="/login" element={isAuth ? <Navigate to="/" replace /> :  <SignInPage />}  />
+        <Route path = "/register" element={isAuth ? <Navigate to="/" replace /> :  <SignUpPage />} />
       </Route>
     </Routes>
   );

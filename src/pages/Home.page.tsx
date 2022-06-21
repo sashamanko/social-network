@@ -1,16 +1,26 @@
-// SCSS | My
+// Imports | React
 // __________________________________________________
-// import './Home.page.scss';
-
-import { useSelector } from "react-redux";
-import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { db } from "../firebase";
+
+// Imports | Firebase
+// __________________________________________________
+import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from "firebase/firestore";
+
+// Utils | My
+// __________________________________________________
+import { db } from "../utils/firebase";
+
+// Components | My
+// __________________________________________________
 import { Input } from "../components/ui";
-import useInput from "../hooks/useInput";
+
+// Hooks | My
+// __________________________________________________
+import { useInput, useAuth} from "../hooks";
 
 const HomePage = () => {
-  // const {email} = useSelector((state: any) => state.user);
+
+  const {email} = useAuth();
   const [bindValue, value, setValue] = useInput('');
 
   const [messages, setMessages] = useState([]);
@@ -18,7 +28,9 @@ const HomePage = () => {
   const sendMessage = async (text: string) => {
     await addDoc(collection(db , 'messages'), {
       createAt: serverTimestamp(),
-      text: text
+      text: text,
+      userFrom: email,
+      // userFrom: '',
     });
   };
 
@@ -34,17 +46,14 @@ const HomePage = () => {
     });
   }, []);
   
-
-  
-  
-  
   return (
     <div style={{height: 'calc(97vh - 60px)'}} className="flex justify-center">
       <div className="flex w-50 flex-col align-end">
-        <div className="flex flex-col">
+        <div className="flex flex-col w-100">
           {messages && messages.map(((m: any) => {
+            
             return (
-              <p>{m.data.text}</p>
+              <p key={m.id} className={`flex ${ m.data.userFrom === email && 'justify-end' }`}>{m.data.text}</p>
             );
           }))}
         </div>
