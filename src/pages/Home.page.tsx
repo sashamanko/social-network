@@ -72,6 +72,7 @@ const HomePage = () => {
 
         <div className="flex align-center w-100 mt-1">
           <Input
+            view='primary'
             placeholder="Send message"
             className="mr-2"
             {...bindValue}
