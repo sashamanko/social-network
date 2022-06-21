@@ -23,9 +23,9 @@ const Header = () => {
 
   const options = {
     profile: {
-      label: 'Профиль',
+      label: 'Profile',
       type: 'link',
-      url: 'profile',
+      url: '#/profile',
     },
     sp1: 'separator',
     logout: {

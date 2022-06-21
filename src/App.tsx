@@ -8,7 +8,7 @@ import './styles/App.scss';
 
 // Impotrs | Pages
 // __________________________________________________
-import { HomePage, SignInOrSignUpPage, SignInPage, SignUpPage } from './pages';
+import { HomePage, SignInOrSignUpPage, SignInPage, SignUpPage, ProfilePage } from './pages';
 
 // Components | My
 // __________________________________________________
@@ -28,6 +28,7 @@ const App = () => {
       <Route path='/' element={<Layout />}>
         <Route path="/" element={isAuth ? <HomePage /> : <SignInOrSignUpPage />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/login" element={isAuth ? <Navigate to="/" replace /> :  <SignInPage />}  />
         <Route path = "/register" element={isAuth ? <Navigate to="/" replace /> :  <SignUpPage />} />
       </Route>
