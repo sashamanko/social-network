@@ -8,7 +8,7 @@ const SignUpPage = () => {
       
       <div style={{width: '320px'}} className="item-block flex align-center justify-center flex-col p-1">
         <Register />
-        <p>Or <Link to='/login'>login</Link></p>
+        <p>Or <Link to='/login'>sign in</Link></p>
       </div>
     </div>
   );

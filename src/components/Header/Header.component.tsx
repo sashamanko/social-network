@@ -29,7 +29,7 @@ const Header = () => {
     },
     sp1: 'separator',
     logout: {
-      label: 'Logout',
+      label: 'Sign out',
       type: 'button',
       onClick: async () => {
         await signOut(auth);

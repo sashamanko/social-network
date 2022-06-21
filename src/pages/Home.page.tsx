@@ -17,11 +17,12 @@ import { Input } from "../components/ui";
 // Hooks | My
 // __________________________________________________
 import { useInput, useAuth} from "../hooks";
+import date from "../utils/date";
 
 const HomePage = () => {
 
   const {email} = useAuth();
-  const [bindValue, value, setValue] = useInput('');
+  const [bindValue, value, restValue] = useInput('');
 
   const [messages, setMessages] = useState([]);
 
@@ -49,21 +50,23 @@ const HomePage = () => {
   return (
     <div style={{height: 'calc(97vh - 60px)'}} className="flex justify-center">
       <div className="flex w-50 flex-col align-end">
-        <div className="flex flex-col w-100">
+        <ul className="flex flex-col w-100">
           {messages && messages.map(((m: any) => {
-            
             return (
-              <p key={m.id} className={`flex ${ m.data.userFrom === email && 'justify-end' }`}>{m.data.text}</p>
+              <li key={m.id} className={`flex flex-col ${ m.data.userFrom === email ? 'align-end' : '' }`}>
+                <p >{m.data.text}</p>
+                <span>{ date(m.data.createAt.seconds).h }:{date(m.data.createAt.seconds).m }</span>
+              </li>
             );
           }))}
-        </div>
+        </ul>
 
         <Input
           {...bindValue}
           onKeyPress={ (e: any) => {
             if (e.key === 'Enter') {
               sendMessage(value);
-              setValue('');
+              restValue();
             }
           }}
         />
