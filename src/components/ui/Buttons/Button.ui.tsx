@@ -5,7 +5,7 @@ import classes from "./Button.ui.module.scss";
 interface IButton {
   variant?: '' | 'primary' | 'secondary';
   className?: string;
-  children: string;
+  children: any;
   [key: string]: any;
 } 
 

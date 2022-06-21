@@ -19,6 +19,7 @@ const Form = ({title, handleClick}: any) => {
         type='password'
         placeholder='Password'
         className="my-1"
+        view='primary'
         {...bindPassword}
       />
       <Button

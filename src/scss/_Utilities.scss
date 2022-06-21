@@ -221,6 +221,7 @@ $utilities: (
       "align-end": flex-end,
       "align-baseline": baseline,
       "align-stretch": stretch,
+      "self-end": self-end,
     )
   ),
   flex-wrap: (
@@ -344,6 +345,7 @@ $utilities: (
       'xl': 4px,
       '2xl': 5px,
       '3xl': 6px,
+      'default': 10px,
       'fill': 99999px,
     )
   ),

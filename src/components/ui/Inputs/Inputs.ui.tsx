@@ -15,7 +15,7 @@ const Input = ({ view, className = '', ...props }: any) => {
   ((Object.keys(viewList)) as (keyof typeof viewList)[] ).find(elem => elem === view && classList.push(viewList[elem]));
 
   return (
-    <input className={ classList.join(' ') + ` ${classList}` } {...props} />
+    <input className={ classList.join(' ') + ` ${className}` } {...props} />
   );
 };
 
