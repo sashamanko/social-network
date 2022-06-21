@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Register from '../components/Form/Register.component';
+import Register from '../components/Form/SignUp.component';
 // import './Login.page.scss';
 
 const SignUpPage = () => {

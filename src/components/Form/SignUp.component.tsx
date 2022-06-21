@@ -19,7 +19,7 @@ const Register = () => {
   
   return (
     <Form
-      title='Register'
+      title='Sign up'
       handleClick={handleRegister}
     >
 

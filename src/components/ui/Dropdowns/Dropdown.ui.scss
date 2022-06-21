@@ -64,7 +64,7 @@ __________________________________________________ */
         }
 
         &[role='none'] {
-          padding: calc(var(--padding) / 2);
+          padding: calc(var(--padding) / 3);
 
           & hr {
             height: 2px;

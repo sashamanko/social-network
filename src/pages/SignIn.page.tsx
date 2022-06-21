@@ -1,7 +1,7 @@
 // import './Login.page.scss';
 
 import { Link } from "react-router-dom";
-import Login from "../components/Form/Login.component";
+import Login from "../components/Form/SignIn.component";
 
 const LoginPage = () => {
   return (

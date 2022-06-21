@@ -55,7 +55,7 @@ const HomePage = () => {
             return (
               <li key={m.id} className={`flex flex-col ${ m.data.userFrom === email ? 'align-end' : '' }`}>
                 <p >{m.data.text}</p>
-                <span>{ date(m.data.createAt.seconds).h }:{date(m.data.createAt.seconds).m }</span>
+                {m.data.createAt?.seconds && <span>{  date(m.data.createAt.seconds).h }:{date(m.data.createAt.seconds).m }</span>}
               </li>
             );
           }))}
