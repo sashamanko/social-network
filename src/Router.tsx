@@ -18,11 +18,25 @@ import { UserLayout, GuestLayout } from './components';
 // __________________________________________________
 import useAuth from './hooks/useAuth';
 
+//Preloader
+//
+import Preloader from './components/Preloader/Preloader';
+import { useEffect, useState } from 'react';
+
 const Router = () => {
+
+  const [load, setLoad] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoad(true);
+    }, 1000);
+  }, []);
+
   const {isAuth} = useAuth();
   const { _isInitialized }: any = getAuth();
   
-  if (_isInitialized) {
+  if (_isInitialized && load) {
     return (
       <Routes>
         { isAuth &&
@@ -42,7 +56,7 @@ const Router = () => {
       </Routes>
     );
   } else {
-    return (<h2>Loading...</h2>);
+    return (<Preloader/>);
   }
 };
 
