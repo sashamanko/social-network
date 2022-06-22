@@ -1,14 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
+import { IUseOutside } from '../types/hooks';
 
 // Use 
 // const {ref, isShow, setIsShow} = useOutside(false)
-const useOutside = (initialIsVisible: boolean, ignoredRef: any) => {
+const useOutside = (initialIsVisible: boolean, ignoredRef: any): IUseOutside => {
   const [isShow, setIsShow] = useState(initialIsVisible);
-  const ref = useRef<HTMLElement>(null);
+  const outsideRef = useRef<HTMLElement>(null);
   
 
   const handleClickOutside = (e: any) => {
-    if (ref.current && !ref.current.contains(e.target) && ignoredRef.current && !ignoredRef.current.contains(e.target)) {
+    if (outsideRef.current && !outsideRef.current.contains(e.target) && ignoredRef.current && !ignoredRef.current.contains(e.target)) {
 
       isShow && setIsShow(false);
     }
@@ -20,7 +21,7 @@ const useOutside = (initialIsVisible: boolean, ignoredRef: any) => {
       document.removeEventListener('click', handleClickOutside, true);
     };
   });
-  return { ref, isShow, setIsShow };
+  return { outsideRef, isShow, setIsShow };
 };
 
 export default useOutside;

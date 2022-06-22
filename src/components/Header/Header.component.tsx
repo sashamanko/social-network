@@ -13,7 +13,7 @@ import { Dropdown } from '../ui';
 
 // SCSS | My
 // __________________________________________________
-import './Header.component.scss';
+import '../../styles/components/Header.component.scss';
 
 const Header = () => {
 

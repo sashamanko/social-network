@@ -3,11 +3,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../redux/slices/userSlice";
 
-interface IUseAuth {
-  isAuth: boolean;
-  email: string;
-  displayName: string;
-}
+// Interfaces | My
+// __________________________________________________
+import { IUseAuth } from "../types/hooks";
+
+
 
 const useAuth = (): IUseAuth => {
   const {email, displayName} = useSelector((state: any) => state.user);

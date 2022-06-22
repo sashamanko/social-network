@@ -8,7 +8,7 @@ import { useRef } from 'react';
 const Dropdown = ({ className, options, children, ...props }) => {
 
   const btnRef = useRef(null);
-  const {ref, isShow, setIsShow} = useOutside(false, btnRef);
+  const {outsideRef, isShow, setIsShow} = useOutside(false, btnRef);
 
   return (
     <div className={ `Dropdown ${className}` } { ...props }>
@@ -21,7 +21,7 @@ const Dropdown = ({ className, options, children, ...props }) => {
       </button>
 
       {isShow && 
-      <nav ref={ ref } className='Dropdown__navbar'>
+      <nav ref={ outsideRef } className='Dropdown__navbar'>
         <ul className='Dropdown__list'>
           {
             Object.keys(options).map( (item, id) => <DropdownItem key={id} options={ options[item] } />)

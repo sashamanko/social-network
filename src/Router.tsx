@@ -2,6 +2,10 @@
 // __________________________________________________
 import { Navigate, Route, Routes } from 'react-router-dom';
 
+// Imports | Firebase
+// __________________________________________________
+import { getAuth } from 'firebase/auth';
+
 // Impotrs | Pages
 // __________________________________________________
 import { HomePage, SignInOrSignUpPage, SignInPage, SignUpPage, ProfilePage } from './pages';
@@ -13,7 +17,6 @@ import { UserLayout, GuestLayout } from './components';
 // Hooks | My
 // __________________________________________________
 import useAuth from './hooks/useAuth';
-import { getAuth } from 'firebase/auth';
 
 const Router = () => {
   const {isAuth} = useAuth();
