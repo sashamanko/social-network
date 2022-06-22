@@ -51,9 +51,9 @@ const HomePage = () => {
   }, []);
   
   return (
-    <div style={{minHeight: 'calc(97vh - 60px)', overflow: 'hidden'}} className="flex justify-center self-end">
+    <div style={{minHeight: 'calc(97vh - 60px)', overflow: 'hidden'}} className="flex justify-center self-end pt-2">
       <div className="flex w-50 flex-col align-end">
-        <ul style={{ overflowY: 'scroll', maxHeight: 'calc(97vh - 110px)'}} className="flex flex-col w-100 pt-1">
+        <ul style={{ overflowY: 'scroll', maxHeight: 'calc(97vh - 110px)'}} className="flex flex-col w-100 py-2 pl-3">
           {messages && messages.map(((m: any) => {
             return (
               <li key={m.id}
