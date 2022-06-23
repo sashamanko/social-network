@@ -1,0 +1,13 @@
+.Home {
+  min-height: calc(100vh - 60px);
+
+  &__message-list {
+    max-height: calc(97vh - 110px);
+    overflow-y: scroll;
+
+    &__item {
+      box-shadow: var(--shadow);
+      word-break: break-word;
+    }
+  }
+}

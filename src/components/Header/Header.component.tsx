@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 // __________________________________________________
 import UserLineIcon from 'remixicon-react/UserLineIcon';
 import useAuth from '../../hooks/useAuth';
-import { removeUser } from '../../redux/slices/userSlice';
+import { removeUser } from '../../redux/user/slice';
 import { Dropdown } from '../ui';
 
 // SCSS | My

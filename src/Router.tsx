@@ -8,7 +8,7 @@ import { getAuth } from 'firebase/auth';
 
 // Impotrs | Pages
 // __________________________________________________
-import { HomePage, SignInOrSignUpPage, SignInPage, SignUpPage, ProfilePage } from './pages';
+import { HomePage, SignInOrSignUpPage, SignInPage, SignUpPage } from './pages';
 
 // Components | My
 // __________________________________________________
@@ -20,8 +20,9 @@ import useAuth from './hooks/useAuth';
 
 //Preloader
 //
-import Preloader from './components/Preloader/Preloader';
+import Preloader from './components/Preloader/Preloader.component';
 import { useEffect, useState } from 'react';
+import { ProfileSinglePage } from './singlepages';
 
 const Router = () => {
 
@@ -43,7 +44,10 @@ const Router = () => {
           <Route path='/' element={<UserLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<HomePage />} />
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route path=":profile" element={<ProfileSinglePage />}>
+              <Route path="subscribers" element={<h1>subscribers</h1>} />
+
+            </Route>
           </Route>
         }
         { !isAuth &&

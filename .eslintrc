@@ -6,7 +6,6 @@
     "semi": ["error", "always"]
   },
 
-
   "extends": [
     "react-app",
     "react-app/jest"

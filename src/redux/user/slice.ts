@@ -1,36 +1,30 @@
 import {createSlice, } from '@reduxjs/toolkit';
+import { IUserInitialState } from '../../types/redux';
 
-export interface IInitialState {
-  email: string | null;
-  displayName: string | null;
-  // photoURL: string | null;
-}
-
-const initialState: IInitialState = {
+const initialState: IUserInitialState = {
+  id: null,
+  uid: null,
   email: null,
   displayName: null,
-  // photoURL: null,
-  // id: null,
 };
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    // Set user
     setUser(state, action) {
-      
+      state.id = action.payload.id;
+      state.uid = action.payload.uid;
       state.email = action.payload.email;
       state.displayName = action.payload.displayName;
-      // state.photoURL = action.payload.photoURL;
-      // state.token = action.payload.token;
-      // state.id = action.payload.id;
     },
+    // Remove user
     removeUser(state) {
+      state.id = null;
+      state.uid = null;
       state.email = null;
       state.displayName = null;
-      // state.photoURL = null;
-      // state.token = null;
-      // state.id = null;
     },
   },
 });

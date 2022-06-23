@@ -3,7 +3,7 @@
 import { createUserWithEmailAndPassword, getAuth, updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { FormSignUp } from "..";
-import { setUser } from "../../redux/slices/userSlice";
+import { setUser } from "../../redux/user/slice";
 import Form from "./Form.component";
 
 const Register = () => {
