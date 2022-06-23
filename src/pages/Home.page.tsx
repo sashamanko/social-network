@@ -61,11 +61,9 @@ const HomePage = () => {
         <ul className="Home__message-list flex flex-col w-100 py-2 pl-3">
           {messages && messages.map(((m: any) => {
             return (
-              <li key={m.id}
-                style={{
-                  background: m.data.userFrom === email ? 'var(--main)' : '',
-                  color: m.data.userFrom === email ? 'var(--font-white)' : ''}}
-                className={`Home__message-list__item flex ${ m.data.userFrom === email ? 'ml-auto' : 'mr-auto' } p-2 bg-block rounded align-end mt-3`}>
+              <li
+                key={m.id}
+                className={`Home__message-list__item flex ${ m.data.userFrom === email ? 'ml-auto right' : 'mr-auto' } p-2 bg-block rounded align-end mt-3`}>
                 <p className="mr-3 font-500">{m.data.text}</p>
                 {m.data.createAt?.seconds && <span style={{wordBreak: 'normal'}} className="font-xs font-500">{  date(m.data.createAt.seconds).h }:{date(m.data.createAt.seconds).m }</span>}
               </li>

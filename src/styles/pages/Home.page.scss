@@ -8,6 +8,11 @@
     &__item {
       box-shadow: var(--shadow);
       word-break: break-word;
+
+      &.right {
+        color: var(--font-white);
+        background: var(--main);
+      }
     }
   }
 }
