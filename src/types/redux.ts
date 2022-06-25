@@ -13,7 +13,9 @@ export interface IProfileInitialState {
   id: string | null,
   email: string | null,
   displayName: string | null,
-  followers: number | null,
-  subscribers: number | null,
-  error: any | null
+  followers: any[],
+  subscribers: any[],
+  isSubscribe: boolean,
+  status: -1 | 0 | 1 | null,
+  error: any | null,
 }

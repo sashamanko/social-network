@@ -1,13 +1,13 @@
-// import './Login.page.scss';
+import '../styles/pages/SignIn.page.scss';
 
 import { Link } from "react-router-dom";
 import Login from "../components/Form/Login.component";
 
-const LoginPage = () => {
+const SignInPage = () => {
   return (
-    <div style={{height: 'calc(100vh - 60px)'}} className="flex align-center justify-center">
+    <div className="SignIn flex align-center justify-center">
       
-      <div style={{width: '320px'}} className="item-block flex align-center justify-center flex-col p-1">
+      <div className="SignIn__wrapper item-block flex align-center justify-center flex-col p-1">
         <Login />
 
         <p>Or <Link to='/register'>sign up</Link></p>
@@ -17,4 +17,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignInPage;

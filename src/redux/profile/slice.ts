@@ -6,13 +6,15 @@ const initialState: IProfileInitialState = {
   id: null,
   email: null,
   displayName: null,
-  subscribers: null,
-  followers: null,
+  subscribers: [],
+  followers: [],
+  isSubscribe: false,
+  status: null,
   error: null,
 };
 
 const setError = (state: any, action: any) => {
-  // state.status = 'resolved';
+  state.status = -1;
   state.error = action.payload;
 };
 
@@ -26,10 +28,17 @@ const profileSlice = createSlice({
       state.displayName = action.payload.displayName;
       state.subscribers = action.payload.subscribers;
       state.followers = action.payload.followers;
+      state.isSubscribe = action.payload.isSubscribe;
     },
   },
   extraReducers: {
-    // [fetchProfile.fulfilled]: (state, action) => {},
+    [fetchProfile.pending]: (state, action) => {
+      state.status = 0;
+      state.error = null;
+    },
+    [fetchProfile.fulfilled]: (state, action) => {
+      state.status = 1;
+    },
     [fetchProfile.rejected]: setError,
   }
 });

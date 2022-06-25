@@ -1,7 +1,7 @@
 // Imports | React router
 // __________________________________________________
 import { getAuth, signOut } from 'firebase/auth';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 // Imports | Remix icons
@@ -18,6 +18,7 @@ import '../../styles/components/Header.component.scss';
 const Header = () => {
 
   const auth: any = getAuth();
+  const { id } = useSelector((state: any) => state.user);
   const navigate = useNavigate();
   const dispach = useDispatch();
 
@@ -25,7 +26,7 @@ const Header = () => {
     profile: {
       label: 'Profile',
       type: 'link',
-      url: '#/profile',
+      url: `#/${id}`,
     },
     sp1: 'separator',
     logout: {

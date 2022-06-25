@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import Register from '../components/Form/SignUp.component';
-// import './Login.page.scss';
+import '../styles/pages/SignUp.page.scss';
 
 const SignUpPage = () => {
   return (
-    <div style={{height: 'calc(100vh - 60px)'}} className="LoginPage flex align-center justify-center">
+    <div className="SignUp flex align-center justify-center">
       
-      <div style={{width: '320px'}} className="item-block flex align-center justify-center flex-col p-1">
+      <div className="SignUp__wrapper item-block flex align-center justify-center flex-col p-1">
         <Register />
         <p>Or <Link to='/login'>sign in</Link></p>
       </div>

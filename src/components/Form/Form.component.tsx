@@ -19,6 +19,7 @@ const Form = ({title, handleClick}: any) => {
         {...bindEmail}
       />
       <Input 
+        forms=""
         type='password'
         placeholder='Password'
         className="my-1"
@@ -27,12 +28,13 @@ const Form = ({title, handleClick}: any) => {
       />
       <Button
         variant='primary'
+        forms=""
         onClick={(e: any) => {
           e.preventDefault();
           handleClick(email, password);
           navigate('/', { replace: true });
         }}
-        className='my-1 w-50'
+        className='mb-1 w-50'
       >
         { title }
       </Button>

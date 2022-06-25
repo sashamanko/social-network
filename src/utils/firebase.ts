@@ -1,7 +1,7 @@
 // Imports | Firebase
 // __________________________________________________
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { collection, getDoc, getDocs, getFirestore } from "firebase/firestore";
 
 const app: any = initializeApp({
   apiKey: process.env.REACT_APP_FIRABASE_API_KEY,
@@ -15,6 +15,11 @@ const app: any = initializeApp({
 
 const db = getFirestore();
 
+const getDocument = async (collectionPath: string) => {
+  return await getDocs(collection( db, collectionPath));
+};
+
 export {
-  db
+  db,
+  getDocument,
 };
