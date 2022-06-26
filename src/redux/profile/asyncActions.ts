@@ -36,10 +36,12 @@ export const fetchFollow: any = createAsyncThunk<any>(
   async ( {email, profile}: any, {rejectWithValue}) => {
     
     const uid = (await getDocument('users')).docs.find(doc => doc.data().id === profile)?.id;
+    const uid2 = (await getDocument('users')).docs.find(doc => doc.data().email === email)?.id;
     
     try {
 
       await addDoc(collection(db, `users/${uid}/subscribers`), {email});
+      await addDoc(collection(db, `users/${uid2}/followers`), {email});
       
       return {email};
 
@@ -54,12 +56,15 @@ export const fetchUnfollow: any = createAsyncThunk<any>(
   async ( {email, profile}: any, {rejectWithValue}) => {
     
     const uid = (await getDocument('users')).docs.find(doc => doc.data().id === profile)?.id;
+    const uid2 = (await getDocument('users')).docs.find(doc => doc.data().email === email)?.id;
 
     const uidUser = (await getDocument(`users/${uid}/subscribers`)).docs.find(doc => doc.data().email === email)?.id;
+    const uidUser2 = (await getDocument(`users/${uid}/subscribers`)).docs.find(doc => doc.data().id === profile)?.id;
     
     try {
 
       await deleteDoc( doc(db, `users/${uid}/subscribers`, `${uidUser}`) );
+      await deleteDoc( doc(db, `users/${uid2}/followers`, `${uidUser2}`) );
       
       return {email};
 
