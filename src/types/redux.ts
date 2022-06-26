@@ -5,6 +5,8 @@ export interface IUserInitialState {
   uid: string | null
   email: string | null;
   displayName: string | null;
+  status: -1 | 0 | 1 | null,
+  error: any | null,
 }
 
 // Profile slice

@@ -2,7 +2,8 @@
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../redux/user/slice";
+import { fetchUser } from "../../redux/user/asyncActions";
+// import { setUser } from "../../redux/user/slice";
 import Form from "./Form.component";
 
 const Login = () => {
@@ -13,7 +14,7 @@ const Login = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(({user}: any) => {
-        dispatch(setUser({email: user.email}));
+        dispatch(fetchUser(user));
       })
       .catch(() => alert('Invalid user'));
   };

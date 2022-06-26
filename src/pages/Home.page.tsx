@@ -29,7 +29,7 @@ import SendPlaneLineIcon from "remixicon-react/SendPlaneFillIcon";
 
 const HomePage = () => {
 
-  const {email} = useAuth();
+  const {email, status} = useAuth();
   const [bindValue, value, restValue] = useInput('');
 
   const [messages, setMessages] = useState([]);
@@ -42,6 +42,7 @@ const HomePage = () => {
       // userFrom: '',
     });
   };
+  
 
   useEffect(() => {
     onSnapshot(query(collection( db, 'messages'), orderBy('createAt', 'asc')), (snapshot: any) => {
@@ -58,6 +59,7 @@ const HomePage = () => {
   return (
     <div className="Home flex justify-center self-end py-1 ">
       <div className="flex w-50 flex-col align-end">
+        {/* <span className="item-block rounded-fill mx-auto p-2">38 груня</span> */}
         <ul className="Home__message-list flex flex-col w-100 py-2 pl-3">
           {messages && messages.map(((m: any) => {
             return (

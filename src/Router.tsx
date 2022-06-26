@@ -1,6 +1,6 @@
 // Imports | React router
 // __________________________________________________
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 
 // Imports | Firebase
 // __________________________________________________
@@ -13,10 +13,10 @@ import { HomePage, SignInOrSignUpPage, SignInPage, SignUpPage } from './pages';
 // Components | My
 // __________________________________________________
 import { UserLayout, GuestLayout } from './components';
+import useAuth from './hooks/useAuth';
 
 // Hooks | My
 // __________________________________________________
-import useAuth from './hooks/useAuth';
 
 //Preloader
 //
@@ -26,42 +26,45 @@ import { ProfileSinglePage } from './singlepages';
 
 const Router = () => {
 
-  const [load, setLoad] = useState(false);
+  // const [load, setLoad] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoad(true);
-    }, 1000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoad(true);
+  //   }, 1000);
+  // }, []);
 
-  const {isAuth} = useAuth();
-  const { _isInitialized }: any = getAuth();
+  const {isAuth, status} = useAuth();
+  // console.log(status);
   
-  if (_isInitialized && load) {
-    return (
-      <Routes>
-        { isAuth &&
-          <Route path='/' element={<UserLayout />}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path=":profile" element={<ProfileSinglePage />}>
-              <Route path="subscribers" element={<h1>subscribers</h1>} />
+  const auth = getAuth();
+  
+  // console.log(auth);
+  
 
-            </Route>
+  return (
+    <Routes>
+      { isAuth &&
+        <Route path='/' element={<UserLayout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path=":profile" element={<ProfileSinglePage />}>
+            <Route path="subscribers" element={<h1>subscribers</h1>} />
           </Route>
-        }
-        { !isAuth &&
-          <Route path='/' element={<GuestLayout />}>
-            <Route path="/" element={ <SignInOrSignUpPage /> } />
-            <Route path="/login" element={ <SignInPage /> }  />
-            <Route path = "/register" element={ <SignUpPage /> } />
-          </Route>
-        }
-      </Routes>
-    );
-  } else {
-    return (<Preloader/>);
-  }
+        </Route>
+      }
+      { !isAuth &&
+        <Route path='/' element={<GuestLayout />}>
+          <Route path="/" element={ <SignInOrSignUpPage /> } />
+          <Route path="/login" element={ <SignInPage /> }  />
+          <Route path = "/register" element={ <SignUpPage /> } />
+        </Route>
+      }
+      {/* { auth.status === 0 &&
+        
+      } */}
+    </Routes>
+  );
 };
 
 export default Router;

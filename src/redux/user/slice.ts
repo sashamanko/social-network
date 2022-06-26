@@ -1,24 +1,25 @@
 import {createSlice, } from '@reduxjs/toolkit';
 import { IUserInitialState } from '../../types/redux';
+import { fetchUser } from './asyncActions';
 
 const initialState: IUserInitialState = {
   id: null,
   uid: null,
   email: null,
   displayName: null,
+  status: 0,
+  error: null,
+};
+
+const setError = (state: any, action: any) => {
+  state.status = -1;
+  state.error = action.payload;
 };
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    // Set user
-    setUser(state, action) {
-      state.id = action.payload.id;
-      state.uid = action.payload.uid;
-      state.email = action.payload.email;
-      state.displayName = action.payload.displayName;
-    },
     // Remove user
     removeUser(state) {
       state.id = null;
@@ -27,8 +28,23 @@ const userSlice = createSlice({
       state.displayName = null;
     },
   },
+  extraReducers: {
+    [fetchUser.pending]: (state, action) => {
+      state.status = 0;
+      state.error = null;
+    },
+    [fetchUser.fulfilled]: (state, action) => {
+      state.id = action.payload.id;
+      state.uid = action.payload.uid;
+      state.email = action.payload.email;
+      state.displayName = action.payload.displayName;
+      
+      state.status = 1;
+    },
+    [fetchUser.rejected]: setError,
+  }
 });
 
-export const {setUser, removeUser} = userSlice.actions;
+export const {removeUser} = userSlice.actions;
 
 export default userSlice.reducer;

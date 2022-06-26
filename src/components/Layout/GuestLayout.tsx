@@ -6,6 +6,7 @@ import { Navigate, Outlet } from "react-router-dom";
 // __________________________________________________
 import { Header } from "..";
 import { useAuth } from "../../hooks";
+import Preloader from "../Preloader/Preloader.component";
 
 // SCSS | My
 // __________________________________________________
@@ -13,12 +14,15 @@ import { useAuth } from "../../hooks";
 
 const GuestLayout = () => {
 
-  const {isAuth} = useAuth();
+  const {isAuth, status} = useAuth();
+
+  // console.log(status);
+  
 
   return (
     <>
       <Header/>
-
+      
       <main className="container">
         <Outlet/>
       </main>

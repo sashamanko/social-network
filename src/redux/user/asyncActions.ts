@@ -1,8 +1,8 @@
 import { async } from '@firebase/util';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getAuth } from 'firebase/auth';
 import { addDoc, collection, getDocs, onSnapshot, query } from 'firebase/firestore';
-import { db } from '../../utils/firebase';
-import { setUser } from './slice';
+import { db, getDocument } from '../../utils/firebase';
 
 const newDoc = (col: string, data: object) => {
   addDoc(collection(db , col), data);
@@ -27,19 +27,34 @@ export const fetchAddUser: any = createAsyncThunk<any>(
   }
 );
 
-// export const fetchUserId: any = createAsyncThunk<any>(
-//   'profile/fetchUserId',
-//   async (email, {rejectWithValue, dispatch}) => {
+export const fetchUser: any = createAsyncThunk<any>(
+  'profile/fetchUser',
+  async (user: any, {rejectWithValue, dispatch}) => {
+    const auth: any = getAuth();
 
-//     let id;
+    try {
+      // console.log(true);
+      
+      // (await getDocs(collection( db, `users`))).docs.find((doc: any) => {
+      // if (auth.email === email) {
+      const id = (await getDocument('users')).docs.find((doc: any) => doc.data().email === user.email)?.data().id;
 
-//     try {
-//       id = 
+      const innerUser: any = {};
+
+      if (user) {
+        innerUser.id = id;
+        innerUser.uid = user.uid;
+        innerUser.email = user.email; 
+        innerUser.displayName = user.displayName;
+      };
+
+      return innerUser;
+      // }
+      // });
 
       
-//     } catch (error: any) {
-//       return rejectWithValue(error.message);
-//     }
-//     dispatch( setUser({ id }) );
-//   }
-// );
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

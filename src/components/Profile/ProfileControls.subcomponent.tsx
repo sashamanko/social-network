@@ -3,6 +3,7 @@ import '../../styles/components/subcomponent/ProfileControls.subcomponent.scss';
 import PencilLineIcon from "remixicon-react/PencilLineIcon";
 import UserFollowLineIcon from "remixicon-react/UserFollowLineIcon";
 import UserUnfollowLineIcon from "remixicon-react/UserUnfollowLineIcon";
+import MailLineIcon from "remixicon-react/MailLineIcon";
 import { useAuth } from "../../hooks";
 import { Button, ButtonCircle } from "../ui";
 
@@ -27,15 +28,33 @@ const ProfileControls = ({email, isSubscribe}: IProfileControls) => {
     return (
       <div className="ml-auto">
         { isSubscribe && 
-          <ButtonCircle variant='primary' forms='iconAnimate' animate='slide-left' textContent='Unfollow' className='flex align-center justify-end'>
+          <ButtonCircle
+            variant='primary'
+            forms='iconAnimate'
+            animate='slide-left'
+            textContent='Unfollow'
+            className='flex ml-auto align-center justify-end'>
             <UserUnfollowLineIcon />
           </ButtonCircle>
         }
         { !isSubscribe && 
-          <ButtonCircle variant='primary' forms='iconAnimate' animate='slide-left' textContent='Follow' className='flex align-center justify-end'>
+          <ButtonCircle
+            variant='primary'
+            forms='iconAnimate'
+            animate='slide-left'
+            textContent='Follow'
+            className='flex ml-auto align-center justify-end'>
             <UserFollowLineIcon />
           </ButtonCircle>
         }
+        <ButtonCircle
+          variant='primary'
+          forms='iconAnimate'
+          animate='slide-left'
+          textContent='Send message'
+          className='flex ml-auto align-center justify-end mt-2'>
+          <MailLineIcon />
+        </ButtonCircle>
       </div>
     );
   }

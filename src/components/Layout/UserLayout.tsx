@@ -7,6 +7,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { Header } from "..";
 import { useAuth } from "../../hooks";
 import { SignInOrSignUpPage } from "../../pages";
+import Preloader from "../Preloader/Preloader.component";
 
 // SCSS | My
 // __________________________________________________
@@ -14,14 +15,19 @@ import { SignInOrSignUpPage } from "../../pages";
 
 const UserLayout = () => {
 
-  const {isAuth} = useAuth();
+  const {isAuth, status} = useAuth();
 
   return (
     <>
       <Header/>
       
       <main className="container">
-        <Outlet/>
+        { status === 1 &&
+          <Outlet/>
+        }
+        { status === 0 &&
+          <Preloader/>
+        }
       </main>
     </>
   );

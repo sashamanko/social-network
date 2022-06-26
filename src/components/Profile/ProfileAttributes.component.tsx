@@ -6,17 +6,12 @@ import { fetchProfile } from '../../redux/profile/asyncActions';
 import ProfileControls from './ProfileControls.subcomponent';
 // import './ProfileAttributes.component.css';
 
-const ProfileAttributes = () => {
+// {displayName: string, email: string, subscribersLength: number, followersLength: number, isSubscribe: boolean}
 
-  const { profile } = useParams();
-  const auth = useAuth();
+const ProfileAttributes = ({getProfile}: any) => {
   
-  const dispach = useDispatch();
-  const getProfile = useSelector((state: any) => state.profile);
-  
-  useEffect(() => {
-    dispach( fetchProfile({profile, email: auth.email}) );
-  }, [dispach, profile]);
+  const { displayName, email, subscribers, followers, isSubscribe }: any = getProfile;
+  // console.log(getProfile);
   
 
   return (
@@ -24,12 +19,12 @@ const ProfileAttributes = () => {
       <div className="profileInfo flex mt-1 item-block">
         <div style={{background: 'red', width: '150px', height: '150px'}} className="rounded-fill mr-1"></div>
         <div className="flex flex-col">
-          <h2>{ getProfile?.displayName }</h2>
-          <p>{ getProfile?.email }</p>
-          <p>subscribers: { getProfile?.subscribers.length }</p>
-          <p>followers: { getProfile?.followers.length }</p>
+          <h2>{ displayName }</h2>
+          <p>{ email }</p>
+          <p>subscribers: { subscribers.length }</p>
+          <p>followers: { followers.length }</p>
         </div>
-        <ProfileControls email={getProfile?.email} isSubscribe={getProfile?.isSubscribe}/>
+        <ProfileControls email={ email } isSubscribe={ isSubscribe }/>
       </div>
     </>
   );

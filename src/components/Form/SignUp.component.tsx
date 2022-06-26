@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword, getAuth, updateProfile } from "firebase
 import { collection, getDocs } from "firebase/firestore";
 import { useDispatch } from "react-redux";
 import { FormSignUp } from "..";
-import { setUser } from "../../redux/user/slice";
+import { fetchUser } from "../../redux/user/asyncActions";
 import { db, getDocument } from "../../utils/firebase";
 import Form from "./Form.component";
 
@@ -26,7 +26,7 @@ const Register = () => {
           displayName,
         }).then(console.log).catch(error => console.log(error, 'da oshibka'));
 
-        dispatch(setUser({email: user.email, displayName: user.displayName}));
+        dispatch(fetchUser(user));
       })
       .catch(() => alert('This user registred'));
   };
