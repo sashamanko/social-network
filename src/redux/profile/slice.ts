@@ -1,5 +1,5 @@
 import {createSlice, } from '@reduxjs/toolkit';
-import { fetchProfile } from './asyncActions';
+import { fetchFollow, fetchProfile, fetchUnfollow } from './asyncActions';
 import { IProfileInitialState } from '../../types/redux';
 
 const initialState: IProfileInitialState = {
@@ -16,6 +16,8 @@ const initialState: IProfileInitialState = {
 const setError = (state: any, action: any) => {
   state.status = -1;
   state.error = action.payload;
+  console.log(state.status);
+  
 };
 
 const profileSlice = createSlice({
@@ -40,8 +42,34 @@ const profileSlice = createSlice({
       state.status = 1;
     },
     [fetchProfile.rejected]: setError,
+    [fetchFollow.pending]: (state, action) => {
+      state.error = null;
+    },
+    [fetchFollow.fulfilled]: (state, action) => {
+      state.subscribers.find( (elem) => {
+        if(elem.email !== action.payload.email) {
+          state.subscribers.push({email: action.payload.email});
+          state.isSubscribe = true;
+        }
+      });
+    },
+    [fetchFollow.rejected]: setError,
+    [fetchUnfollow.pending]: (state, action) => {
+      state.error = null;
+    },
+    [fetchUnfollow.fulfilled]: (state, action) => {
+      state.subscribers.find( (elem) => {
+        if(elem.email === action.payload.email) {
+          state.subscribers.filter(user => user.email !== action.payload.email);
+          state.isSubscribe = false;
+        }
+      });
+    },
+    [fetchUnfollow.rejected]: setError,
   }
 });
+
+
 
 export const { setProfile } = profileSlice.actions;
 

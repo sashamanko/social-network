@@ -1,6 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { collection, addDoc, deleteDoc, doc } from 'firebase/firestore';
 import { getDocument } from '../../utils/firebase';
 import { setProfile } from './slice';
+import { db } from '../../utils/firebase';
 // import { setProfile } from './slice';
 
 export const fetchProfile: any = createAsyncThunk<any>(
@@ -18,10 +20,48 @@ export const fetchProfile: any = createAsyncThunk<any>(
         subscribers: (await getDocument(`users/${uid}/subscribers`)).docs,
         followers: (await getDocument(`users/${uid}/followers`)).docs,
       };
-      innerProfile.isSubscribe = innerProfile.followers.find((doc2: any) => doc2.data().email === email) ? true : false;
+      innerProfile.isSubscribe = innerProfile.subscribers.find((doc2: any) => doc2.data().email === email) ? true : false;
       
 
       dispatch(setProfile(innerProfile));
+
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchFollow: any = createAsyncThunk<any>(
+  'profile/fetchFollow',
+  async ( {email, profile}: any, {rejectWithValue}) => {
+    
+    const uid = (await getDocument('users')).docs.find(doc => doc.data().id === profile)?.id;
+    
+    try {
+
+      await addDoc(collection(db, `users/${uid}/subscribers`), {email});
+      
+      return {email};
+
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchUnfollow: any = createAsyncThunk<any>(
+  'profile/fetchUnfollow',
+  async ( {email, profile}: any, {rejectWithValue}) => {
+    
+    const uid = (await getDocument('users')).docs.find(doc => doc.data().id === profile)?.id;
+
+    const uidUser = (await getDocument(`users/${uid}/subscribers`)).docs.find(doc => doc.data().email === email)?.id;
+    
+    try {
+
+      await deleteDoc( doc(db, `users/${uid}/subscribers`, `${uidUser}`) );
+      
+      return {email};
 
     } catch (error: any) {
       return rejectWithValue(error.message);

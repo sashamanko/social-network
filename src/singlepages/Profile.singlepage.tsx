@@ -11,17 +11,18 @@ const ProfileSinglePage = () => {
 
   // const [isLoad, setIsLoad] = useState(false);
 
-  const dispach = useDispatch();
+  const dispatch = useDispatch();
   const getProfile = useSelector((state: any) => state.profile);
 
   const { profile } = useParams();
   const auth = useAuth();
-  console.log(getProfile);
+  
+  console.log(getProfile.isSubscribe);
   
 
   useEffect(() => {
-    dispach( fetchProfile({profile, email: auth.email}) );
-  }, [dispach, profile]);
+    dispatch( fetchProfile({profile, email: auth.email}) );
+  }, [dispatch, profile]);
 
   return (
     <> 

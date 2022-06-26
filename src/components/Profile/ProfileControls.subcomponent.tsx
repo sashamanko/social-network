@@ -6,6 +6,10 @@ import UserUnfollowLineIcon from "remixicon-react/UserUnfollowLineIcon";
 import MailLineIcon from "remixicon-react/MailLineIcon";
 import { useAuth } from "../../hooks";
 import { Button, ButtonCircle } from "../ui";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchFollow, fetchUnfollow } from '../../redux/profile/asyncActions';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 interface IProfileControls {
   email: string;
@@ -13,9 +17,21 @@ interface IProfileControls {
 }
 
 const ProfileControls = ({email, isSubscribe}: IProfileControls) => {
+
+  const auth: any = useAuth();
+  const { profile }: any = useParams();
   
-  const auth = useAuth();
+  const dispatch = useDispatch();
   
+  console.log(getProfile.isSubscribe);
+
+  const [isFollow, setIsFollow] = useState(isSubscribe);
+
+  useEffect(() => {
+    console.log('ok');
+    
+  }, [getProfile]);
+
   if (email === auth.email) {
     return (
       <div className="ml-auto">
@@ -27,23 +43,31 @@ const ProfileControls = ({email, isSubscribe}: IProfileControls) => {
   } else {
     return (
       <div className="ml-auto">
-        { isSubscribe && 
+        { isFollow && 
           <ButtonCircle
             variant='primary'
             forms='iconAnimate'
             animate='slide-left'
             textContent='Unfollow'
-            className='flex ml-auto align-center justify-end'>
+            className='flex ml-auto align-center justify-end'
+            onClick={ () => { 
+              dispatch(fetchUnfollow({email: auth.email, profile: String(profile)}));
+              const i = useSelector((state: any) => state.profile);
+              
+            } }
+          >
             <UserUnfollowLineIcon />
           </ButtonCircle>
         }
-        { !isSubscribe && 
+        { !isFollow && 
           <ButtonCircle
             variant='primary'
             forms='iconAnimate'
             animate='slide-left'
             textContent='Follow'
-            className='flex ml-auto align-center justify-end'>
+            className='flex ml-auto align-center justify-end'
+            onClick={ () => { dispatch(fetchFollow({email: auth.email, profile: String(profile)})); } }
+          >
             <UserFollowLineIcon />
           </ButtonCircle>
         }
@@ -52,7 +76,8 @@ const ProfileControls = ({email, isSubscribe}: IProfileControls) => {
           forms='iconAnimate'
           animate='slide-left'
           textContent='Send message'
-          className='flex ml-auto align-center justify-end mt-2'>
+          className='flex ml-auto align-center justify-end mt-2'
+        >
           <MailLineIcon />
         </ButtonCircle>
       </div>
