@@ -17,8 +17,6 @@ const ProfileSinglePage = () => {
   const { profile } = useParams();
   const auth = useAuth();
   
-  console.log(getProfile.isSubscribe);
-  
 
   useEffect(() => {
     dispatch( fetchProfile({profile, email: auth.email}) );

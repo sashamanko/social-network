@@ -21,16 +21,10 @@ const ProfileControls = ({email, isSubscribe}: IProfileControls) => {
   const auth: any = useAuth();
   const { profile }: any = useParams();
   
+  const getProfile = useSelector((state: any) => state.profile.isSubscribe);
   const dispatch = useDispatch();
-  
-  console.log(getProfile.isSubscribe);
 
   const [isFollow, setIsFollow] = useState(isSubscribe);
-
-  useEffect(() => {
-    console.log('ok');
-    
-  }, [getProfile]);
 
   if (email === auth.email) {
     return (
@@ -52,8 +46,7 @@ const ProfileControls = ({email, isSubscribe}: IProfileControls) => {
             className='flex ml-auto align-center justify-end'
             onClick={ () => { 
               dispatch(fetchUnfollow({email: auth.email, profile: String(profile)}));
-              const i = useSelector((state: any) => state.profile);
-              
+              setIsFollow(false);
             } }
           >
             <UserUnfollowLineIcon />
@@ -66,7 +59,10 @@ const ProfileControls = ({email, isSubscribe}: IProfileControls) => {
             animate='slide-left'
             textContent='Follow'
             className='flex ml-auto align-center justify-end'
-            onClick={ () => { dispatch(fetchFollow({email: auth.email, profile: String(profile)})); } }
+            onClick={ () => {
+              dispatch(fetchFollow({email: auth.email, profile: String(profile)})); 
+              setIsFollow(true);
+            } }
           >
             <UserFollowLineIcon />
           </ButtonCircle>
