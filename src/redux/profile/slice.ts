@@ -43,27 +43,23 @@ const profileSlice = createSlice({
     },
     [fetchProfile.rejected]: setError,
     [fetchFollow.pending]: (state, action) => {
+      // state.status = 0;
       state.error = null;
     },
     [fetchFollow.fulfilled]: (state, action) => {
-      state.subscribers.find( (elem) => {
-        if(elem.email !== action.payload.email) {
-          state.subscribers.push({email: action.payload.email});
-          state.isSubscribe = true;
-        }
-      });
+      state.subscribers.push({email: action.payload.email});
+      state.isSubscribe = true;
+      // state.status = 1;
     },
     [fetchFollow.rejected]: setError,
     [fetchUnfollow.pending]: (state, action) => {
+      // state.status = 0;
       state.error = null;
     },
     [fetchUnfollow.fulfilled]: (state, action) => {
-      state.subscribers.find( (elem) => {
-        if(elem.email === action.payload.email) {
-          state.subscribers.filter(user => user.email !== action.payload.email);
-          state.isSubscribe = false;
-        }
-      });
+      state.subscribers = state.subscribers.filter(user => user.email !== action.payload.email);
+      state.isSubscribe = false;
+      // state.status = 1;
     },
     [fetchUnfollow.rejected]: setError,
   }

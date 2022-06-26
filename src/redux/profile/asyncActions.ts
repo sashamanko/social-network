@@ -59,7 +59,7 @@ export const fetchUnfollow: any = createAsyncThunk<any>(
     const uid2 = (await getDocument('users')).docs.find(doc => doc.data().email === email)?.id;
 
     const uidUser = (await getDocument(`users/${uid}/subscribers`)).docs.find(doc => doc.data().email === email)?.id;
-    const uidUser2 = (await getDocument(`users/${uid}/subscribers`)).docs.find(doc => doc.data().id === profile)?.id;
+    const uidUser2 = (await getDocument(`users/${uid2}/followers`)).docs.find(doc => doc.data().email === email)?.id;
     
     try {
 

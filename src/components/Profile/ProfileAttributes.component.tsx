@@ -1,19 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { useAuth } from '../../hooks';
+import { useAuth, useProfile } from '../../hooks';
 import { fetchProfile } from '../../redux/profile/asyncActions';
 import ProfileControls from './ProfileControls.subcomponent';
 // import './ProfileAttributes.component.css';
 
 // {displayName: string, email: string, subscribersLength: number, followersLength: number, isSubscribe: boolean}
 
-const ProfileAttributes = ({getProfile}: any) => {
-  
-  const { displayName, email, subscribers, followers, isSubscribe }: any = getProfile;
-  // console.log(getProfile);
-  
+const ProfileAttributes = ({ getProfile }: any) => {
 
+  const { displayName, email, subscribers, followers, isSubscribe } = getProfile;
+  
   return (
     <>
       <div className="profileInfo flex mt-1 item-block">
@@ -24,7 +22,7 @@ const ProfileAttributes = ({getProfile}: any) => {
           <p>subscribers: { subscribers.length }</p>
           <p>followers: { followers.length }</p>
         </div>
-        <ProfileControls email={ email } isSubscribe={ isSubscribe }/>
+        <ProfileControls email={ email } isSubscribe={ isSubscribe } />
       </div>
     </>
   );
