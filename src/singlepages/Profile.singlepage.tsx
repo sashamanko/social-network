@@ -9,16 +9,16 @@ import { fetchProfile } from "../redux/profile/asyncActions";
 
 const ProfileSinglePage = () => {
 
-  const { data }: any = useProfile();
+  const getProfile: any = useProfile();
 
   return (
     <> 
-      { data().status === 1 &&
+      { getProfile.status === 1 &&
         <ProfileAttributes
-          getProfile={ data() }
+          getProfile={ getProfile }
         />
       }
-      { data().status !== 1 &&
+      { getProfile.status !== 1 &&
         <Preloader />
       }
     </>

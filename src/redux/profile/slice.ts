@@ -31,6 +31,8 @@ const profileSlice = createSlice({
       state.subscribers = action.payload.subscribers;
       state.followers = action.payload.followers;
       state.isSubscribe = action.payload.isSubscribe;
+      console.log(action.payload.followers);
+      
     },
   },
   extraReducers: {
@@ -48,6 +50,7 @@ const profileSlice = createSlice({
     },
     [fetchFollow.fulfilled]: (state, action) => {
       state.subscribers.push({email: action.payload.email});
+
       state.isSubscribe = true;
       // state.status = 1;
     },
@@ -57,9 +60,9 @@ const profileSlice = createSlice({
       state.error = null;
     },
     [fetchUnfollow.fulfilled]: (state, action) => {
-      state.subscribers = state.subscribers.filter(user => user.email !== action.payload.email);
+      
+      state.subscribers = state.subscribers.filter(user => user.email !== action.payload.email );
       state.isSubscribe = false;
-      // state.status = 1;
     },
     [fetchUnfollow.rejected]: setError,
   }

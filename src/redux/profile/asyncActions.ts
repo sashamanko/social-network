@@ -22,6 +22,8 @@ export const fetchProfile: any = createAsyncThunk<any>(
       };
       innerProfile.isSubscribe = innerProfile.subscribers.find((doc2: any) => doc2.data().email === email) ? true : false;
       
+      console.log(innerProfile.subscribers);
+      
 
       dispatch(setProfile(innerProfile));
 
@@ -42,7 +44,7 @@ export const fetchFollow: any = createAsyncThunk<any>(
 
       await addDoc(collection(db, `users/${uid}/subscribers`), {email});
       await addDoc(collection(db, `users/${uid2}/followers`), {email});
-      
+      console.log('follow');
       return {email};
 
     } catch (error: any) {

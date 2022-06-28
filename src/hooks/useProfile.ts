@@ -16,19 +16,7 @@ const useProfile = () => {
     dispatch( fetchProfile({profile, email: auth.email}) );
   }, [dispatch, profile]);
 
-  const data = () => {
-    return {...getProfile};
-  };
-
-  const follow = (profile: string, email: string) => {
-    dispatch(fetchFollow({email, profile}));
-  };
-
-  const unfollow = (profile: string, email: string) => {
-    dispatch(fetchUnfollow({email, profile}));
-  };
-
-  return { data, follow, unfollow };
+  return { ...getProfile };
 };
 
 export default useProfile;

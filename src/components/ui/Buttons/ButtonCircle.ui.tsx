@@ -8,11 +8,12 @@ interface IButton {
   forms?: '' | 'iconAnimate';
   animate?: '' | 'slide-left';
   className?: string;
+  textContent: string
   children: any;
   [key: string]: any;
 } 
 
-const ButtonCircle = ({ variant = '', forms='', animate='', className='', textContent='', children, ...props }: IButton) => {
+const ButtonCircle = ({ variant = '', forms='', animate='', className='', textContent='', children, ...props }: IButton): JSX.Element => {
 
   const classList = [ classes.btn, classes[variant], classes[forms], classes[animate]];
 

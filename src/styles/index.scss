@@ -27,6 +27,17 @@ button {
   cursor: pointer;
 }
 
+a:active {
+  color: inherit;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--main);
+}
+
 ::-webkit-scrollbar {
   width: 0;
 }

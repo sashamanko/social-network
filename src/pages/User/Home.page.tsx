@@ -8,20 +8,20 @@ import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from 
 
 // Utils | My
 // __________________________________________________
-import { db } from "../utils/firebase";
+import { db } from "../../utils/firebase";
 
 // SCSS | My
 // __________________________________________________
-import '../styles/pages/Home.page.scss';
+import '../../styles/pages/Home.page.scss';
 
 // Components | My
 // __________________________________________________
-import { Button, Input } from "../components/ui";
+import { Button, Input } from "../../components/ui";
 
 // Hooks | My
 // __________________________________________________
-import { useInput, useAuth} from "../hooks";
-import date from "../utils/date";
+import { useInput, useAuth} from "../../hooks";
+import date from "../../utils/date";
 
 // Remix Icon
 // __________________________________________________

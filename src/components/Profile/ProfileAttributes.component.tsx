@@ -11,6 +11,9 @@ import ProfileControls from './ProfileControls.subcomponent';
 const ProfileAttributes = ({ getProfile }: any) => {
 
   const { displayName, email, subscribers, followers, isSubscribe } = getProfile;
+
+  console.log(subscribers);
+  
   
   return (
     <>

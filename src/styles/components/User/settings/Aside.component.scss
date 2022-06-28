@@ -1,0 +1,16 @@
+.Aside__menu__item {
+  min-width: 200px;
+  
+  & > a {
+    transition: all var(--transition);
+  
+    &.active {
+      background: var(--main);
+      color: var(--font-white);
+    } 
+  }
+
+  &:not(:first-child) {
+    margin-top: calc(var(--margin) / 2);
+  }
+}
