@@ -37,14 +37,14 @@ export const fetchFollow: any = createAsyncThunk<any>(
   'profile/fetchFollow',
   async ( {email, profile}: any, {rejectWithValue}) => {
     
-    const uid = (await getDocument('users')).docs.find(doc => doc.data().id === profile)?.id;
-    const uid2 = (await getDocument('users')).docs.find(doc => doc.data().email === email)?.id;
+    const uid: any = (await getDocument('users')).docs.find(doc => doc.data().id === profile);
+    const uid2 = (await getDocument('users')).docs.find(doc => doc.data().email === email);
     
     try {
 
-      await addDoc(collection(db, `users/${uid}/subscribers`), {email});
-      await addDoc(collection(db, `users/${uid2}/followers`), {email});
-      console.log('follow');
+      await addDoc(collection(db, `users/${uid?.id}/subscribers`), {email});
+      await addDoc(collection(db, `users/${uid2?.id}/followers`), {email: uid.data().email});
+
       return {email};
 
     } catch (error: any) {
@@ -65,8 +65,8 @@ export const fetchUnfollow: any = createAsyncThunk<any>(
     
     try {
 
-      await deleteDoc( doc(db, `users/${uid}/subscribers`, `${uidUser}`) );
-      await deleteDoc( doc(db, `users/${uid2}/followers`, `${uidUser2}`) );
+      await deleteDoc( doc(db, `users/${uid}/subscribers`, `${uidUser2}`) );
+      await deleteDoc( doc(db, `users/${uid2}/followers`, `${uidUser}`) );
       
       return {email};
 

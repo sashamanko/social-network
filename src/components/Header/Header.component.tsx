@@ -2,7 +2,7 @@
 // __________________________________________________
 import { getAuth, signOut } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 // Imports | Remix icons
 // __________________________________________________
@@ -46,7 +46,15 @@ const Header = () => {
     <header className='header bg-block'>
       <div className="header__container flex align-center mx-auto px-1">
 
-        <h3 className=''>Title</h3>
+        <NavLink 
+          to='/'
+          className='font-700 fo'
+          style={{
+            fontSize: '1.666rem',
+          }}
+        >
+          Title
+        </NavLink>
 
         {isAuth && 
         <Dropdown
