@@ -53,7 +53,7 @@ const Router = () => {
             <Route path="subscribers" element={<h1>subscribers</h1>} />
           </Route>
           <Route path="/settings" element={ <SettingsPage />}>
-            <Route path='' element={<ProfilePage />}/>
+            <Route path='profile' element={<ProfilePage />}/>
             <Route path="decor" element={<DecorPage />} />
           </Route>
         </Route>

@@ -6,7 +6,7 @@ import PaletteLineIcon from "remixicon-react/PaletteLineIcon";
 const Aside = () => {
 
   const menuItems: any = [
-    {label: 'Profile', href: '', icon: <UserLineIcon className='mr-4'/>, end: true},
+    {label: 'Profile', href: 'profile', icon: <UserLineIcon className='mr-4'/>, end: true},
     {label: 'Decor', href: 'decor', icon: <PaletteLineIcon className='mr-4'/>},
   ];
 
