@@ -4,6 +4,7 @@ import { fetchUserList } from './asyncActions';
 
 const initialState: any = {
   userList: [],
+  chatList: [],
   status: null,
 }; 
 
@@ -24,6 +25,7 @@ const messengerSlice = createSlice({
     },
     [fetchUserList.fulfilled]: (state, action) => {
       state.userList = action.payload.userList;
+      state.chatList = action.payload.chatList;
       state.status = 1;
     },
     [fetchUserList.rejected]: setError,

@@ -3,14 +3,20 @@
 import { NavLink } from "react-router-dom";
 import { MessengerAsideItem } from ".";
 
-const MessengerAside = ({ chatUsers, chats }: any) => {
+const MessengerAside = ({ userList, chatList }: any) => {
+  
   return (
     <aside>
       <ul className="list-none">
         {
-          chatUsers.map((user: any, id: number) => {
+          userList.map((user: any) => {
+            
             return (
-              <MessengerAsideItem key={chats[id]} user={user} chatId={chats[id]} />
+              <MessengerAsideItem
+                key={user.data().id}
+                user={user}
+                chatId={chatList.find((chat: any) => Object.values(chat.data()).find((userEmail: any) => userEmail === user.data().email)).id}
+              />
             );
           })
         }

@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import '../../../styles/components/User/messenger/MessengerAsideItem.subcomponent.scss';
 
 const MessengerAsideItem = ({ user, chatId }: any) => {
+  
   return (
     <li
       key={user.data().id}

@@ -21,8 +21,12 @@ export const fetchUserList: any = createAsyncThunk<any>(
         });
       });
 
+      // console.log(chatList);
+      
+
       return {
         userList,
+        chatList,
       };
 
     } catch (error: any) {

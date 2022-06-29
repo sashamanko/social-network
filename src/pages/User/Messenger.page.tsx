@@ -15,7 +15,7 @@ import SendPlaneLineIcon from "remixicon-react/SendPlaneFillIcon";
 
 const MessengerPage = () => {
 
-  const {chatUsers, chats} = useMessenger();
+  const {userList, chatList } = useMessenger();
   const { chatId } = useParams();
 
   const { email } = useAuth();
@@ -45,9 +45,10 @@ const MessengerPage = () => {
     });
   }, [chatId]);
   
+
   return (
     <div className="pt-1 flex">
-      <MessengerAside chatUsers={chatUsers} chats={chats} />
+      <MessengerAside userList={userList} chatList={chatList} />
 
       <div className="flex w-50 flex-col align-end">
         {/* <span className="item-block rounded-fill mx-auto p-2">38 груня</span> */}
