@@ -14,12 +14,13 @@ import { db, getDocument } from "../utils/firebase";
 const getUserId = async (email: string) => await (await getDocs(collection( db, `users`))).docs.find(doc => doc.data().email === email)?.data().id;
 
 const useAuth = () => {
-  const {email, displayName, status} = useSelector((state: any) => state.user);
+  const {email, displayName, chats, status} = useSelector((state: any) => state.user);
 
   return {
     isAuth: !!email,
     email,
     displayName,
+    chats,
     status,
   };
 };

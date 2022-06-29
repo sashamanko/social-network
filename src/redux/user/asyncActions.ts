@@ -2,7 +2,7 @@ import { async } from '@firebase/util';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getAuth } from 'firebase/auth';
 import { addDoc, collection, getDocs, onSnapshot, query } from 'firebase/firestore';
-import { db, getDocument } from '../../utils/firebase';
+import { db, findDocument, getDocument } from '../../utils/firebase';
 
 const newDoc = (col: string, data: object) => {
   addDoc(collection(db , col), data);
@@ -37,15 +37,16 @@ export const fetchUser: any = createAsyncThunk<any>(
       
       // (await getDocs(collection( db, `users`))).docs.find((doc: any) => {
       // if (auth.email === email) {
-      const id = (await getDocument('users')).docs.find((doc: any) => doc.data().email === user.email)?.data().id;
+      const userByServer = (await findDocument(`users`, 'email', user.email));
 
       const innerUser: any = {};
 
       if (user) {
-        innerUser.id = id;
+        innerUser.id = userByServer?.data().id;
         innerUser.uid = user.uid;
         innerUser.email = user.email; 
         innerUser.displayName = user.displayName;
+        innerUser.chats = userByServer?.data().chats;
       };
 
       return innerUser;

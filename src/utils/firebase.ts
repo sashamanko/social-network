@@ -19,7 +19,12 @@ const getDocument = async (collectionPath: string) => {
   return await getDocs(collection( db, collectionPath));
 };
 
+const findDocument = async (path: string, searchByField: string, compareWith: any) => {
+  return (await getDocument(path)).docs.find((doc: any) => doc.data()[searchByField] === compareWith);
+};
+
 export {
   db,
   getDocument,
+  findDocument,
 };

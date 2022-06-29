@@ -1,0 +1,20 @@
+.MessengerAsideItem {
+  max-width: 250px;
+  max-height: 65px;
+  
+  &:not(:first-child) {
+    margin-top: calc(var(--margin) / 2);
+  }
+  
+  & > a {
+    width: 100%;
+    padding: calc(var(--padding) / 1.5);
+    transition: all .3s;
+
+    &.active {
+      background: var(--main);
+      color: var(--font-white);
+    }
+  }
+
+}

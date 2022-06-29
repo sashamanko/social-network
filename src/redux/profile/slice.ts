@@ -31,8 +31,6 @@ const profileSlice = createSlice({
       state.subscribers = action.payload.subscribers;
       state.followers = action.payload.followers;
       state.isSubscribe = action.payload.isSubscribe;
-      console.log(action.payload.followers);
-      
     },
   },
   extraReducers: {
@@ -40,13 +38,14 @@ const profileSlice = createSlice({
       state.status = 0;
       state.error = null;
     },
+    [fetchFollow.pending]: (state, action) => {
+      state.error = null;
+    },
+    [fetchUnfollow.pending]: (state, action) => {
+      state.error = null;
+    },
     [fetchProfile.fulfilled]: (state, action) => {
       state.status = 1;
-    },
-    [fetchProfile.rejected]: setError,
-    [fetchFollow.pending]: (state, action) => {
-      // state.status = 0;
-      state.error = null;
     },
     [fetchFollow.fulfilled]: (state, action) => {
       state.subscribers.push({email: action.payload.email});
@@ -54,16 +53,13 @@ const profileSlice = createSlice({
       state.isSubscribe = true;
       // state.status = 1;
     },
-    [fetchFollow.rejected]: setError,
-    [fetchUnfollow.pending]: (state, action) => {
-      // state.status = 0;
-      state.error = null;
-    },
     [fetchUnfollow.fulfilled]: (state, action) => {
       
       state.subscribers = state.subscribers.filter(user => user.email !== action.payload.email );
       state.isSubscribe = false;
     },
+    [fetchFollow.rejected]: setError,
+    [fetchProfile.rejected]: setError,
     [fetchUnfollow.rejected]: setError,
   }
 });
