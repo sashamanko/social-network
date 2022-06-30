@@ -63,7 +63,7 @@
     overflow: hidden;
 
     &.iconAnimate > svg {
-      // background: var(--main);
+      background: var(--main);
       transition: all .3s;
       z-index: 1;
     }
@@ -82,7 +82,7 @@
 
     &:hover > svg,
     &:focus > svg {
-      background: var(--button-bg-hover);
+      background: var(--main);
     }
 
     & > span {
