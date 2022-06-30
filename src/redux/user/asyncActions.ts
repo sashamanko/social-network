@@ -68,8 +68,6 @@ export const fetchUpdateUser: any = createAsyncThunk<any>(
       await updateDoc(washingtonRef, {
         ...params
       });
-
-      console.log(auth.currentUser);
       
 
       dispatch(fetchUser(auth.currentUser));

@@ -10,13 +10,16 @@ const DecorPage = () => {
   const [theme, setTheme] = useState(document.documentElement.dataset.theme);
   const [color, setColor] = useState(document.documentElement.dataset.color);
 
-  const { updateUser } = useAuth();
+  const { settings } = useAuth();
 
   useEffect(() => {
+    const i = settings.color.split('-')[1]; 
+    
+
     if (theme === 'white') {
-      document.documentElement.dataset.color = 'white-purplue';
+      document.documentElement.dataset.color = `white-${i}`;
     } else if (theme === 'dark') {
-      document.documentElement.dataset.color = 'dark-purplue';
+      document.documentElement.dataset.color = `dark-${i}`;
     };
   }, [theme]);
 
@@ -47,21 +50,37 @@ const DecorPage = () => {
         <ColorBlock>
           {
             theme === 'white' &&
-            <ButtonColor
-              className="rounded-fill"
-              color='#4F11ba'
-              setColor='white-purplue'
-              setState={setColor}
-            />
+            <>
+              <ButtonColor
+                className="rounded-fill"
+                color='#4F11ba'
+                setColor='white-purplue'
+                setState={setColor}
+              />
+              <ButtonColor
+                className="rounded-fill"
+                color='#0e77b0'
+                setColor='white-blue'
+                setState={setColor}
+              />
+            </>
           }
           {
             theme === 'dark' &&
-            <ButtonColor
-              className="rounded-fill"
-              color='#A26AF6'
-              setColor='dark-purplue'
-              setState={setColor}
-            />
+            <>
+              <ButtonColor
+                className="rounded-fill"
+                color='#A26AF6'
+                setColor='dark-purplue'
+                setState={setColor}
+              />
+              <ButtonColor
+                className="rounded-fill"
+                color='#57a7dd'
+                setColor='dark-blue'
+                setState={setColor}
+              />
+            </>
           }
         </ColorBlock>
 

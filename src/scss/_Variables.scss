@@ -1,8 +1,8 @@
 // Variables
 // __________________________________________________
 
-$mainWhite: #4F11BA;
-$mainDark: #A26AF6;
+$mainWhite: #5012ba;
+$mainDark: #a26bf5;
 
 $root: (
   // :root {}
@@ -70,12 +70,24 @@ $root: (
         
         
     ),
+    white-blue: (
+        // Backgroun
+        main:                       #0e77b0,
+        
+        
+    ),
 
     // :root[data-color="dark-purplue"] {}
     dark-purplue: (
 
       // Backgroun
       main:       $mainDark,
+    ),
+    dark-blue: (
+        // Backgroun
+        main:                       #57a7dd,
+        
+        
     ),
   )
 );

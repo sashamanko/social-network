@@ -27,8 +27,11 @@
   &:hover > &__btn-block > * {
 
     &:nth-child(1) {
-      transform: translate(-50%, calc(-50% - 10px));
+      transform: translate(calc(-50% - 30px), calc(-50% - 10px));
     }
-    // transform: translateY(calc(-100%))
+
+    &:nth-child(2) {
+      transform: translate(calc(-50% + 30px), calc(-50% - 10px));
+    }
   }
 }

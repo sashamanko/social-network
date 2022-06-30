@@ -8,8 +8,8 @@ const ButtonColor = ({ color, setTheme=null, setColor=null, setState , ...props 
   const changeTheme = (theme: any) => {
     document.documentElement.dataset.theme = theme;
     setState(theme);
-    updateUser({'settings.theme': setTheme});
     setTimeout(() => {
+      updateUser({'settings.theme': setTheme});
       updateUser({'settings.color': document.documentElement.dataset.color});
     }, 1000);
   };
@@ -17,8 +17,8 @@ const ButtonColor = ({ color, setTheme=null, setColor=null, setState , ...props 
   const changeColor = (color: any) => {
     document.documentElement.dataset.color = color;
     setState(color);
-    updateUser({'settings.color': setColor});
     setTimeout(() => {
+      updateUser({'settings.color': setColor});
       updateUser({'settings.theme': document.documentElement.dataset.theme});
     }, 1000);
   };

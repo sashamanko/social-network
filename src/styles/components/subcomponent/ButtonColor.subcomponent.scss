@@ -9,6 +9,9 @@
   transition: all var(--transition);
   
   &:nth-child(1) {
-    transform: translate(-50%, calc(-50% + 30px));
+    transform: translate(calc(-50% - 30px), calc(-50% + 30px));
+  }
+  &:nth-child(2) {
+    transform: translate(calc(-50% + 30px), calc(-50% + 30px));
   }
 }

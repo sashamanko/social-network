@@ -8,7 +8,7 @@ const ColorBlock = ({ children }: any) => {
 
   return (
     <div className="ThemeBlock item-block w-70">
-      <h4 className="ml-2">Theme</h4>
+      <h4 className="ml-2">Color</h4>
       <div className="ThemeBlock__btn-block flex">
         {
           children

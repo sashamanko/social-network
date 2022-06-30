@@ -30,6 +30,7 @@ const App = () => {
       setIsRender(true);
     }, 500);
   }, [dispatch]);
+  
 
   document.documentElement.dataset.theme = settings.theme;
   document.documentElement.dataset.color = settings.color;
