@@ -1,64 +1,70 @@
+import { useEffect, useState } from 'react';
+import ButtonColor from '../../../components/User/settings/ButtonColor.subcomponent';
+import ColorBlock from '../../../components/User/settings/ColorBlock.component copy';
+import ThemeBlock from '../../../components/User/settings/ThemBlock.component';
+import { useAuth } from '../../../hooks';
 import '../../../styles/pages/User/settings/Decor.page.scss';
 
 const DecorPage = () => {
+
+  const [theme, setTheme] = useState(document.documentElement.dataset.theme);
+  const [color, setColor] = useState(document.documentElement.dataset.color);
+
+  const { updateUser } = useAuth();
+
+  useEffect(() => {
+    if (theme === 'white') {
+      document.documentElement.dataset.color = 'white-purplue';
+    } else if (theme === 'dark') {
+      document.documentElement.dataset.color = 'dark-purplue';
+    };
+  }, [theme]);
+
   return (
     <>
       <div className="flex">
-        <div className="Theme item-block w-30 mr-1">
-          <h4 className="ml-2">Theme</h4>
-          <div className="Theme__btn-block flex">
-            <input
+        
+        <ThemeBlock>
+          {
+            theme === 'white' &&
+            <ButtonColor
               className="rounded-fill"
-              style={{
-                width: '40px',
-                height: '40px',
-                background: '#FFFFFF',
-                border: 'none',
-                boxShadow: '0px 0px 5px 3px #403c4336',
-                cursor: 'pointer',
-              }}
-              type='button'
+              color='#252525'
+              setTheme='dark'
+              setState={setTheme}
             />
-            <input
-              className="rounded-fill ml-1"
-              style={{
-                width: '40px',
-                height: '40px',
-                background: '#252525',
-                border: 'none',
-                cursor: 'pointer',
-              }}
-              type='button'
-            />
-          </div>
-        </div>
-        <div className="Theme item-block w-70 mr-1">
-          <h4 className="ml-2">Color</h4>
-          <div className="Theme__btn-block flex">
-            <input
+          }
+          {
+            theme === 'dark' &&
+            <ButtonColor
               className="rounded-fill"
-              style={{
-                width: '40px',
-                height: '40px',
-                background: '#4F11bA',
-                border: 'none',
-                cursor: 'pointer',
-              }}
-              type='button'
+              color='#FFFFFF'
+              setTheme='white'
+              setState={setTheme}
             />
-            <input
-              className="rounded-fill ml-1"
-              style={{
-                width: '40px',
-                height: '40px',
-                background: '#252525',
-                border: 'none',
-                cursor: 'pointer',
-              }}
-              type='button'
+          }
+        </ThemeBlock>
+        <ColorBlock>
+          {
+            theme === 'white' &&
+            <ButtonColor
+              className="rounded-fill"
+              color='#4F11ba'
+              setColor='white-purplue'
+              setState={setColor}
             />
-          </div>
-        </div>
+          }
+          {
+            theme === 'dark' &&
+            <ButtonColor
+              className="rounded-fill"
+              color='#A26AF6'
+              setColor='dark-purplue'
+              setState={setColor}
+            />
+          }
+        </ColorBlock>
+
       </div>
     </>
   );

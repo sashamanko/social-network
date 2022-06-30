@@ -7,7 +7,7 @@ const initialState: IUserInitialState = {
   uid: null,
   email: null,
   displayName: null,
-  chats: [],
+  settings: {},
   status: 0,
   error: null,
 };
@@ -27,7 +27,6 @@ const userSlice = createSlice({
       state.uid = null;
       state.email = null;
       state.displayName = null;
-      state.chats = [];
     },
   },
   extraReducers: {
@@ -40,7 +39,7 @@ const userSlice = createSlice({
       state.uid = action.payload.uid;
       state.email = action.payload.email;
       state.displayName = action.payload.displayName;
-      state.chats = action.payload.chats;
+      state.settings = action.payload.settings;
       
       state.status = 1;
     },

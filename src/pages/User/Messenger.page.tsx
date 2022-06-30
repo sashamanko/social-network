@@ -1,4 +1,4 @@
-// import './MeassangerPage.css';
+import '../../styles/pages/User/Messenger.page.scss';
 
 import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -19,6 +19,26 @@ const MessengerPage = () => {
   const { chatId } = useParams();
 
   const { email } = useAuth();
+
+  const notMeList = chatList.map((doc: any) => {
+    return Object.values(doc.data()).filter((user: any) => user !== email)[0];
+  });
+  
+
+
+  const selectedUser = Object.values(notMeList).find((userEmail) => {
+    const i = userList.find((doc: any) => {
+      if (userEmail !== email) {
+        return doc;
+      };
+    });
+
+    return i;
+    
+  });
+
+  
+  
 
   const [messages, setMessages] = useState([]);
   const [bindValue, value, restValue] = useInput('');
@@ -47,12 +67,24 @@ const MessengerPage = () => {
   
 
   return (
-    <div className="pt-1 flex">
+    <div className="Messenger pb-1 flex w-100">
       <MessengerAside userList={userList} chatList={chatList} />
 
-      <div className="flex w-50 flex-col align-end">
+      
+      <div className="flex w-100 flex-col justify-end">
         {/* <span className="item-block rounded-fill mx-auto p-2">38 груня</span> */}
-        <ul className="Home__message-list flex flex-col w-100 py-2 pl-3">
+        <div
+          className='item-block mb-auto'
+          style={{
+            minHeight: '48px',
+          }}
+        >
+          <div>
+            <span>{  }</span>
+          </div>
+        </div>
+
+        <ul className="Home__message-list flex flex-col w-100 mt-1">
           {messages && messages.map(((m: any) => {
             return (
               <li
@@ -72,7 +104,7 @@ const MessengerPage = () => {
             className="mr-2"
             {...bindValue}
             onKeyPress={ (e: any) => {
-              if (e.key === 'Enter') {
+              if (e.key === 'Enter' && value.trim().length !== 0) {
                 sendMessage(value);
                 restValue();
               }
@@ -81,7 +113,12 @@ const MessengerPage = () => {
           <Button 
             variant="primary"
             className="flex justify-center align-center p-2"
-            onClick={ () => {sendMessage(value); restValue();} }
+            onClick={ () => {
+              if (value.trim().length !== 0) {
+                sendMessage(value); 
+                restValue();
+              }
+            } }
           >
             <SendPlaneLineIcon/>
           </Button>

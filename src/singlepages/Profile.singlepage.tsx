@@ -12,7 +12,7 @@ const ProfileSinglePage = () => {
   const getProfile: any = useProfile();
 
   return (
-    <> 
+    <div className="w-100"> 
       { getProfile.status === 1 &&
         <ProfileAttributes
           getProfile={ getProfile }
@@ -21,7 +21,7 @@ const ProfileSinglePage = () => {
       { getProfile.status !== 1 &&
         <Preloader />
       }
-    </>
+    </div>
   );
 };
 

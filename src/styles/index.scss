@@ -16,6 +16,7 @@
 
 html {
   font-size: 18px;
+  color: var(--font-color);
   background: var(--bg-body);
 }
 
@@ -25,6 +26,10 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+a {
+  color: var(--main);
 }
 
 a:active {

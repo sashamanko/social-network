@@ -1,0 +1,19 @@
+.Aside {
+
+  &__item {
+
+    &:not(:first-child) {
+      margin-top: calc(var(--margin) / 2);
+    }
+
+    &__link {
+      min-width: 200px;
+      transition: all var(--transition);
+  
+      &.active {
+        color: var(--font-white);
+        background: var(--main);
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import { async } from '@firebase/util';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getAuth } from 'firebase/auth';
-import { addDoc, collection, getDocs, onSnapshot, query } from 'firebase/firestore';
+import { addDoc, collection, doc, getDocs, onSnapshot, query, updateDoc } from 'firebase/firestore';
 import { db, findDocument, getDocument } from '../../utils/firebase';
 
 const newDoc = (col: string, data: object) => {
@@ -9,7 +9,7 @@ const newDoc = (col: string, data: object) => {
 };
 
 export const fetchAddUser: any = createAsyncThunk<any>(
-  'profile/fetchAddUser',
+  'user/fetchAddUser',
   async ({displayName, email}: any, {rejectWithValue}) => {
 
     try {
@@ -28,15 +28,11 @@ export const fetchAddUser: any = createAsyncThunk<any>(
 );
 
 export const fetchUser: any = createAsyncThunk<any>(
-  'profile/fetchUser',
-  async (user: any, {rejectWithValue, dispatch}) => {
-    const auth: any = getAuth();
+  'user/fetchUser',
+  async (user: any, {rejectWithValue}) => {
 
     try {
-      // console.log(true);
-      
-      // (await getDocs(collection( db, `users`))).docs.find((doc: any) => {
-      // if (auth.email === email) {
+
       const userByServer = (await findDocument(`users`, 'email', user.email));
 
       const innerUser: any = {};
@@ -46,13 +42,37 @@ export const fetchUser: any = createAsyncThunk<any>(
         innerUser.uid = user.uid;
         innerUser.email = user.email; 
         innerUser.displayName = user.displayName;
-        innerUser.chats = userByServer?.data().chats;
+        innerUser.settings = userByServer?.data().settings;
       };
 
       return innerUser;
-      // }
-      // });
+      
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
+export const fetchUpdateUser: any = createAsyncThunk<any>(
+  'user/fetchUpdateUser',
+  async (params: any, {rejectWithValue, dispatch}) => {
+    const auth: any = getAuth();
+    
+    
+    try {
+      
+      const uid = (await findDocument('users', 'email', auth.currentUser.email))?.id;
+
+      const washingtonRef = doc(db, "users", String(uid));
+
+      await updateDoc(washingtonRef, {
+        ...params
+      });
+
+      console.log(auth.currentUser);
+      
+
+      dispatch(fetchUser(auth.currentUser));
       
     } catch (error: any) {
       return rejectWithValue(error.message);

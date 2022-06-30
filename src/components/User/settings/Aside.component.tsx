@@ -11,7 +11,7 @@ const Aside = () => {
   ];
 
   return (
-    <aside className="ml-1">
+    <aside className="mr-1">
       <ul className="list-none">
         {
           menuItems.map((item: any) => {

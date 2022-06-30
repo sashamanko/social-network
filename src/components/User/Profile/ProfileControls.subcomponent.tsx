@@ -1,13 +1,13 @@
-import '../../styles/components/subcomponent/ProfileControls.subcomponent.scss';
+import '../../../styles/components/subcomponent/ProfileControls.subcomponent.scss';
 
 import PencilLineIcon from "remixicon-react/PencilLineIcon";
 import UserFollowLineIcon from "remixicon-react/UserFollowLineIcon";
 import UserUnfollowLineIcon from "remixicon-react/UserUnfollowLineIcon";
 import MailLineIcon from "remixicon-react/MailLineIcon";
-import { useAuth } from "../../hooks";
-import { ButtonCircle } from "../ui";
+import { useAuth } from "../../../hooks";
+import { ButtonCircle } from "../../ui";
 import { useDispatch } from 'react-redux';
-import { fetchFollow, fetchUnfollow } from '../../redux/profile/asyncActions';
+import { fetchFollow, fetchUnfollow } from '../../../redux/profile/asyncActions';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 

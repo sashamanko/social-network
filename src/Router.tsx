@@ -24,18 +24,7 @@ import ProfilePage from './pages/User/settings/Profile.page';
 
 const Router = () => {
 
-  // const [load, setLoad] = useState(false);
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setLoad(true);
-  //   }, 1000);
-  // }, []);
-
-  const {isAuth, status} = useAuth();
-  
-  // console.log(auth);
-  
+  const {isAuth, settings} = useAuth();
 
   return (
     <Routes>
@@ -63,9 +52,6 @@ const Router = () => {
           {/* <Route path='*' element={ <Navigate to='/' replace/> } /> */}
         </Route>
       }
-      {/* { auth.status === 0 &&
-        
-      } */}
     </Routes>
   );
 };

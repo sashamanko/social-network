@@ -8,13 +8,14 @@ const SettingsPage = () => {
   const { pathname } = useLocation();
 
   return (
-    <div className="flex mt-1">
+    <div className="flex w-100">
+
+      <Aside />
 
       <div className="w-100">
         <Outlet />
       </div>
       
-      <Aside />
     </div>
   );
 };

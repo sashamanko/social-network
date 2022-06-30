@@ -1,19 +1,6 @@
 // Variables
 // __________________________________________________
 
-// Prompt
-// ?━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// ? Create variable     | $name: value;
-// ? Use variable        | background: $name;                   | background: value;
-// ?━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// ? Create list         | $name: ( value1, value2, value3 );
-// ? Use list            | background: nth( $name, 1 );         | background: value1;
-// ?━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// ? Create map(Objekt)  | $name: ( key1: value3, "key2": "value3", 'key3': 'value3' );
-// ? Use map(Objekt)     | background: map-get( $name, key3 );  | background: 'value3';
-// ?━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-//
-
 $mainWhite: #4F11BA;
 $mainDark: #A26AF6;
 
@@ -26,6 +13,9 @@ $root: (
     font-size: breakpoint-get(font-size),
     transition: breakpoint-get(transition),
     border-radius: breakpoint-get(border-radius),
+
+    // Font
+    font-white:                 #FFFFFF,
   ),
   // :root theme
   theme: (
@@ -33,14 +23,9 @@ $root: (
     // :root[data-theme="white"] {}
     white: (
         // Backgroun
-        main:                       $mainWhite,
         bg-body:                    #D1D1D1,
         bg-block:                   #FFFFFF,
         
-        // Font
-        font-color:                 #212121,
-        font-white:                 #FFFFFF,
-
         // Button | BG
         button-bg-defaut:             #{$mainWhite},
         button-bg-hover:       lighten($mainWhite, 10%),
@@ -50,9 +35,13 @@ $root: (
         button-color-disabled: darken(#ffffff, 50%),
         // button-bg-disabled:  #625775,
 
+        font-color: #212121,
+
+        border-color: #DADADA,
+        
         // Shadow
         shadow: 0px 4px 5px 1px #403c4336,
-
+        
         
     ),
 
@@ -60,16 +49,33 @@ $root: (
     dark: (
 
       // Backgroun
-      main:       $mainDark,
       bg-body:    #1B1B1B,
       bg-block:   #252525,
-      
-      // Font
-      font-color:  #BABABA,
-      font-white:  #FFFFFF,
+
+      font-color: #d1d1d1,
+
+      border-color: #636363,
 
       // Shadow
       shadow: 0 2px 5px 1px #00000035,
+    ),
+  ),
+  // :root theme
+  color: (
+
+    // :root[data-color="white-purplue"] {}
+    white-purplue: (
+        // Backgroun
+        main:                       $mainWhite,
+        
+        
+    ),
+
+    // :root[data-color="dark-purplue"] {}
+    dark-purplue: (
+
+      // Backgroun
+      main:       $mainDark,
     ),
   )
 );

@@ -18,15 +18,14 @@ import '../../styles/components/Header.component.scss';
 const Header = () => {
 
   const auth: any = getAuth();
-  const { id } = useSelector((state: any) => state.user);
   const navigate = useNavigate();
   const dispach = useDispatch();
 
   const options = {
     profile: {
-      label: 'Profile',
+      label: 'Settings',
       type: 'link',
-      url: `#/${id}`,
+      url: `#/settings/profile`,
     },
     sp1: 'separator',
     logout: {

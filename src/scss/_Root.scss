@@ -22,4 +22,15 @@ __________________________________________________ */
       }
     }
   }
+
+  // Create :root[data-color="white, dark"]
+  @else if ($property == 'color') {
+    @each $theme, $themeMap in $map {
+      :root[data-color="#{$theme}"] {
+        @each $k, $v in $themeMap {
+        --#{$k}: #{$v};
+        }
+      }
+    }
+  }
 }

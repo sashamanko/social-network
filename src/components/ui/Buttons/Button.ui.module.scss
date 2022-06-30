@@ -16,7 +16,7 @@
   
   &.primary {
     color: #FFFFFF;
-    background: #4F11BA;
+    background: var(--main);
     
     &:hover,
     &:focus,
@@ -71,6 +71,7 @@
     &:hover {
       // width: 135px;
       overflow: hidden;
+      background: var(--main);
 
       & > span {
         visibility: visible;

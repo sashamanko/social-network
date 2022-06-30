@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { useAuth, useProfile } from '../../hooks';
-import { fetchProfile } from '../../redux/profile/asyncActions';
+import { useAuth, useProfile } from '../../../hooks';
+import { fetchProfile } from '../../../redux/profile/asyncActions';
 import ProfileControls from './ProfileControls.subcomponent';
 // import './ProfileAttributes.component.css';
 
@@ -14,7 +14,7 @@ const ProfileAttributes = ({ getProfile }: any) => {
   
   return (
     <>
-      <div className="profileInfo flex mt-1 item-block">
+      <div className="profileInfo flex item-block">
         <div style={{background: 'red', width: '150px', height: '150px'}} className="rounded-fill mr-1"></div>
         <div className="flex flex-col">
           <h2>{ displayName }</h2>
