@@ -9,12 +9,18 @@ const ButtonColor = ({ color, setTheme=null, setColor=null, setState , ...props 
     document.documentElement.dataset.theme = theme;
     setState(theme);
     updateUser({'settings.theme': setTheme});
+    setTimeout(() => {
+      updateUser({'settings.color': document.documentElement.dataset.color});
+    }, 1000);
   };
   
   const changeColor = (color: any) => {
     document.documentElement.dataset.color = color;
     setState(color);
     updateUser({'settings.color': setColor});
+    setTimeout(() => {
+      updateUser({'settings.theme': document.documentElement.dataset.theme});
+    }, 1000);
   };
 
   return (
@@ -27,14 +33,9 @@ const ButtonColor = ({ color, setTheme=null, setColor=null, setState , ...props 
       onClick={() => {
         if (setTheme !== null) {
           changeTheme(setTheme);
-          setTimeout(() => {
-            updateUser({'settings.color': document.documentElement.dataset.color});
-          }, 1000);
         } else if (setColor !== null) {
           changeColor(setColor);
-          setTimeout(() => {
-            updateUser({'settings.theme': document.documentElement.dataset.theme});
-          }, 1000);
+
         }
       }}
     />

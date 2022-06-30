@@ -54,11 +54,12 @@ export const fetchUnfollow: any = createAsyncThunk<any>(
   'profile/fetchUnfollow',
   async ( {email, profile}: any, {rejectWithValue}) => {
     
+    
     const uid = (await findDocument('users', 'id', profile));
     const uid2 = (await findDocument('users', 'email', email));
 
     const uidUser = (await findDocument(`users/${uid?.id}/subscribers`, 'email', email))?.id;
-    const uidUser2 = (await findDocument(`users/${uid2?.id}/subscribers`, 'email', uid?.data().email))?.id;
+    const uidUser2 = (await findDocument(`users/${uid2?.id}/followers`, 'email', uid?.data().email))?.id;
 
     try {
 
