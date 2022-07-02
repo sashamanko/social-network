@@ -21,6 +21,8 @@ import { useEffect, useState } from 'react';
 import { ProfileSinglePage } from './singlepages';
 import { DecorPage, HomePage, MessengerPage, SettingsPage } from './pages/User';
 import ProfilePage from './pages/User/settings/Profile.page';
+import ChatBox from './components/User/messenger/ChatBox.component';
+import NewMessage from './components/User/messenger/NewMessage.component';
 
 const Router = () => {
 
@@ -36,7 +38,8 @@ const Router = () => {
             <Route path="subscribers" element={<h1>subscribers</h1>} />
           </Route>
           <Route path="/messenger" element={<MessengerPage />}>
-            <Route path=":chatId" element={<h1>Hi in chat</h1>} />
+            <Route path="" element={<NewMessage />} />
+            <Route path=":chatId" element={<ChatBox />} />
           </Route>
           <Route path="/settings" element={ <SettingsPage />}>
             <Route path='profile' element={<ProfilePage />}/>

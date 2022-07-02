@@ -1,7 +1,7 @@
 // Imports | Firebase
 // __________________________________________________
 import { initializeApp } from "firebase/app";
-import { collection, getDoc, getDocs, getFirestore } from "firebase/firestore";
+import { addDoc, collection, getDoc, getDocs, getFirestore } from "firebase/firestore";
 
 const app: any = initializeApp({
   apiKey: process.env.REACT_APP_FIRABASE_API_KEY,
@@ -15,6 +15,10 @@ const app: any = initializeApp({
 
 const db = getFirestore();
 
+const newDoc = (col: string, data: object) => {
+  addDoc(collection(db , col), data);
+};
+
 const getDocument = async (collectionPath: string) => {
   return await getDocs(collection( db, collectionPath));
 };
@@ -25,6 +29,7 @@ const findDocument = async (path: string, searchByField: string, compareWith: an
 
 export {
   db,
+  newDoc,
   getDocument,
   findDocument,
 };

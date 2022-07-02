@@ -2,11 +2,7 @@ import { async } from '@firebase/util';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getAuth } from 'firebase/auth';
 import { addDoc, collection, doc, getDocs, onSnapshot, query, updateDoc } from 'firebase/firestore';
-import { db, findDocument, getDocument } from '../../utils/firebase';
-
-const newDoc = (col: string, data: object) => {
-  addDoc(collection(db , col), data);
-};
+import { db, findDocument, getDocument, newDoc } from '../../utils/firebase';
 
 export const fetchAddUser: any = createAsyncThunk<any>(
   'user/fetchAddUser',
