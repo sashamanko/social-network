@@ -6,15 +6,10 @@ import useAuth from "./useAuth";
 
 const useProfile = () => {
   
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const getProfile = useSelector((state: any) => state.profile);
+  // console.log(getProfile);
   
-  const { profile } = useParams();
-  const auth = useAuth();
-
-  useEffect(() => {
-    dispatch( fetchProfile({profile, email: auth.email}) );
-  }, [dispatch, profile]);
 
   return { ...getProfile };
 };

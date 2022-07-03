@@ -1,9 +1,10 @@
 // import './Form.css';
 
+import { getAuth } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useInput from "../../hooks/useInput";
-import { fetchAddUser } from "../../redux/user/asyncActions";
+import { fetchAddUser, fetchUser } from "../../redux/user/asyncActions";
 import { Button, Input } from "../ui";
 
 const FormSignUp = ({handleClick}: any) => {
@@ -12,7 +13,9 @@ const FormSignUp = ({handleClick}: any) => {
   const [bindPassword, password]: any = useInput('');
   const navigate = useNavigate();
 
-  const dispach = useDispatch();
+  const auth = getAuth();
+
+  const dispatch = useDispatch();
 
   return (
     <form className="flex flex-col align-center w-100">
@@ -40,7 +43,6 @@ const FormSignUp = ({handleClick}: any) => {
         onClick={(e: any) => {
           e.preventDefault();
           handleClick(displayName, email, password);
-          dispach(fetchAddUser({ displayName, email }));
           navigate('/');
         }}
         className='my-1 w-50'

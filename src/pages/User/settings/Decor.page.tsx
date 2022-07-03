@@ -13,14 +13,8 @@ const DecorPage = () => {
   const { settings } = useAuth();
 
   useEffect(() => {
-    const i = settings.color.split('-')[1]; 
-    
-
-    if (theme === 'white') {
-      document.documentElement.dataset.color = `white-${i}`;
-    } else if (theme === 'dark') {
-      document.documentElement.dataset.color = `dark-${i}`;
-    };
+    document.documentElement.dataset.theme = settings.theme;
+    document.documentElement.dataset.color = settings.color;
   }, [theme]);
 
   return (
@@ -54,7 +48,7 @@ const DecorPage = () => {
               <ButtonColor
                 className="rounded-fill"
                 color='#4F11ba'
-                setColor='white-purplue'
+                setColor='white-purple'
                 setState={setColor}
               />
               <ButtonColor
@@ -71,7 +65,7 @@ const DecorPage = () => {
               <ButtonColor
                 className="rounded-fill"
                 color='#A26AF6'
-                setColor='dark-purplue'
+                setColor='dark-purple'
                 setState={setColor}
               />
               <ButtonColor

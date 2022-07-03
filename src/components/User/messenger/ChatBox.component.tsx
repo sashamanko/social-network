@@ -6,10 +6,11 @@ import { useParams } from "react-router-dom";
 import { useAuth, useInput } from "../../../hooks";
 import date from "../../../utils/date";
 import { db } from "../../../utils/firebase";
-import { Button, Input } from "../../ui";
+import { Button, Dropdown, Input } from "../../ui";
 // Remix Icon
 // __________________________________________________
 import SendPlaneLineIcon from "remixicon-react/SendPlaneFillIcon";
+import MoreLineIcon from "remixicon-react/MoreLineIcon";
 import useMessenger from "../../../hooks/useMessenger";
 
 const ChatBox = () => {
@@ -30,6 +31,19 @@ const ChatBox = () => {
       // userFrom: '',
     });
   };
+
+  const options = {
+    profile: {
+      label: 'Visit user',
+      type: 'link',
+      url: `#/settings/profile`,
+    },
+    sp1: 'separator',
+    logout: {
+      label: 'Delete chat',
+      type: 'button',
+    },
+  };
   
 
   useEffect(() => {
@@ -48,13 +62,19 @@ const ChatBox = () => {
     <div className="flex w-100 flex-col justify-end">
       {/* <span className="item-block rounded-fill mx-auto p-2">38 груня</span> */}
       <div
-        className='item-block mb-auto'
+        className='item-block mb-auto '
         style={{
           minHeight: '48px',
         }}
       >
-        <div>
+        <div className="flex align-center">
           <span>{ selectedUser?.data()?.displayName }</span>
+          <Dropdown
+            className='ml-auto'
+            options={ options }
+          >
+            <MoreLineIcon />
+          </Dropdown>
         </div>
       </div>
 

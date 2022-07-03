@@ -186,8 +186,16 @@ $utilities: (
     property: 'display',
     prefix: '',
     values: (
-      'flex': flex,
       'block': block,
+      'flex': flex,
+    )
+  ),
+  position: (
+    property: 'position',
+    prefix: '',
+    values: (
+      'relative': relative,
+      'fixed': fixed,
     )
   ),
   flex-direction: (

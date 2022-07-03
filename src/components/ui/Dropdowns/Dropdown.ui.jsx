@@ -21,14 +21,15 @@ const Dropdown = ({ className, options, children, ...props }) => {
       </button>
 
       {isShow && 
-      <nav ref={ outsideRef } className='Dropdown__navbar'>
-        <ul className='Dropdown__list'>
-          {
-            Object.keys(options).map( (item, id) => <DropdownItem key={id} options={ options[item] } />)
-          }
-        </ul>
-      </nav>}
-
+      <div className="Dropdown__wrapped">
+        <nav ref={ outsideRef } className='Dropdown__navbar'>
+          <ul className='Dropdown__list'>
+            {
+              Object.keys(options).map( (item, id) => <DropdownItem key={id} options={ options[item] } />)
+            }
+          </ul>
+        </nav>
+      </div>}
     </div>
   );
 };

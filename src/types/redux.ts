@@ -5,7 +5,11 @@ export interface IUserInitialState {
   uid: string | null
   email: string | null;
   displayName: string | null;
-  settings: any,
+  settings: {
+    theme: 'dark' | 'white' | null
+    color: 'dark-purple' | 'white' | null
+  } | null,
+  isAuth: boolean | null,
   status: -1 | 0 | 1 | null,
   error: any | null,
 }

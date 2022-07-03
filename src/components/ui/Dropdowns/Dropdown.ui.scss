@@ -9,28 +9,31 @@ __________________________________________________ */
       
     };
 
-    &__navbar {
+    &__wrapped {
       position: absolute;
       left: 50%;
       min-width: 150px;
-      padding-top: 9px;
-      overflow: hidden;
       transition: all var(--transition);
       transform: translate(-50%, 5%);
+      overflow: hidden;
       animation: dropdown-open .3s forwards;
+      padding-top: 9px;
+    }
+
+    &__navbar {
+      width: 100%;
+      position: relative;
+      margin: 0;
+      z-index: 1;
+      padding: 2px 0;
+      border-radius: var(--border-radius);
+      background: var(--main);
     };
     
     &__list {
-      position: relative;
-      width: 100%;
-      margin: 0;
-      padding: 0;
       list-style: none;
-      background: var(--bg-block);
-      border-top: 2px solid var(--main);
-      border-bottom: 2px solid var(--main);
       border-radius: var(--border-radius);
-      z-index: 1;
+      background: var(--bg-block);
 
       &__item {
         
@@ -83,7 +86,7 @@ __________________________________________________ */
       &::before {
         content: '';
         position: absolute;
-        top: 0;
+        top: 2px;
         left: 50%;
         width: 20px;
         height: 20px;

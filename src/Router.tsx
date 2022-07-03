@@ -23,10 +23,13 @@ import { DecorPage, HomePage, MessengerPage, SettingsPage } from './pages/User';
 import ProfilePage from './pages/User/settings/Profile.page';
 import ChatBox from './components/User/messenger/ChatBox.component';
 import NewMessage from './components/User/messenger/NewMessage.component';
+import Modal from './components/ui/Modal/Modal.ui';
+import ProfileModal from './components/User/Profile/ProfileModal.component';
 
 const Router = () => {
 
-  const {isAuth, settings} = useAuth();
+  const { isAuth } = useAuth();
+  
 
   return (
     <Routes>
@@ -35,7 +38,7 @@ const Router = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path=":profile" element={<ProfileSinglePage />}>
-            <Route path="subscribers" element={<h1>subscribers</h1>} />
+            <Route path=":subOrFoll" element={<ProfileModal />} />
           </Route>
           <Route path="/messenger" element={<MessengerPage />}>
             <Route path="" element={<NewMessage />} />

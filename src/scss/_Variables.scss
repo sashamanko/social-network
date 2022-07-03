@@ -63,8 +63,8 @@ $root: (
   // :root theme
   color: (
 
-    // :root[data-color="white-purplue"] {}
-    white-purplue: (
+    // :root[data-color="white-purple"] {}
+    white-purple: (
         // Backgroun
         main:                       $mainWhite,
         
@@ -77,8 +77,8 @@ $root: (
         
     ),
 
-    // :root[data-color="dark-purplue"] {}
-    dark-purplue: (
+    // :root[data-color="dark-purple"] {}
+    dark-purple: (
 
       // Backgroun
       main:       $mainDark,

@@ -8,13 +8,22 @@ export const fetchAddUser: any = createAsyncThunk<any>(
   'user/fetchAddUser',
   async ({displayName, email}: any, {rejectWithValue}) => {
 
+    const auth = getAuth();
+
+    console.log(true);
+    
     try {
       const i = await (await getDocs(collection( db, `users`))).size;
       
       newDoc('users', {
-        displayName,
-        email,
         id: String(i + 1),
+        uid: auth.currentUser?.uid,
+        email,
+        displayName,
+        settings: {
+          theme: document.documentElement.dataset.theme,
+          color: document.documentElement.dataset.color,
+        },
       });
       
     } catch (error: any) {
@@ -27,18 +36,28 @@ export const fetchUser: any = createAsyncThunk<any>(
   'user/fetchUser',
   async (user: any, {rejectWithValue}) => {
 
+    const userByServer = (await (findDocument(`users`, 'email', user.email)));
+
+
+    console.log(userByServer);
+    
+
     try {
 
-      const userByServer = (await findDocument(`users`, 'email', user.email));
 
       const innerUser: any = {};
 
+      
+        
+      
       if (user) {
+        
         innerUser.id = userByServer?.data().id;
-        innerUser.uid = user.uid;
-        innerUser.email = user.email; 
-        innerUser.displayName = user.displayName;
+        innerUser.displayName = userByServer?.data().displayName;
         innerUser.settings = userByServer?.data().settings;
+        innerUser.uid = user.uid;
+        innerUser.email = user.email;
+        innerUser.isAuth = !!user.email;
       };
 
       return innerUser;

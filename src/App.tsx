@@ -10,30 +10,29 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { fetchUser } from './redux/user/asyncActions';
 import Preloader from './components/Preloader/Preloader.component';
+import useStoreFetch from './hooks/useStoreFetch';
 import { useAuth } from './hooks';
 
 const App = () => {
 
-  const dispatch = useDispatch();
-  const auth: any = getAuth();
   const [isRander, setIsRender] = useState(false);
+  
+  useStoreFetch().Auth();
+  
   const { settings } = useAuth();
 
-  useEffect(() => {
-    const isAuth = onAuthStateChanged(auth, (user: any) => {
-      if(user) {
-        dispatch(fetchUser(user));
-      }
-    });
-
-    setTimeout(() => {
-      setIsRender(true);
-    }, 500);
-  }, [dispatch]);
+  setTimeout(() => {
+    setIsRender(true);
+  }, 500);
   
 
-  document.documentElement.dataset.theme = settings.theme;
-  document.documentElement.dataset.color = settings.color;
+  if (settings?.theme) {
+    document.documentElement.dataset.theme = settings.theme;
+    document.documentElement.dataset.color = settings.color;
+  } else {
+    document.documentElement.dataset.theme = 'white';
+    document.documentElement.dataset.color = 'white-purple';
+  }
   
   
   return (

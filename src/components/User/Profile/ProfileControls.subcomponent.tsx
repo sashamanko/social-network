@@ -12,6 +12,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { fetchNewChat } from '../../../redux/messenger/asyncActions';
 import useMessenger from '../../../hooks/useMessenger';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { db } from '../../../utils/firebase';
 
 interface IProfileControls {
   email: string;
@@ -19,6 +21,15 @@ interface IProfileControls {
 }
 
 const ProfileControls = ({email, isSubscribe}: any) => {
+
+  // const sendMessage = async (text: string) => {
+  //   await addDoc(collection(db , `messenger/${chatId}/messages`), {
+  //     createAt: serverTimestamp(),
+  //     text: text,
+  //     userFrom: email,
+  //     // userFrom: '',
+  //   });
+  // };
 
   const auth: any = useAuth();
   const { profile }: any = useParams();
@@ -84,6 +95,11 @@ const ProfileControls = ({email, isSubscribe}: any) => {
           textContent='Send message'
           className='flex ml-auto align-center justify-end mt-2'
           onClick={() => {
+
+            const b = prompt('send message');
+
+            
+            
             
 
             const i = chatList.find((doc: any) => {
