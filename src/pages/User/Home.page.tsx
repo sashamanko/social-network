@@ -42,7 +42,6 @@ const HomePage = () => {
       // userFrom: '',
     });
   };
-  
 
   useEffect(() => {
     onSnapshot(query(collection( db, 'messages'), orderBy('createAt', 'asc')), (snapshot: any) => {

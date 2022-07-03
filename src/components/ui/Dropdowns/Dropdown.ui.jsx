@@ -4,7 +4,6 @@ import DropdownItem from "./DropdownItem";
 import { useOutside } from '../../../hooks';
 import { useRef } from 'react';
 
-
 const Dropdown = ({ className, options, children, ...props }) => {
 
   const btnRef = useRef(null);

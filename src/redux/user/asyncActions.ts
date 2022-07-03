@@ -9,8 +9,6 @@ export const fetchAddUser: any = createAsyncThunk<any>(
   async ({displayName, email}: any, {rejectWithValue}) => {
 
     const auth = getAuth();
-
-    console.log(true);
     
     try {
       const i = await (await getDocs(collection( db, `users`))).size;
@@ -37,21 +35,12 @@ export const fetchUser: any = createAsyncThunk<any>(
   async (user: any, {rejectWithValue}) => {
 
     const userByServer = (await (findDocument(`users`, 'email', user.email)));
-
-
-    console.log(userByServer);
     
-
     try {
-
 
       const innerUser: any = {};
 
-      
-        
-      
       if (user) {
-        
         innerUser.id = userByServer?.data().id;
         innerUser.displayName = userByServer?.data().displayName;
         innerUser.settings = userByServer?.data().settings;
@@ -72,10 +61,9 @@ export const fetchUpdateUser: any = createAsyncThunk<any>(
   'user/fetchUpdateUser',
   async (params: any, {rejectWithValue, dispatch}) => {
     const auth: any = getAuth();
-    
-    
+
     try {
-      
+
       const uid = (await findDocument('users', 'email', auth.currentUser.email))?.id;
 
       const washingtonRef = doc(db, "users", String(uid));
@@ -83,10 +71,9 @@ export const fetchUpdateUser: any = createAsyncThunk<any>(
       await updateDoc(washingtonRef, {
         ...params
       });
-      
 
       dispatch(fetchUser(auth.currentUser));
-      
+
     } catch (error: any) {
       return rejectWithValue(error.message);
     }

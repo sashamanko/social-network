@@ -9,7 +9,6 @@ const useProfile = () => {
   // const dispatch = useDispatch();
   const getProfile = useSelector((state: any) => state.profile);
   // console.log(getProfile);
-  
 
   return { ...getProfile };
 };

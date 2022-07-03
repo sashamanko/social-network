@@ -3,7 +3,6 @@ import { collection, addDoc, deleteDoc, doc } from 'firebase/firestore';
 import { findDocument, getDocument } from '../../utils/firebase';
 import { setProfile } from './slice';
 import { db } from '../../utils/firebase';
-// import { setProfile } from './slice';
 
 export const fetchProfile: any = createAsyncThunk<any>(
   'profile/fetchProfile',
@@ -12,11 +11,12 @@ export const fetchProfile: any = createAsyncThunk<any>(
     try {
 
       const uid = (await getDocument('users')).docs.find(doc => doc.data().id === profile)?.id; 
+      const profileDoc = (await findDocument('users', 'id', profile));
 
       const innerProfile: any = {
-        id: (await findDocument('users', 'id', profile))?.data().id,
-        email: (await findDocument('users', 'id', profile))?.data().email,
-        displayName: (await findDocument('users', 'id', profile))?.data().displayName,
+        id: profileDoc?.data().id,
+        email: profileDoc?.data().email,
+        displayName: profileDoc?.data().displayName,
         subscribers: (await getDocument(`users/${uid}/subscribers`)).docs,
         followers: (await getDocument(`users/${uid}/followers`)).docs,
       };
@@ -38,7 +38,6 @@ export const fetchFollow: any = createAsyncThunk<any>(
     const uid2 = (await findDocument('users', 'email', email));
     
     try {
-
       console.log(uid2?.id);
       
       await addDoc(collection(db, `users/${uid?.id}/subscribers`), {user: uid2?.data()});
@@ -55,7 +54,6 @@ export const fetchFollow: any = createAsyncThunk<any>(
 export const fetchUnfollow: any = createAsyncThunk<any>(
   'profile/fetchUnfollow',
   async ( {email, profile}: any, {rejectWithValue}) => {
-    
     
     const uid = (await findDocument('users', 'id', profile));
     const uid2 = (await findDocument('users', 'email', email));

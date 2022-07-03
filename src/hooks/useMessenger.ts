@@ -14,7 +14,6 @@ const useMessenger = () => {
   
   const { email } = useAuth();
   const { chatId } = useParams();
-  
 
   useEffect(() => {
     onSnapshot(collection( db, 'messenger'), (snapshot: any) => {
@@ -36,13 +35,10 @@ const useMessenger = () => {
       selectedUser = Object.values(selectedChat).filter((user: any) => user !== email)[0];
       
     }
-    
 
     i = userList.find((doc: any) => doc.data().email === selectedUser);
   }
 
-
-  
   return {
     userList,
     chatList,
