@@ -25,7 +25,6 @@ const App = () => {
     setIsRender(true);
   }, 500);
   
-
   if (settings?.theme) {
     document.documentElement.dataset.theme = settings.theme;
     document.documentElement.dataset.color = settings.color;
@@ -33,7 +32,6 @@ const App = () => {
     document.documentElement.dataset.theme = 'white';
     document.documentElement.dataset.color = 'white-purple';
   }
-  
   
   return (
     <>

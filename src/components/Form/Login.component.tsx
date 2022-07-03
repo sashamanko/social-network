@@ -8,7 +8,6 @@ import Form from "./Form.component";
 
 const Login = () => {
   const dispatch = useDispatch();
-
   
   const handleLogin = (email: any, password: any) => {
     const auth = getAuth();
