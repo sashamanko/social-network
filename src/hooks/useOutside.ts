@@ -6,7 +6,6 @@ import { IUseOutside } from '../types/hooks';
 const useOutside = (initialIsVisible: boolean, ignoredRef: any): IUseOutside => {
   const [isShow, setIsShow] = useState(initialIsVisible);
   const outsideRef = useRef<HTMLElement>(null);
-  
 
   const handleClickOutside = (e: any) => {
     if (outsideRef.current && !outsideRef.current.contains(e.target) && ignoredRef.current && !ignoredRef.current.contains(e.target)) {

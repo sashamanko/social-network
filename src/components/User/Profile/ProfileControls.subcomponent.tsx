@@ -22,20 +22,11 @@ interface IProfileControls {
 
 const ProfileControls = ({email, isSubscribe}: any) => {
 
-  // const sendMessage = async (text: string) => {
-  //   await addDoc(collection(db , `messenger/${chatId}/messages`), {
-  //     createAt: serverTimestamp(),
-  //     text: text,
-  //     userFrom: email,
-  //     // userFrom: '',
-  //   });
-  // };
-
   const auth: any = useAuth();
   const { profile }: any = useParams();
   const { chatList } = useMessenger();
 
-  const [isFolor, setIsFolor] = useState(isSubscribe);
+  const [isFollow, setIsFollow] = useState(isSubscribe);
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -58,7 +49,7 @@ const ProfileControls = ({email, isSubscribe}: any) => {
   } else {
     return (
       <div className="ml-auto">
-        { isFolor && 
+        { isFollow && 
           <ButtonCircle
             variant='primary'
             forms='iconAnimate'
@@ -66,14 +57,14 @@ const ProfileControls = ({email, isSubscribe}: any) => {
             textContent='Unfollow'
             className='flex ml-auto align-center justify-end'
             onClick={ () => {
-              setIsFolor(false);
+              setIsFollow(false);
               dispatch(fetchUnfollow({email: auth.email, profile: String(profile)}));
             } }
           >
             <UserUnfollowLineIcon />
           </ButtonCircle>
         }
-        { !isFolor && 
+        { !isFollow && 
           <ButtonCircle
             variant='primary'
             forms='iconAnimate'
@@ -81,7 +72,7 @@ const ProfileControls = ({email, isSubscribe}: any) => {
             textContent='Follow'
             className='flex ml-auto align-center justify-end'
             onClick={ () => {
-              setIsFolor(true);
+              setIsFollow(true);
               dispatch(fetchFollow({email: auth.email, profile: String(profile)}));
             } }
           >
@@ -98,16 +89,11 @@ const ProfileControls = ({email, isSubscribe}: any) => {
 
             const b = prompt('send message');
 
-            
-            
-            
-
             const i = chatList.find((doc: any) => {
               if (doc.data().user1 === email || doc.data().user2 === email) return doc;
             });
 
             if(!i) dispatch(fetchNewChat({profileEmail: email, email: auth.email}));
-            
 
           }}
         >

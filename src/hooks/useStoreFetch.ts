@@ -9,7 +9,6 @@ const useStoreFetch = () => {
 
   const auth: any = getAuth();
   const routeParams = useParams();
-  
 
   const dispatch = useDispatch();
 
@@ -33,7 +32,6 @@ const useStoreFetch = () => {
 
   };
 
-  
   return {
     Auth,
     Profile

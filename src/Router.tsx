@@ -29,7 +29,6 @@ import ProfileModal from './components/User/Profile/ProfileModal.component';
 const Router = () => {
 
   const { isAuth } = useAuth();
-  
 
   return (
     <Routes>
