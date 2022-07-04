@@ -16,7 +16,7 @@
   width: 8px;
   height: 40px;
   border-radius: 4px;
-  background: #A26AF6;
+  background: var(--secondary);
   animation-name: pillarLoading;
   animation-iteration-count: infinite;
   animation-duration: 1s;
@@ -41,10 +41,10 @@
 
 @keyframes pillarLoading {
   100% {
-      background: #4F11BA;
+      background: var(--main);
   }
   50% {
       transform: scaleY(1.75);
-      background: #A26AF6;
+      background: var(--secondary);
   }
 }

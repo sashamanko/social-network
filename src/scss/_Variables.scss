@@ -67,12 +67,14 @@ $root: (
     white-purple: (
         // Backgroun
         main:                       $mainWhite,
+        secondary:                  $mainDark,
         
         
     ),
     white-blue: (
         // Backgroun
         main:                       #0e77b0,
+        secondary:                  #57a7dd,
         
         
     ),
@@ -81,13 +83,13 @@ $root: (
     dark-purple: (
 
       // Backgroun
-      main:       $mainDark,
+        main:                       $mainDark,
+        secondary:                  $mainWhite,
     ),
     dark-blue: (
         // Backgroun
         main:                       #57a7dd,
-        
-        
+        secondary:                  #0e77b0,
     ),
   )
 );

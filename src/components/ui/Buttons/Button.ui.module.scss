@@ -21,11 +21,11 @@
     &:hover,
     &:focus,
     &:active {
-      background: var(--button-bg-hover);
+      background: var(--secondary);
     }
 
     &:focus {
-      outline: 2px solid #A26AF6;
+      outline: 2px solid var(--main);
     }
     
     &:active {

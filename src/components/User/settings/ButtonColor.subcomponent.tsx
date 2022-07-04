@@ -25,7 +25,7 @@ const ButtonColor = ({ color, setTheme=null, setColor=null, setState , ...props 
 
   return (
     <input
-      className={`ButtonColor ${props.className}`}
+      className={`${setTheme !== null ? 'ButtonTheme' : 'ButtonColor'} ${props.className}`}
       type="button"
       style={{
         background: color,

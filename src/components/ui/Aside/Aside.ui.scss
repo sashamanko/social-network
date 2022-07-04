@@ -9,7 +9,14 @@
     &__link {
       min-width: 200px;
       transition: all var(--transition);
-  
+      
+      &:hover,
+      &:focus,
+      &:active {
+        background: var(--main);
+        color: var(--font-white);
+      }
+
       &.active {
         color: var(--font-white);
         background: var(--main);

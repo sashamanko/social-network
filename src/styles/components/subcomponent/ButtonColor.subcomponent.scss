@@ -1,3 +1,18 @@
+.ButtonTheme {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  bottom: -30px;
+  left: 50%;
+  transition: all var(--transition);
+  
+  &:nth-child(1) {
+    transform: translate(-50% , calc(-50% + 30px));
+  }
+}
+
 .ButtonColor {
   position: absolute;
   width: 40px;

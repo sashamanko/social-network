@@ -1,11 +1,11 @@
 // import './ChatBox.css';
 
-import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, onSnapshot, orderBy, query, serverTimestamp } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAuth, useInput } from "../../../hooks";
 import date from "../../../utils/date";
-import { db } from "../../../utils/firebase";
+import { db, getDocument } from "../../../utils/firebase";
 import { Button, Dropdown, Input } from "../../ui";
 // Remix Icon
 // __________________________________________________
@@ -22,6 +22,7 @@ const ChatBox = () => {
 
   const [messages, setMessages] = useState([]);
   const [bindValue, value, restValue] = useInput('');
+  const navigate = useNavigate();
 
   const sendMessage = async (text: string) => {
     await addDoc(collection(db , `messenger/${chatId}/messages`), {
@@ -40,12 +41,19 @@ const ChatBox = () => {
       url: `/#/${selectedUser?.data()?.id}`,
     },
     sp1: 'separator',
-    logout: {
+    delChat: {
       label: 'Delete chat',
       type: 'button',
+      onClick: async () => {
+        navigate('/messenger');
+        await deleteDoc(doc(db, 'messenger', `${chatId}`));
+        (await getDocument(`messenger/${chatId}/messages`)).docs.forEach(docElem => {
+          deleteDoc(doc(db, `messenger/${chatId}/messages`, `${docElem.id}`));
+        });
+      }
     },
   };
-  
+
 
   useEffect(() => {
     onSnapshot(query(collection( db, `messenger/${chatId}/messages`), orderBy('createAt', 'asc')), (snapshot: any) => {
