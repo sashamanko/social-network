@@ -42,9 +42,9 @@ export const fetchFollow: any = createAsyncThunk<any>(
       console.log(uid2?.id);
       
       await addDoc(collection(db, `users/${uid?.id}/subscribers`), {user: uid2?.data()});
-      await addDoc(collection(db, `users/${uid2?.id}/followers`), {email: uid.data().email});
+      await addDoc(collection(db, `users/${uid2?.id}/followers`), {email: uid?.data()});
 
-      return {user: uid2};
+      return {user: uid2?.data()};
 
     } catch (error: any) {
       return rejectWithValue(error.message);
@@ -59,6 +59,9 @@ export const fetchUnfollow: any = createAsyncThunk<any>(
     
     const uid = (await findDocument('users', 'id', profile));
     const uid2 = (await findDocument('users', 'email', email));
+
+    console.log(uid2);
+    
 
     const uidUser = (await findDocument(`users/${uid?.id}/subscribers`, 'email', email))?.id;
     const uidUser2 = (await findDocument(`users/${uid2?.id}/followers`, 'email', uid?.data().email))?.id;
