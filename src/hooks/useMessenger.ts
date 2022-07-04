@@ -8,42 +8,29 @@ import useAuth from "./useAuth";
 
 const useMessenger = () => {
 
-  const { userList, chatList } = useSelector((state: any) => state.messenger);
+  const { chatList } = useSelector((state: any) => state.messenger);
   
-  const dispatch = useDispatch();
-  
+
   const { email } = useAuth();
   const { chatId } = useParams();
 
   let i;
-
+  let selectedUser: any;
+  
   if(chatId) {
     const selectedChat = chatList.find((doc: any) => doc.id === chatId)?.data();
     
-    let selectedUser: any;
     if (selectedChat) {
-      selectedUser = Object.values(selectedChat).filter((user: any) => user !== email)[0];
-      
-    }
-
-    i = userList.find((doc: any) => doc.data().email === selectedUser);
+      selectedUser = selectedChat.users.filter((user: any) => user.email !== email)[0];
+    };
+    
   }
 
-  useEffect(() => {
-    onSnapshot(collection( db, 'messenger'), (snapshot: any) => {
-      const i = snapshot.docs.filter((doc: any) => Object.values(doc.data()).find(user => {
-        if (user === email) return doc;
-      }));
-      
-      dispatch(fetchUserList({chatList: i, email}));
-    });
-  }, [dispatch]);
-
+  
 
   return {
-    userList,
     chatList,
-    selectedUser: i,
+    selectedUser,
   };
 
 };

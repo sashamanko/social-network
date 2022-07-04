@@ -8,19 +8,19 @@ const ButtonColor = ({ color, setTheme=null, setColor=null, setState , ...props 
   const changeTheme = (theme: any) => {
     document.documentElement.dataset.theme = theme;
     setState(theme);
-    setTimeout(() => {
-      updateUser({'settings.theme': setTheme});
-      updateUser({'settings.color': document.documentElement.dataset.color});
-    }, 1000);
+    updateUser({
+      'settings.theme': theme,
+      'settings.color': `${theme}-${document.documentElement.dataset.color?.split('-')[1]}`,
+    });
   };
   
   const changeColor = (color: any) => {
     document.documentElement.dataset.color = color;
     setState(color);
-    setTimeout(() => {
-      updateUser({'settings.color': setColor});
-      updateUser({'settings.theme': document.documentElement.dataset.theme});
-    }, 1000);
+    updateUser({'settings.color': color});
+    updateUser({
+      'settings.color': color
+    });
   };
 
   return (

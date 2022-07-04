@@ -2,10 +2,16 @@
 
 import { NavLink } from "react-router-dom";
 import { MessengerAsideItem } from ".";
+import useMessenger from "../../../hooks/useMessenger";
 import { Input } from "../../ui";
 
-const MessengerAside = ({ userList, chatList }: any) => {
+const MessengerAside = () => {
+
+  const { chatList } = useMessenger();
+
+  // console.log(chatList);
   
+
   return (
     <aside className="mr-1">
       <ul className="list-none">
@@ -23,13 +29,13 @@ const MessengerAside = ({ userList, chatList }: any) => {
           />
         </li>
         {
-          userList.map((user: any) => {
+          chatList.map((user: any) => {
             
             return (
               <MessengerAsideItem
-                key={user.data().id}
-                user={user}
-                chatId={chatList.find((chat: any) => Object.values(chat.data()).find((userEmail: any) => userEmail === user.data().email)).id}
+                key={user.id}
+                user={user.data()}
+                chatId={user.id}
               />
             );
           })

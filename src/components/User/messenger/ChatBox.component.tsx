@@ -1,8 +1,8 @@
 // import './ChatBox.css';
 
-import { addDoc, collection, deleteDoc, doc, onSnapshot, orderBy, query, serverTimestamp } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, onSnapshot, orderBy, query, serverTimestamp, updateDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuth, useInput } from "../../../hooks";
 import date from "../../../utils/date";
 import { db, getDocument } from "../../../utils/firebase";
@@ -15,7 +15,7 @@ import useMessenger from "../../../hooks/useMessenger";
 
 const ChatBox = () => {
 
-  const {userList, chatList, selectedUser } = useMessenger();
+  const { selectedUser } = useMessenger();
   const { chatId } = useParams();
 
   const { email } = useAuth();
@@ -31,6 +31,11 @@ const ChatBox = () => {
       userFrom: email,
       // userFrom: '',
     });
+
+    await updateDoc(doc( db, 'messenger', `${chatId}`), {
+      'lastMessage': text,
+      'lastMessageTime': serverTimestamp(),
+    });
   };
   
 
@@ -38,7 +43,7 @@ const ChatBox = () => {
     profile: {
       label: 'Visit user',
       type: 'link',
-      url: `/#/${selectedUser?.data()?.id}`,
+      url: `/#/${selectedUser?.id}`,
     },
     sp1: 'separator',
     delChat: {
@@ -77,7 +82,7 @@ const ChatBox = () => {
         }}
       >
         <div className="flex align-center">
-          <span>{ selectedUser?.data()?.displayName }</span>
+          <Link to={`/${selectedUser?.id}`}>{ selectedUser?.displayName }</Link>
           <Dropdown
             className='ml-auto'
             options={ options }

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { collection, addDoc, deleteDoc, doc, getDoc, onSnapshot, query, orderBy } from 'firebase/firestore';
+import { collection, addDoc, deleteDoc, doc, getDoc, onSnapshot, query, orderBy, serverTimestamp } from 'firebase/firestore';
 import { useAuth } from '../../hooks';
 import { findDocument, getDocument, newDoc } from '../../utils/firebase';
 import { db } from '../../utils/firebase';
@@ -12,7 +12,7 @@ export const fetchUserList: any = createAsyncThunk<any>(
     try {
       
       const notMeList = chatList.map((doc: any) => {
-        return Object.values(doc.data()).filter((user: any) => user !== email)[0];
+        return doc.data().users.filter((user: any) => user !== email)[0];
       });
       
       const userList = (await getDocument(`users`)).docs.filter(doc => {
@@ -23,7 +23,6 @@ export const fetchUserList: any = createAsyncThunk<any>(
       
 
       return {
-        userList,
         chatList,
       };
 
@@ -35,21 +34,24 @@ export const fetchUserList: any = createAsyncThunk<any>(
 
 export const fetchNewChat: any = createAsyncThunk<any>(
   'messenger/fetchNewChat',
-  async ({ profileEmail, email}: any, {rejectWithValue}) => {
+  async ({ profileTo, me}: any, {rejectWithValue}) => {
 
     try {
 
       newDoc('messenger', {
-        user1: email,
-        user2: profileEmail,
+        users: [
+          me,
+          profileTo,
+        ],
+        lastMessageTime: serverTimestamp(),
       });
 
       const i = (await getDocument('messenger')).docs.filter((doc: any) => {
-        if (doc.data().user1 === email || doc.data().user2 === email) {
+        if (doc.data().users[0] === me.email || doc.data().users[1] === me.email) {
           return doc;
         }
       });
-
+      
       return i;
 
     } catch (error: any) {

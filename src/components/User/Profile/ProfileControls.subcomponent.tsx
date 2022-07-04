@@ -14,6 +14,7 @@ import { fetchNewChat } from '../../../redux/messenger/asyncActions';
 import useMessenger from '../../../hooks/useMessenger';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db, getDocument } from '../../../utils/firebase';
+import useProfileInfo from '../../../hooks/useProfileInfo';
 
 interface IProfileControls {
   email: string;
@@ -23,6 +24,7 @@ interface IProfileControls {
 const ProfileControls = ({email, isSubscribe}: any) => {
   
   const auth: any = useAuth();
+  const getProfile: any = useProfileInfo();
 
   const sendMessage = async (text: string, chatId: string) => {
     await addDoc(collection(db , `messenger/${chatId}/messages`), {
@@ -105,11 +107,23 @@ const ProfileControls = ({email, isSubscribe}: any) => {
             });
 
             if(!i) {
-              await dispatch(fetchNewChat({profileEmail: email, email: auth.email}));
+              const me = {
+                id: auth.id,
+                email: auth.email,
+                displayName: auth.displayName,
+              };
+              
+              const profileTo = {
+                id: getProfile.id,
+                email: getProfile.email,
+                displayName: getProfile.displayName,
+              };
+
+              await dispatch(fetchNewChat({profileTo: profileTo, me}));
               
               const b = (await getDocument('messenger')).docs.find((doc: any) => {
-                if (doc.data().user1 === email || doc.data().user2 === email) {
-                  if (doc.data().user1 === auth.email || doc.data().user2 === auth.email) {
+                if (doc.data().users[0].email === email || doc.data().users[1].email === email) {
+                  if (doc.data().users[0].email === auth.email || doc.data().users[1].email === auth.email) {
                     navigate(`/messenger/${doc?.id}`);
                   }
                 }

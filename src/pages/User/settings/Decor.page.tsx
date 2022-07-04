@@ -14,7 +14,7 @@ const DecorPage = () => {
 
   useEffect(() => {
     document.documentElement.dataset.theme = settings.theme;
-    document.documentElement.dataset.color = settings.color;
+    document.documentElement.dataset.color = `${settings.theme}-${color?.split('-')[1]}`;
   }, [theme]);
 
   return (
