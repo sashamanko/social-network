@@ -22,20 +22,20 @@ const FormSignUp = ({handleClick}: any) => {
       <Input 
         type="text"
         placeholder='Display Name'
-        view='primary'
+        variant='primary'
         {...bindDisplayName}
       />
       <Input 
         type="email"
         placeholder='Email'
-        view='primary'
+        variant='primary'
         className="my-1"
         {...bindEmail}
       />
       <Input 
         type='password'
         placeholder='Password'
-        view='primary'
+        variant='primary'
         {...bindPassword}
       />
       <Button

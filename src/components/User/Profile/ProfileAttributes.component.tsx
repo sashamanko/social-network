@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useAuth, useProfile } from '../../../hooks';
 import { fetchProfile } from '../../../redux/profile/asyncActions';
 import ProfileControls from './ProfileControls.subcomponent';
@@ -19,8 +19,8 @@ const ProfileAttributes = ({ getProfile }: any) => {
         <div className="flex flex-col">
           <h2>{ displayName }</h2>
           <p>{ email }</p>
-          <p>subscribers: { subscribers.length }</p>
-          <p>followers: { followers.length }</p>
+          <Link to='subscribers'>subscribers: { subscribers.length }</Link>
+          <Link to='followers'>followers: { followers.length }</Link>
         </div>
         <ProfileControls email={ email } isSubscribe={ isSubscribe } />
       </div>

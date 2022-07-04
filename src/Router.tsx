@@ -23,7 +23,7 @@ import { DecorPage, HomePage, MessengerPage, SettingsPage } from './pages/User';
 import ProfilePage from './pages/User/settings/Profile.page';
 import ChatBox from './components/User/messenger/ChatBox.component';
 import NewMessage from './components/User/messenger/NewMessage.component';
-import Modal from './components/ui/Modal/Modal.ui';
+import Modal from './components/ui/Modal/RouterModal.ui';
 import ProfileModal from './components/User/Profile/ProfileModal.component';
 
 const Router = () => {

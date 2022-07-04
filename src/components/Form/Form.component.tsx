@@ -15,7 +15,7 @@ const Form = ({title, handleClick}: any) => {
       <Input 
         type="email"
         placeholder='Email'
-        view='primary'
+        variant='primary'
         {...bindEmail}
       />
       <Input 
@@ -23,7 +23,7 @@ const Form = ({title, handleClick}: any) => {
         type='password'
         placeholder='Password'
         className="my-1"
-        view='primary'
+        variant='primary'
         {...bindPassword}
       />
       <Button

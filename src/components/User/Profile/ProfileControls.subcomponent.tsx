@@ -13,7 +13,7 @@ import { useState } from 'react';
 import { fetchNewChat } from '../../../redux/messenger/asyncActions';
 import useMessenger from '../../../hooks/useMessenger';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import { db } from '../../../utils/firebase';
+import { db, getDocument } from '../../../utils/firebase';
 
 interface IProfileControls {
   email: string;
@@ -21,10 +21,21 @@ interface IProfileControls {
 }
 
 const ProfileControls = ({email, isSubscribe}: any) => {
-
+  
   const auth: any = useAuth();
+
+  const sendMessage = async (text: string, chatId: string) => {
+    await addDoc(collection(db , `messenger/${chatId}/messages`), {
+      createAt: serverTimestamp(),
+      text: text,
+      userFrom: auth.email,
+      // userFrom: '',
+    });
+  };
+
   const { profile }: any = useParams();
   const { chatList } = useMessenger();
+  
 
   const [isFollow, setIsFollow] = useState(isSubscribe);
   
@@ -85,15 +96,30 @@ const ProfileControls = ({email, isSubscribe}: any) => {
           animate='slide-left'
           textContent='Send message'
           className='flex ml-auto align-center justify-end mt-2'
-          onClick={() => {
+          onClick={async () => {
 
-            const b = prompt('send message');
-
-            const i = chatList.find((doc: any) => {
-              if (doc.data().user1 === email || doc.data().user2 === email) return doc;
+            const i: any = chatList.find((doc: any) => {
+              if (doc.data().user1 === email || doc.data().user2 === email) {
+                navigate(`/messenger/${doc.id}`);
+              }
             });
 
-            if(!i) dispatch(fetchNewChat({profileEmail: email, email: auth.email}));
+            if(!i) {
+              await dispatch(fetchNewChat({profileEmail: email, email: auth.email}));
+              
+              const b = (await getDocument('messenger')).docs.find((doc: any) => {
+                if (doc.data().user1 === email || doc.data().user2 === email) {
+                  if (doc.data().user1 === auth.email || doc.data().user2 === auth.email) {
+                    navigate(`/messenger/${doc?.id}`);
+                  }
+                }
+              });
+
+              console.log(b);
+              
+            };
+            
+            
 
           }}
         >

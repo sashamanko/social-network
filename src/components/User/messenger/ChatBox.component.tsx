@@ -31,12 +31,13 @@ const ChatBox = () => {
       // userFrom: '',
     });
   };
+  
 
   const options = {
     profile: {
       label: 'Visit user',
       type: 'link',
-      url: `#/settings/profile`,
+      url: `/#/${selectedUser?.data()?.id}`,
     },
     sp1: 'separator',
     logout: {
@@ -93,7 +94,7 @@ const ChatBox = () => {
 
       <div className="flex align-center w-100 mt-1">
         <Input
-          view='primary'
+          variant='primary'
           placeholder="Send message"
           className="mr-2"
           {...bindValue}

@@ -48,7 +48,7 @@ const profileSlice = createSlice({
       state.status = 1;
     },
     [fetchFollow.fulfilled]: (state, action) => {
-      state.subscribers.push({email: action.payload.email});
+      state.subscribers.push({...action.payload});
 
       state.isSubscribe = true;
       // state.status = 1;

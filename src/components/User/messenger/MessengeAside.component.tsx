@@ -18,7 +18,7 @@ const MessengerAside = ({ userList, chatList }: any) => {
         >
           <Input
             type="text"
-            view='primary'
+            variant='primary'
             placeholder="Search user"
           />
         </li>

@@ -15,16 +15,6 @@ const useMessenger = () => {
   const { email } = useAuth();
   const { chatId } = useParams();
 
-  useEffect(() => {
-    onSnapshot(collection( db, 'messenger'), (snapshot: any) => {
-      const i = snapshot.docs.filter((doc: any) => Object.values(doc.data()).find(user => {
-        if (user === email) return doc;
-      }));
-      
-      dispatch(fetchUserList({chatList: i, email}));
-    });
-  }, [dispatch]);
-  
   let i;
 
   if(chatId) {
@@ -38,6 +28,17 @@ const useMessenger = () => {
 
     i = userList.find((doc: any) => doc.data().email === selectedUser);
   }
+
+  useEffect(() => {
+    onSnapshot(collection( db, 'messenger'), (snapshot: any) => {
+      const i = snapshot.docs.filter((doc: any) => Object.values(doc.data()).find(user => {
+        if (user === email) return doc;
+      }));
+      
+      dispatch(fetchUserList({chatList: i, email}));
+    });
+  }, [dispatch]);
+
 
   return {
     userList,

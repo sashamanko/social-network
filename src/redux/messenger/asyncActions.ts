@@ -44,6 +44,14 @@ export const fetchNewChat: any = createAsyncThunk<any>(
         user2: profileEmail,
       });
 
+      const i = (await getDocument('messenger')).docs.filter((doc: any) => {
+        if (doc.data().user1 === email || doc.data().user2 === email) {
+          return doc;
+        }
+      });
+
+      return i;
+
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
