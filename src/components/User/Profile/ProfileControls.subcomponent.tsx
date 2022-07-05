@@ -10,9 +10,7 @@ import { useDispatch } from 'react-redux';
 import { fetchFollow, fetchUnfollow } from '../../../redux/profile/asyncActions';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
-import { fetchNewChat } from '../../../redux/messenger/asyncActions';
 import useMessenger from '../../../hooks/useMessenger';
-import { getDocument } from '../../../utils/firebase';
 
 interface IProfileControls {
   email: string;
