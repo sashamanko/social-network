@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { Link, NavLink, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import useProfileInfo from '../../../hooks/useProfileInfo';
 import Modal from '../../ui/Modal/RouterModal.ui';
 // import './ProfileModal.css';

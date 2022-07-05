@@ -1,8 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { collection, addDoc, deleteDoc, doc, getDoc, onSnapshot, query, orderBy, serverTimestamp } from 'firebase/firestore';
-import { useAuth } from '../../hooks';
-import { findDocument, getDocument, newDoc } from '../../utils/firebase';
-import { db } from '../../utils/firebase';
+import { serverTimestamp } from 'firebase/firestore';
+import { getDocument, newDoc } from '../../utils/firebase';
 // import { setProfile } from './slice';
 
 export const fetchUserList: any = createAsyncThunk<any>(

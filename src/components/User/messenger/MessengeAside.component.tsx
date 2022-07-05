@@ -1,6 +1,5 @@
 // import './MessengerAside.css';
 
-import { NavLink } from "react-router-dom";
 import { MessengerAsideItem } from ".";
 import useMessenger from "../../../hooks/useMessenger";
 import { Input } from "../../ui";

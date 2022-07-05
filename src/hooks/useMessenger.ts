@@ -1,9 +1,5 @@
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchUserList } from "../redux/messenger/asyncActions";
-import { db, getDocument } from "../utils/firebase";
 import useAuth from "./useAuth";
 
 const useMessenger = () => {
@@ -14,7 +10,7 @@ const useMessenger = () => {
   const { email } = useAuth();
   const { chatId } = useParams();
 
-  let i;
+  // let i;
   let selectedUser: any;
   
   if(chatId) {

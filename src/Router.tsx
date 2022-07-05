@@ -1,6 +1,6 @@
 // Imports | React router
 // __________________________________________________
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 // Impotrs | Pages
 // __________________________________________________
@@ -16,14 +16,11 @@ import useAuth from './hooks/useAuth';
 
 //Preloader
 //
-import Preloader from './components/Preloader/Preloader.component';
-import { useEffect, useState } from 'react';
 import { ProfileSinglePage } from './singlepages';
 import { DecorPage, HomePage, MessengerPage, SettingsPage } from './pages/User';
 import ProfilePage from './pages/User/settings/Profile.page';
 import ChatBox from './components/User/messenger/ChatBox.component';
 import NewMessage from './components/User/messenger/NewMessage.component';
-import Modal from './components/ui/Modal/RouterModal.ui';
 import ProfileModal from './components/User/Profile/ProfileModal.component';
 
 const Router = () => {

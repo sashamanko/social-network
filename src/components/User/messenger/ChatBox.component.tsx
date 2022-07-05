@@ -4,7 +4,7 @@ import { addDoc, collection, deleteDoc, doc, onSnapshot, orderBy, query, serverT
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuth, useInput } from "../../../hooks";
-import date from "../../../utils/date";
+import date from "../../../utils/moment";
 import { db, getDocument } from "../../../utils/firebase";
 import { Button, Dropdown, Input } from "../../ui";
 // Remix Icon
@@ -20,7 +20,7 @@ const ChatBox = () => {
 
   const { email } = useAuth();
 
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages]: any = useState([]);
   const [bindValue, value, restValue] = useInput('');
   const navigate = useNavigate();
 
@@ -93,15 +93,40 @@ const ChatBox = () => {
       </div>
 
       <ul className="Home__message-list flex flex-col w-100 mt-1">
-        {messages && messages.map(((m: any) => {
+        {messages && messages.map(((m: any, index: number) => {
+
+          // console.log(messages[index + messages[index + 1] !== -1 ? 1  : 0 ]);
+          // console.log(m.data.text, m.id);
+          
+          // if (messages[index + 1] !== undefined) {
+          //   if (new Date(date(m.data.createAt?.seconds, 'messegerMessageDay')).toISOString() > new Date(date(messages[index + 1].data?.createAt?.seconds, 'messegerMessageDay')).toISOString()) {
+              
+          //     return (
+          //       <>
+          //         <li
+          //           key={m.id}
+          //           className={`Home__message-list__item flex ${ m.data.userFrom === email ? 'ml-auto right' : 'mr-auto' } p-2 bg-block rounded align-end mt-3`}>
+          //           <p className="mr-3 font-500">{m.data.text}</p>
+          //           {m.data.createAt?.seconds && <span style={{wordBreak: 'normal'}} className="font-xs font-500">{ date(m.data.createAt.seconds, 'messegerMessage') }</span>}
+          //         </li>
+          //         <li>
+          //           <span>{date(messages[index + 1].data?.createAt?.seconds, 'messegerAsideItem')}</span>
+          //         </li>
+          //       </>
+          //     );
+          //   } else {
           return (
-            <li
-              key={m.id}
-              className={`Home__message-list__item flex ${ m.data.userFrom === email ? 'ml-auto right' : 'mr-auto' } p-2 bg-block rounded align-end mt-3`}>
-              <p className="mr-3 font-500">{m.data.text}</p>
-              {m.data.createAt?.seconds && <span style={{wordBreak: 'normal'}} className="font-xs font-500">{  date(m.data.createAt.seconds).h }:{date(m.data.createAt.seconds).m }</span>}
-            </li>
+            <>
+              <li
+                key={m.id}
+                className={`Home__message-list__item flex ${ m.data.userFrom === email ? 'ml-auto right' : 'mr-auto' } p-2 bg-block rounded align-end mt-3`}>
+                <p className="mr-3 font-500">{m.data.text}</p>
+                {m.data.createAt?.seconds && <span style={{wordBreak: 'normal'}} className="font-xs font-500">{ date(m.data.createAt.seconds, 'messegerMessage') }</span>}
+              </li>
+            </>
           );
+          //   }
+          // }
         }))}
       </ul>
 

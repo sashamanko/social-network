@@ -1,8 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
-import { useAuth, useProfile } from '../../../hooks';
-import { fetchProfile } from '../../../redux/profile/asyncActions';
+import { Link } from 'react-router-dom';
 import ProfileControls from './ProfileControls.subcomponent';
 // import './ProfileAttributes.component.css';
 

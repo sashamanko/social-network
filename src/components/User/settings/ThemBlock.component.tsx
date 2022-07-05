@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
 import '../../../styles/components/subcomponent/ThemeBlock.subcomponent.scss';
-import ButtonColor from './ButtonColor.subcomponent';
 
 const ThemeBlock = ({ children }: any) => {
 

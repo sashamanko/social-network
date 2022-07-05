@@ -1,9 +1,5 @@
-import { async } from "@firebase/util";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { collection, getDocs } from "firebase/firestore";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUpdateUser, fetchUser } from "../redux/user/asyncActions";
+import { fetchUpdateUser } from "../redux/user/asyncActions";
 
 // Interfaces | My
 // __________________________________________________

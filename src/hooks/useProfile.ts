@@ -1,8 +1,4 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { fetchFollow, fetchProfile, fetchUnfollow } from "../redux/profile/asyncActions";
-import useAuth from "./useAuth";
+import { useSelector } from "react-redux";
 
 const useProfile = () => {
   

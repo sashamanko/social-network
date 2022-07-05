@@ -4,7 +4,7 @@ import PencilLineIcon from "remixicon-react/PencilLineIcon";
 import UserFollowLineIcon from "remixicon-react/UserFollowLineIcon";
 import UserUnfollowLineIcon from "remixicon-react/UserUnfollowLineIcon";
 import MailLineIcon from "remixicon-react/MailLineIcon";
-import { useAuth, useProfile } from "../../../hooks";
+import { useAuth } from "../../../hooks";
 import { ButtonCircle } from "../../ui";
 import { useDispatch } from 'react-redux';
 import { fetchFollow, fetchUnfollow } from '../../../redux/profile/asyncActions';

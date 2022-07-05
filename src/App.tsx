@@ -5,10 +5,7 @@ import './styles/App.scss';
 // Router | My
 // __________________________________________________
 import Router from './Router';
-import { useEffect, useState } from 'react';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { useDispatch } from 'react-redux';
-import { fetchUser } from './redux/user/asyncActions';
+import { useState } from 'react';
 import Preloader from './components/Preloader/Preloader.component';
 import useStoreFetch from './hooks/useStoreFetch';
 import { useAuth } from './hooks';

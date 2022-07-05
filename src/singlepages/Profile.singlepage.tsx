@@ -1,12 +1,8 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { ProfileAttributes } from "../components";
 import Preloader from "../components/Preloader/Preloader.component";
-import { useAuth, useProfile } from "../hooks";
-import useProfileInfo from "../hooks/useProfileInfo";
+import { useProfile } from "../hooks";
 import useStoreFetch from "../hooks/useStoreFetch";
-import { fetchProfile } from "../redux/profile/asyncActions";
 // import './ProfilePage.css';
 
 const ProfileSinglePage = () => {

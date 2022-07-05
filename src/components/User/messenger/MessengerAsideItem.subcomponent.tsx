@@ -1,23 +1,12 @@
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../../hooks';
 import '../../../styles/components/User/messenger/MessengerAsideItem.subcomponent.scss';
-import date from '../../../utils/date';
-import { db } from '../../../utils/firebase';
+import date from '../../../utils/moment';
 
 const MessengerAsideItem = ({ user, chatId }: any) => {
 
-  // const [lastMess, setLastMess]: any = useState({});
-  
-  // useEffect(() => {
-  //   onSnapshot(query(collection( db, `messenger/${chatId}/messages`), orderBy('createAt', 'desc')), (snapshot: any) => {
-  //     setLastMess({...snapshot.docs[0].data()});
-  //   });
-  // }, []);
-
   const auth = useAuth();
-  
+  console.log(date(user?.lastMessageTime?.seconds, 'messegerAsideItem'));
   
 
   return (
@@ -41,11 +30,18 @@ const MessengerAsideItem = ({ user, chatId }: any) => {
           />
           <span className="flex flex-col w-100">
             <span className='flex justify-between'>
-              <span>
+              <span 
+                style={{
+                  maxWidth: '155px',
+                  overflow: 'hidden',
+                  whiteSpace: 'nowrap',
+                  textOverflow: 'ellipsis',
+                }}
+              >
                 { user.users.find((user: any) => user.email !== auth.email).displayName }
               </span>
-              <span>
-                { date(user?.lastMessageTime?.seconds).h }:{date(user?.lastMessageTime?.seconds).m }
+              <span className='font-sm font-500'>
+                { date(user?.lastMessageTime?.seconds, 'messegerAsideItem') }
               </span>
             </span>
             <span
