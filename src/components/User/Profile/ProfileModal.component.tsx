@@ -1,11 +1,11 @@
 import { Link, useParams } from 'react-router-dom';
-import useProfileInfo from '../../../hooks/useProfileInfo';
+import { useProfile } from '../../../hooks';
 import Modal from '../../ui/Modal/RouterModal.ui';
 // import './ProfileModal.css';
 
 const ProfileModal = () => {
   const { subOrFoll, profile }: any = useParams();
-  const getProfile: any = useProfileInfo();
+  const getProfile: any = useProfile();
   
 
   return (

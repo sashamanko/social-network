@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { useOutside } from "../../../hooks";
 
-const Modal = ({ children }: any) => {
+const RouterModal = ({ children }: any) => {
 
   const btnRef = useRef(null);
   const navigate = useNavigate();
@@ -36,4 +36,4 @@ const Modal = ({ children }: any) => {
   );
 };
 
-export default Modal;
+export default RouterModal;

@@ -6,7 +6,6 @@ import date from '../../../utils/moment';
 const MessengerAsideItem = ({ user, chatId }: any) => {
 
   const auth = useAuth();
-  console.log(date(user?.lastMessageTime?.seconds, 'messegerAsideItem'));
   
 
   return (

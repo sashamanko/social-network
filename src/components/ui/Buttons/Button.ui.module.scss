@@ -96,4 +96,12 @@
     }
   }
 
+  &.lg {
+    transform: scale(.80);
+
+    &:active {
+      transform: scale(.75);
+    }
+  }
+
 };

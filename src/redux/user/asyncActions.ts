@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getAuth } from 'firebase/auth';
 import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
-import { db, findDocument, newDoc } from '../../utils/firebase';
+import { db, findDocument, getDocument, newDoc } from '../../utils/firebase';
 
 export const fetchAddUser: any = createAsyncThunk<any>(
   'user/fetchAddUser',
@@ -34,7 +34,10 @@ export const fetchUser: any = createAsyncThunk<any>(
   async (user: any, {rejectWithValue}) => {
 
     const userByServer = (await (findDocument(`users`, 'email', user.email)));
+    const userFollowers = (await getDocument(`users/${userByServer?.id}/followers`)).docs;
+    const userSubscribers = (await getDocument(`users/${userByServer?.id}/subscribers`)).docs;
     
+
     try {
 
       const innerUser: any = {};
@@ -42,6 +45,8 @@ export const fetchUser: any = createAsyncThunk<any>(
       if (user) {
         innerUser.id = userByServer?.data().id;
         innerUser.displayName = userByServer?.data().displayName;
+        innerUser.followers = userFollowers;
+        innerUser.subscribers = userSubscribers;
         innerUser.settings = userByServer?.data().settings;
         innerUser.uid = user.uid;
         innerUser.email = user.email;

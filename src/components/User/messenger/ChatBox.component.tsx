@@ -15,28 +15,13 @@ import useMessenger from "../../../hooks/useMessenger";
 
 const ChatBox = () => {
 
-  const { selectedUser } = useMessenger();
-  const { chatId } = useParams();
+  const { selectedUser, chatMessages, sendMessage } = useMessenger();
+  const { chatId }: any = useParams();
 
   const { email } = useAuth();
 
-  const [messages, setMessages]: any = useState([]);
   const [bindValue, value, restValue] = useInput('');
   const navigate = useNavigate();
-
-  const sendMessage = async (text: string) => {
-    await addDoc(collection(db , `messenger/${chatId}/messages`), {
-      createAt: serverTimestamp(),
-      text: text,
-      userFrom: email,
-      // userFrom: '',
-    });
-
-    await updateDoc(doc( db, 'messenger', `${chatId}`), {
-      'lastMessage': text,
-      'lastMessageTime': serverTimestamp(),
-    });
-  };
   
 
   const options = {
@@ -59,19 +44,6 @@ const ChatBox = () => {
     },
   };
 
-
-  useEffect(() => {
-    onSnapshot(query(collection( db, `messenger/${chatId}/messages`), orderBy('createAt', 'asc')), (snapshot: any) => {
-      setMessages(
-        snapshot.docs.map( (doc: any) => {
-          return {
-            id: doc.id,
-            data: {...doc.data()},
-          };
-        } ));
-    });
-  }, [chatId]);
-
   return (
     <div className="flex w-100 flex-col justify-end">
       {/* <span className="item-block rounded-fill mx-auto p-2">38 груня</span> */}
@@ -93,7 +65,7 @@ const ChatBox = () => {
       </div>
 
       <ul className="Home__message-list flex flex-col w-100 mt-1">
-        {messages && messages.map(((m: any, index: number) => {
+        {chatMessages && chatMessages.map(((m: any, index: number) => {
 
           // console.log(messages[index + messages[index + 1] !== -1 ? 1  : 0 ]);
           // console.log(m.data.text, m.id);
@@ -138,7 +110,7 @@ const ChatBox = () => {
           {...bindValue}
           onKeyPress={ (e: any) => {
             if (e.key === 'Enter' && value.trim().length !== 0) {
-              sendMessage(value);
+              sendMessage(chatId, value);
               restValue();
             }
           }}
@@ -148,7 +120,7 @@ const ChatBox = () => {
           className="flex justify-center align-center p-2"
           onClick={ () => {
             if (value.trim().length !== 0) {
-              sendMessage(value); 
+              sendMessage(chatId, value); 
               restValue();
             }
           } }

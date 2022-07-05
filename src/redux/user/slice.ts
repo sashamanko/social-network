@@ -7,6 +7,8 @@ const initialState: IUserInitialState = {
   uid: null,
   email: null,
   displayName: null,
+  followers: [],
+  subscribers: [],
   settings: null,
   isAuth: null,
   status: 0,
@@ -28,6 +30,8 @@ const userSlice = createSlice({
       state.uid = null;
       state.email = null;
       state.displayName = null;
+      state.followers = [];
+      state.subscribers = [];
       state.settings = null;
       state.isAuth = null;
     },
@@ -42,6 +46,8 @@ const userSlice = createSlice({
       state.uid = action.payload.uid;
       state.email = action.payload.email;
       state.displayName = action.payload.displayName;
+      state.followers = action.payload.followers;
+      state.subscribers = action.payload.subscribers;
       state.settings = action.payload.settings;
       state.isAuth = action.payload.isAuth;
       

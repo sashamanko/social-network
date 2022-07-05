@@ -5,6 +5,8 @@ export interface IUserInitialState {
   uid: string | null
   email: string | null;
   displayName: string | null;
+  followers: any[];
+  subscribers: any[];
   settings: {
     theme: 'dark' | 'white' | null
     color: 'dark-purple' | 'white' | null

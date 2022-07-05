@@ -12,9 +12,9 @@ interface IButton {
   [key: string]: any;
 } 
 
-const Button = ({ variant = '', forms='', animate='', className='', textContent='', children, ...props }: IButton) => {
+const Button = ({ variant = '', forms='', animate='', className='', textContent='', size='', children, ...props }: IButton) => {
 
-  const classList = [ classes.btn, classes[variant], classes[forms], classes[animate]];
+  const classList = [ classes.btn, classes[variant], classes[forms], classes[animate], classes[size]];
 
   return (
     <button className={ classList.join(' ') + ` ${className}`} { ...props } type='button' >

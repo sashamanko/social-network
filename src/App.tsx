@@ -12,9 +12,9 @@ import { useAuth } from './hooks';
 
 const App = () => {
 
-  const [isRander, setIsRender] = useState(false);
-  
   useStoreFetch().Auth();
+  
+  const [isRander, setIsRender] = useState(false);
   
   const { settings } = useAuth();
 

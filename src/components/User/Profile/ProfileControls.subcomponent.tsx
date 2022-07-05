@@ -4,7 +4,7 @@ import PencilLineIcon from "remixicon-react/PencilLineIcon";
 import UserFollowLineIcon from "remixicon-react/UserFollowLineIcon";
 import UserUnfollowLineIcon from "remixicon-react/UserUnfollowLineIcon";
 import MailLineIcon from "remixicon-react/MailLineIcon";
-import { useAuth } from "../../../hooks";
+import { useAuth, useProfile } from "../../../hooks";
 import { ButtonCircle } from "../../ui";
 import { useDispatch } from 'react-redux';
 import { fetchFollow, fetchUnfollow } from '../../../redux/profile/asyncActions';
@@ -12,9 +12,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { fetchNewChat } from '../../../redux/messenger/asyncActions';
 import useMessenger from '../../../hooks/useMessenger';
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import { db, getDocument } from '../../../utils/firebase';
-import useProfileInfo from '../../../hooks/useProfileInfo';
+import { getDocument } from '../../../utils/firebase';
 
 interface IProfileControls {
   email: string;
@@ -24,19 +22,10 @@ interface IProfileControls {
 const ProfileControls = ({email, isSubscribe}: any) => {
   
   const auth: any = useAuth();
-  const getProfile: any = useProfileInfo();
-
-  const sendMessage = async (text: string, chatId: string) => {
-    await addDoc(collection(db , `messenger/${chatId}/messages`), {
-      createAt: serverTimestamp(),
-      text: text,
-      userFrom: auth.email,
-      // userFrom: '',
-    });
-  };
+  const getProfile: any = useProfile();
 
   const { profile }: any = useParams();
-  const { chatList } = useMessenger();
+  const { chatList, newChat } = useMessenger();
   
 
   const [isFollow, setIsFollow] = useState(isSubscribe);
@@ -98,44 +87,11 @@ const ProfileControls = ({email, isSubscribe}: any) => {
           animate='slide-left'
           textContent='Send message'
           className='flex ml-auto align-center justify-end mt-2'
-          onClick={async () => {
-
-            const i: any = chatList.find((doc: any) => {
-              if (doc.data().user1 === email || doc.data().user2 === email) {
-                navigate(`/messenger/${doc.id}`);
-              }
-            });
-
-            if(!i) {
-              const me = {
-                id: auth.id,
-                email: auth.email,
-                displayName: auth.displayName,
-              };
-              
-              const profileTo = {
-                id: getProfile.id,
-                email: getProfile.email,
-                displayName: getProfile.displayName,
-              };
-
-              await dispatch(fetchNewChat({profileTo: profileTo, me}));
-              
-              const b = (await getDocument('messenger')).docs.find((doc: any) => {
-                if (doc.data().users[0].email === email || doc.data().users[1].email === email) {
-                  if (doc.data().users[0].email === auth.email || doc.data().users[1].email === auth.email) {
-                    navigate(`/messenger/${doc?.id}`);
-                  }
-                }
-              });
-
-              console.log(b);
-              
-            };
-            
-            
-
-          }}
+          onClick={() => newChat({
+            displayName: profile.displayName, 
+            email: profile.email, 
+            id: profile.id, 
+          })}
         >
           <MailLineIcon />
         </ButtonCircle>
