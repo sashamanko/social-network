@@ -9,24 +9,23 @@ import CloseLineIcon from "remixicon-react/CloseLineIcon";
 
 const MessengerAside = () => {
 
-  const { chatList, selectedChat } = useMessenger();
+  const { chatList } = useMessenger();
   const [bind, value, reset] = useInput('');
   
-  const { email } = useAuth();
   const [filterdChatList, setFilterdChatList] = useState(chatList);
   
 
   useEffect(() => {
     if (value.trim().length !== 0) {
-      const newArr = filterdChatList.filter((doc: any) => doc.data().users.find((user: any) => {
-        if (!user.displayName.toUpperCase().indexOf(value.toUpperCase())) return doc;
+      const newArr = filterdChatList.filter((doc: any) => doc?.data()?.users.find((user: any) => {
+        if (!user?.displayName.toUpperCase().indexOf(value.toUpperCase())) return doc;
       }));
       setFilterdChatList(newArr);
     } else {
       setFilterdChatList(chatList);
     }
 
-  }, [value]);
+  }, [value, chatList]);
 
   return (
     <aside className="mr-1">
@@ -66,7 +65,7 @@ const MessengerAside = () => {
             return (
               <MessengerAsideItem
                 key={user.id}
-                user={user.data()}
+                user={user?.data()}
                 chatId={user.id}
               />
             );

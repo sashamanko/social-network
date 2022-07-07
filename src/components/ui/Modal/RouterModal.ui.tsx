@@ -1,8 +1,26 @@
 // import './Modal.css';
 
 import { useRef } from "react";
-import { Outlet, useNavigate, useParams } from "react-router-dom";
-import { useOutside } from "../../../hooks";
+import { useNavigate, useParams } from "react-router-dom";
+import animate from "../../../utils/Animate/components/anim";
+
+const fadeTop = {
+  transition: {
+    duration: 300,
+  },
+  initial: {
+    opacity: 0,
+    transform: 'translateY(-20px)',
+  },
+  animate: {
+    opacity: [1],
+    transform: ['translateY(0)']
+  },
+  exit: {
+    opacity: 0,
+    transform: 'translateY(-20px)',
+  },
+};
 
 const RouterModal = ({ children }: any) => {
 
@@ -23,14 +41,27 @@ const RouterModal = ({ children }: any) => {
         }}
         className="fixed flex align-center justify-center w-100 h-100"
         style={{
+          background: '#00000060',
           top: 0,
           left: 0,
         }}    
       >
-        <div className="item-block">
-          <button onClick={() => navigate(`/${profile}`)}>X</button>
-          { children }
-        </div>
+        <animate.div
+          {...fadeTop}
+          className="rounded"
+          style={{
+            background: 'var(--main)',
+            padding: '2px 0',
+          }}
+        >
+          <animate.div
+            className="item-block"
+            {...fadeTop}
+          >
+            <button onClick={() => navigate(`/${profile}`)}>X</button>
+            { children }
+          </animate.div>
+        </animate.div>
       </div>
     </>
   );

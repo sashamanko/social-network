@@ -17,7 +17,7 @@ const Button = ({ variant = '', forms='', animate='', className='', textContent=
   const classList = [ classes.btn, classes[variant], classes[forms], classes[animate], classes[size]];
 
   return (
-    <button className={ classList.join(' ') + ` ${className}`} { ...props } type='button' >
+    <button className={ classList.join(' ') + ` ${className}`} { ...props }>
       {
         children
       }

@@ -38,9 +38,9 @@ const NewMessage = () => {
       <Modal isVisible={modalIsShow} setIsVisible={setModalIsShow}>
         <ul className="list-none" style={{minWidth: 250}}>
           {
-            followers.map((doc: any) => {
+            followers.map((doc: any, index: number) => {
               return (
-                <li className="w-100">
+                <li className={`w-100 ${index !== 0 ? 'mt-2' : ''}`}>
                   <span className="flex align-center">
                     <img src="https://fakeimg.pl/150x150/" alt="" className="rounded-fill mr-2" style={{width: 44}}/>
                     <span>

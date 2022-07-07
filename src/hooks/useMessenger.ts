@@ -55,14 +55,20 @@ const useMessenger = () => {
       'lastMessageTime': serverTimestamp(),
     });
   };
-
+  
   const newChat = async (user: any) => {
 
     const i: any = chatList.find((doc: any) => {
-      if (doc.data().user1 === email || doc.data().user2 === email) {
+      console.log(doc.data().users);
+      
+      if (doc.data().users[0].email === user.email || doc.data().users[1].email === user.email) {
         navigate(`/messenger/${doc.id}`);
+        return doc;
       }
     });
+
+    console.log(i);
+    
 
     if(!i) {
       const me = {
@@ -77,7 +83,7 @@ const useMessenger = () => {
         displayName: user.displayName,
       };
 
-      await dispatch(fetchNewChat({profileTo: profileTo, me}));
+      await dispatch(fetchNewChat({profileTo, me}));
       
       const b = (await getDocument('messenger')).docs.find((doc: any) => {
         if (doc.data().users[0].email === user.email || doc.data().users[1].email === user.email) {

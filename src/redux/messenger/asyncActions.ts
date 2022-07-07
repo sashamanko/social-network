@@ -35,6 +35,7 @@ export const fetchNewChat: any = createAsyncThunk<any>(
   async ({ profileTo, me}: any, {rejectWithValue}) => {
 
     try {
+      
 
       newDoc('messenger', {
         users: [
@@ -42,6 +43,7 @@ export const fetchNewChat: any = createAsyncThunk<any>(
           profileTo,
         ],
         lastMessageTime: serverTimestamp(),
+        lastMessage: 'Chat created',
       });
 
       const i = (await getDocument('messenger')).docs.filter((doc: any) => {

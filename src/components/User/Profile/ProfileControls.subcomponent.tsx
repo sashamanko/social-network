@@ -86,9 +86,9 @@ const ProfileControls = ({email, isSubscribe}: any) => {
           textContent='Send message'
           className='flex ml-auto align-center justify-end mt-2'
           onClick={() => newChat({
-            displayName: profile.displayName, 
-            email: profile.email, 
-            id: profile.id, 
+            displayName: getProfile.displayName, 
+            email: getProfile.email, 
+            id: getProfile.id, 
           })}
         >
           <MailLineIcon />
