@@ -7,7 +7,7 @@ import '../../../styles/pages/User/settings/Decor.page.scss';
 
 const DecorPage = () => {
 
-  const [theme, setTheme] = useState(document.documentElement.dataset.theme);
+  const [theme, setTheme] = useState(document.documentElement.dataset.theme); 
   const [color, setColor] = useState(document.documentElement.dataset.color);
 
   const { settings } = useAuth();
