@@ -1,17 +1,32 @@
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../../hooks';
+import useContextMenu from '../../../hooks/useContextMenu';
 import '../../../styles/components/User/messenger/MessengerAsideItem.subcomponent.scss';
 import date from '../../../utils/moment';
 
 const MessengerAsideItem = ({ user, chatId }: any) => {
 
   const auth = useAuth();
+  const { setContextMenu, setContextMenuData }: any = useContextMenu();
   
 
   return (
     <li
       key={user.id}
       className='MessengerAsideItem'
+      onContextMenu={(e: any) => {
+
+        const userId = user.users.find((elem: any) => elem.email !== auth.email).id;
+        
+        
+        setContextMenu('messengerSidebarItem');
+        setContextMenuData({
+          chatId,
+          userId,
+          isRender: true,
+          mouseEvent: e
+        });
+      }}
     >
       <NavLink 
         to={chatId}

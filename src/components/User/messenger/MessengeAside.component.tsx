@@ -13,6 +13,8 @@ const MessengerAside = () => {
   const [bind, value, reset] = useInput('');
   
   const [filterdChatList, setFilterdChatList] = useState(chatList);
+
+  console.log(chatList);
   
 
   useEffect(() => {

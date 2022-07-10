@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../../../hooks";
 import useContextMenu from "../../../hooks/useContextMenu";
@@ -7,7 +7,7 @@ import date from "../../../utils/moment";
 
 const ChatBoxMessagesList = () => {
 
-  const { chatMessages, delMessage } = useMessenger();
+  const { chatMessages } = useMessenger();
 
   const { chatId } = useParams();
 
@@ -15,8 +15,12 @@ const ChatBoxMessagesList = () => {
 
   const [selectedMessage, setSelectedMessage]: any = useState('');
 
-  const { setContextMenu, contextMenuData, setContextMenuData }: any = useContextMenu();
+  const { contextMenu, setContextMenu, contextMenuData, setContextMenuData }: any = useContextMenu();
   
+  
+  useEffect(() => {
+    setSelectedMessage(contextMenuData?.id);
+  }, [contextMenuData]);
 
   return (
     <>
@@ -26,19 +30,30 @@ const ChatBoxMessagesList = () => {
             <>
               <li
                 onContextMenu={(e: any) => {
-                  if (m.data.userFrom === email) {
-                    e.preventDefault();
-
-                    setSelectedMessage(m.id);
+                  if (m.data.userFrom === email) { 
                     
-                    setContextMenu('messageItem');
+                    setSelectedMessage(m.id);
+
+                    setContextMenu('myMessage');
                     setContextMenuData({
                       ...m,
                       chatId,
                       isRender: true,
                       mouseEvent: e,
                     });
-                  }                
+                  }
+                  if (m.data.userFrom !== email) {
+                    e.preventDefault();
+
+                    setSelectedMessage(m.id);
+                    
+                    setContextMenu('otherMessage');
+                    setContextMenuData({
+                      ...m,
+                      isRender: true,
+                      mouseEvent: e,
+                    });
+                  }          
                 }}
                 key={m.id}
                 style={{
