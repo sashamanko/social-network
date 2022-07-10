@@ -1,7 +1,6 @@
-// import './LoginOrRegister.page.css';
+import classes from '../../components/ui/Buttons/Button.ui.module.scss';
 
 import { Link } from "react-router-dom";
-import classes from '../components/ui/Buttons/Button.ui.module.scss';
 
 const btnClass = `${classes.btn} ${classes.primary}`;
 

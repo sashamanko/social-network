@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { ProfileAttributes } from "../components";
+import { ProfileAttributes } from "../components/User";
 import Preloader from "../components/Preloader/Preloader.component";
 import { useProfile } from "../hooks";
 import useStoreFetch from "../hooks/useStoreFetch";

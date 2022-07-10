@@ -1,39 +1,22 @@
 // import './Modal.css';
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import animate from "../../../utils/Animate/components/anim";
-
-const fadeTop = {
-  transition: {
-    duration: 300,
-  },
-  initial: {
-    opacity: 0,
-    transform: 'translateY(-20px)',
-  },
-  animate: {
-    opacity: [1],
-    transform: ['translateY(0)']
-  },
-  exit: {
-    opacity: 0,
-    transform: 'translateY(-20px)',
-  },
-};
+import { fade, fadeTop } from "../../../utils/Animate/store/fade";
 
 const RouterModal = ({ children }: any) => {
 
-  const btnRef = useRef(null);
   const navigate = useNavigate();
   const { profile } = useParams();
 
   return (
     <>
-      <div
+      <animate.div
+        isAnimate={true}
+        {...fade}
         aria-label='modal-wrapper'
         onClick={(e: any) => {
-          console.log(e);
           
           if (e.target.ariaLabel === 'modal-wrapper') {
             navigate(`/${profile}`);
@@ -62,7 +45,7 @@ const RouterModal = ({ children }: any) => {
             { children }
           </animate.div>
         </animate.div>
-      </div>
+      </animate.div>
     </>
   );
 };

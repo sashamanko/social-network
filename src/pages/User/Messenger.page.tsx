@@ -1,7 +1,7 @@
 import '../../styles/pages/User/Messenger.page.scss';
 
 import { Outlet } from "react-router-dom";
-import { MessengerAside } from "../../components/User/messenger";
+import { MessengerAside } from "../../components/User/Messenger";
 import useStoreFetch from '../../hooks/useStoreFetch';
 
 

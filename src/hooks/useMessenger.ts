@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, onSnapshot, orderBy, query, serverTimestamp, updateDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, onSnapshot, orderBy, query, serverTimestamp, updateDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -55,6 +55,15 @@ const useMessenger = () => {
       'lastMessageTime': serverTimestamp(),
     });
   };
+
+  const delMessage = async (chatId: string, messagaId: string) => {
+    await deleteDoc(doc(db , `messenger/${chatId}/messages`, String(messagaId)));
+
+    // await updateDoc(doc( db, 'messenger', `${chatId}`), {
+    //   'lastMessage': text,
+    //   'lastMessageTime': serverTimestamp(),
+    // });
+  };
   
   const newChat = async (user: any) => {
 
@@ -66,9 +75,6 @@ const useMessenger = () => {
         return doc;
       }
     });
-
-    console.log(i);
-    
 
     if(!i) {
       const me = {
@@ -92,8 +98,6 @@ const useMessenger = () => {
           }
         }
       });
-
-      console.log(b);
       
     };
   };
@@ -105,6 +109,7 @@ const useMessenger = () => {
     selectedChat,
     chatMessages,
     sendMessage,
+    delMessage,
     newChat,
   };
 

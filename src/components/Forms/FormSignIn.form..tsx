@@ -1,14 +1,28 @@
 // import './Form.css';
 
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useInput from "../../hooks/useInput";
+import { fetchUser } from "../../redux/user/asyncActions";
 import { Button, Input } from "../ui";
 
-const Form = ({title, handleClick}: any) => {
+const FormSignIn = () => {
   const [bindEmail, email]: any = useInput('');
   const [bindPassword, password]: any = useInput('');
 
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  
+  const handleLogin = (email: any, password: any) => {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then(({user}: any) => {
+        dispatch(fetchUser(user));
+      })
+      .catch(() => alert('Invalid user'));
+  };
 
   return (
     <form className="flex flex-col align-center w-100">
@@ -31,15 +45,15 @@ const Form = ({title, handleClick}: any) => {
         forms=""
         onClick={(e: any) => {
           e.preventDefault();
-          handleClick(email, password);
+          handleLogin(email, password);
           navigate('/', { replace: true });
         }}
         className='mb-1 w-50'
       >
-        { title }
+        Sign In
       </Button>
     </form>
   );
 };
 
-export default Form;
+export default FormSignIn;

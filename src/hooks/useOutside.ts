@@ -3,7 +3,7 @@ import { IUseOutside } from '../types/hooks';
 
 // Use 
 // const {ref, isShow, setIsShow} = useOutside(false)
-const useOutside = (initialIsVisible: boolean, ignoredRef: any): IUseOutside => {
+const useOutside = (initialIsVisible=true, ignoredRef: any): IUseOutside => {
   const [isShow, setIsShow] = useState(initialIsVisible);
   const outsideRef = useRef<HTMLElement>(null);
 

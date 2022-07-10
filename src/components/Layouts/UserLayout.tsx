@@ -5,11 +5,10 @@ import { Navigate, Outlet } from "react-router-dom";
 
 // Imports | Components
 // __________________________________________________
-import { Header } from "..";
+import Header from "../Header/Header.component";
 import { useAuth } from "../../hooks";
-import { SignInOrSignUpPage } from "../../pages";
 import Preloader from "../Preloader/Preloader.component";
-import { Aside, Sidebar } from "../ui";
+import { Aside, ContextMenu, Sidebar } from "../ui";
 
 // Imports | Remix icons
 // __________________________________________________
@@ -52,6 +51,8 @@ const UserLayout = () => {
           <Preloader/>
         }
       </main>
+
+      <ContextMenu />
     </>
   );
 };

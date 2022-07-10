@@ -38,7 +38,6 @@ export const fetchFollow: any = createAsyncThunk<any>(
     const uid2 = (await findDocument('users', 'email', email));
     
     try {
-      console.log(uid2?.id);
       
       await addDoc(collection(db, `users/${uid?.id}/subscribers`), uid2?.data());
       await addDoc(collection(db, `users/${uid2?.id}/followers`), uid?.data());
@@ -63,10 +62,7 @@ export const fetchUnfollow: any = createAsyncThunk<any>(
 
     const uidUser = (await findDocument(`users/${uid?.id}/subscribers`, 'email', email))?.id;
     const uidUser2 = (await findDocument(`users/${uid2?.id}/followers`, 'email', uid?.data().email))?.id;
-
-    console.log(uidUser);
     
-
     try {
 
       await deleteDoc( doc(db, `users/${uid?.id}/subscribers`, `${uidUser}`) );

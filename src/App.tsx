@@ -13,10 +13,14 @@ import { useAuth } from './hooks';
 const App = () => {
 
   useStoreFetch().Auth();
-  
+
   const [isRander, setIsRender] = useState(false);
   
   const { settings } = useAuth();
+
+  document.addEventListener('contextmenu', (e: any) => {
+    e.preventDefault();
+  });
 
   setTimeout(() => {
     setIsRender(true);

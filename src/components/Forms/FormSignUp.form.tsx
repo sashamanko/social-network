@@ -1,6 +1,6 @@
 // import './Form.css';
 
-import { getAuth } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useInput from "../../hooks/useInput";
@@ -13,9 +13,22 @@ const FormSignUp = ({handleClick}: any) => {
   const [bindPassword, password]: any = useInput('');
   const navigate = useNavigate();
 
-  const auth = getAuth();
-
   const dispatch = useDispatch();
+  const auth: any = getAuth();
+
+  const handleRegister = async (displayName: any, email: any, password: any) => {
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(({user}: any) =>{
+
+        updateProfile(auth.currentUser, {
+          displayName,
+        }).then(console.log).catch(error => console.log(error, 'da oshibka'));
+        dispatch(fetchAddUser({ displayName, email }));
+        dispatch(fetchUser(user));
+      })
+      .catch(() => alert('This user registred'));
+  };
 
   return (
     <form className="flex flex-col align-center w-100">
@@ -42,7 +55,7 @@ const FormSignUp = ({handleClick}: any) => {
         variant='primary'
         onClick={(e: any) => {
           e.preventDefault();
-          handleClick(displayName, email, password);
+          handleRegister(displayName, email, password);
           navigate('/');
         }}
         className='my-1 w-50'

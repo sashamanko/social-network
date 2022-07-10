@@ -1,3 +1,2 @@
-import Aside from "./settings/Aside.component";
-
-export { Aside };
+export * from "./Messenger";
+export * from "./Profile";

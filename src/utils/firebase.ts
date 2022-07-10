@@ -24,7 +24,7 @@ const getDocument = async (collectionPath: string) => {
 };
 
 const findDocument = async (path: string, searchByField: string, compareWith: any) => {
-  console.log((await getDocument(path)).docs.find((doc: any) => doc.data()[searchByField] === compareWith));
+  // console.log((await getDocument(path)).docs.find((doc: any) => doc.data()[searchByField] === compareWith));
   
   return (await getDocument(path)).docs.find((doc: any) => doc.data()[searchByField] === compareWith);
 };

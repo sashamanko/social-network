@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import ButtonColor from '../../../components/User/settings/ButtonColor.subcomponent';
-import ColorBlock from '../../../components/User/settings/ColorBlock.component copy';
-import ThemeBlock from '../../../components/User/settings/ThemBlock.component';
+import ButtonColor from '../../../components/User/Settings/ButtonColor.subcomponent';
+import ColorBlock from '../../../components/User/Settings/ColorBlock.component copy';
+import ThemeBlock from '../../../components/User/Settings/ThemBlock.component';
 import { useAuth } from '../../../hooks';
 import '../../../styles/pages/User/settings/Decor.page.scss';
 

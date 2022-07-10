@@ -1,7 +1,7 @@
 // import './Settings.page.scss';
 
 import { Outlet, useLocation } from "react-router-dom";
-import { Aside } from '../../components/User';
+import { Aside } from '../../components/ui';
 
 const SettingsPage = () => {
 

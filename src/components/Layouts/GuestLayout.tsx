@@ -4,20 +4,14 @@ import { Navigate, Outlet } from "react-router-dom";
 
 // Imports | Components
 // __________________________________________________
-import { Header } from "..";
+import Header from "../Header/Header.component";
 import { useAuth } from "../../hooks";
-import Preloader from "../Preloader/Preloader.component";
 
 // SCSS | My
 // __________________________________________________
 // import './Layout.scss';
 
 const GuestLayout = () => {
-
-  const {isAuth, status} = useAuth();
-
-  // console.log(status);
-  
 
   return (
     <>

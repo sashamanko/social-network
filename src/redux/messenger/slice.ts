@@ -32,9 +32,7 @@ const messengerSlice = createSlice({
       state.status = 1;
     },
     [fetchNewChat.fulfilled]: (state, action) => {
-      console.log(state.chatList);
       state.chatList = action.payload;
-      console.log(state.chatList);
     },
     [fetchUserList.rejected]: setError,
     [fetchNewChat.rejected]: setError,
