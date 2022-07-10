@@ -35,7 +35,7 @@ const messengerSidebarItem = () => {
   const openLinkInNewTab = (contextMenuData: any) => {
     const { chatId } = contextMenuData;
 
-    window.open(`${window.location.href}/${chatId}`, '_blank');
+    window.open(`${window.location.origin}${window.location.pathname}#/messenger/${chatId}`, '_blank');
   };
 
   const visitUser = (contextMenuData: any) => {
