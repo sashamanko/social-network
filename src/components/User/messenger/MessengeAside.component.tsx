@@ -14,7 +14,6 @@ const MessengerAside = () => {
   
   const [filterdChatList, setFilterdChatList] = useState(chatList);
 
-  console.log(chatList);
   
 
   useEffect(() => {
