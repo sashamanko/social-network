@@ -2,8 +2,7 @@ import './ContentMenu.ui.scss';
 import { useEffect, useRef, useState } from 'react';
 import ContextMenuItems from '../../../database/ContextMenu/ContextMenuItems';
 import useContextMenu from '../../../hooks/useContextMenu';
-import animate from '../../../utils/Animate/components/anim';
-import { fade } from '../../../utils/Animate/store/fade';
+import animate from '../../../utils/Animate/components/Animated/Animated';
 
 const ContextMenu = () => {
   
@@ -48,9 +47,17 @@ const ContextMenu = () => {
   return (
     <animate.div
       isAnimate={contextMenuData.isRender !== undefined}
-      {...fade}
       transition={{
-        duration: .001,
+        duration: .01,
+      }}
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: [1],
+      }}
+      exit={{
+        opacity: 0,
       }}
       style={{
         minWidth: 150,

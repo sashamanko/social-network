@@ -1,5 +1,5 @@
-// import './AsideHomeItem.css';
-
+// Imports | React router
+// __________________________________________________
 import { NavLink } from "react-router-dom";
 
 const AsideHomeItem = ({ to, children }: {to: string, children: any}): JSX.Element => {

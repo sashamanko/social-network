@@ -9,6 +9,7 @@ const Aside = () => {
     {label: 'Profile', href: 'profile', icon: <UserLineIcon className='mr-4'/>, end: true},
     {label: 'Decor', href: 'decor', icon: <PaletteLineIcon className='mr-4'/>},
   ];
+  
 
   return (
     <aside className="mr-1">

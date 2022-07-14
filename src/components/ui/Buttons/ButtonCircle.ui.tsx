@@ -6,7 +6,7 @@ import classes from "./Button.ui.module.scss";
 interface IButton {
   variant: '' | 'primary' | 'secondary';
   forms?: '' | 'iconAnimate';
-  animate?: '' | 'slide-left';
+  animate?: '' | 'slide-left' | 'slide-right';
   className?: string;
   textContent: string
   children: any;
@@ -16,6 +16,9 @@ interface IButton {
 const ButtonCircle = ({ variant = '', forms='', animate='', className='', textContent='', children, ...props }: IButton): JSX.Element => {
 
   const classList = [ classes.btn, classes[variant], classes[forms], classes[animate]];
+
+  console.log(classes);
+  
 
   const spanRef: any = useRef(null);
   const btnRef: any = useRef(null);
@@ -28,14 +31,13 @@ const ButtonCircle = ({ variant = '', forms='', animate='', className='', textCo
   return (
     <button 
       ref={btnRef} 
-      className={ classList.join(' ') + `${className}`}
+      className={ classList.join(' ') + ` ${className}`}
       style= {{
         width: width
       }}
       type='button'
       { ...props }
       onMouseEnter={() => {
-        
         setWidth(width + spanRef.current.offsetWidth + 6);
       }}
       onMouseLeave={() => {
@@ -49,6 +51,14 @@ const ButtonCircle = ({ variant = '', forms='', animate='', className='', textCo
             { textContent }
           </span>
           { children }
+        </>
+      }
+      { animate === 'slide-right' &&
+        <>
+          { children }
+          <span ref={spanRef} >
+            { textContent }
+          </span>
         </>
       }
     </button>

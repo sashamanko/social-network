@@ -9,8 +9,6 @@ const MessengerPage = () => {
 
   useStoreFetch().Messenger();
   
-  console.log(true);
-  
 
   return (
     <div className="Messenger pb-1 flex w-100">

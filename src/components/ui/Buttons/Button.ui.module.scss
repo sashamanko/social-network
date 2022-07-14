@@ -25,7 +25,7 @@
     }
 
     &:focus {
-      outline: 2px solid var(--main);
+      outline: 2px solid var(--secondary);
     }
     
     &:active {
@@ -68,6 +68,30 @@
       z-index: 1;
     }
 
+    &.slide-left {
+      & > span {
+        position: absolute;
+        left: calc(var(--padding) / 2);
+        white-space: nowrap;
+        opacity: 0;
+        transition: all .15s .0s;
+        z-index: 0;
+        visibility: hidden;
+      }
+    }
+    
+    &.slide-right {
+      & > span {
+        position: absolute;
+        right: calc(var(--padding) / 2);
+        white-space: nowrap;
+        opacity: 0;
+        transition: all .15s .0s;
+        z-index: 0;
+        visibility: hidden;
+      }
+    }
+
     &:hover {
       // width: 135px;
       overflow: hidden;
@@ -85,15 +109,6 @@
       background: var(--main);
     }
 
-    & > span {
-      position: absolute;
-      left: calc(var(--padding) / 2);
-      white-space: nowrap;
-      opacity: 0;
-      transition: all .15s .0s;
-      z-index: 0;
-      visibility: hidden;
-    }
   }
 
   &.lg {

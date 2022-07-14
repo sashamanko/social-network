@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import animate from "../../../utils/Animate/components/anim";
-import { fade, fadeTop } from "../../../utils/Animate/store/fade";
+import animate from '../../../utils/Animate/components/Animated/Animated';
+
 
 const RouterModal = ({ children }: any) => {
 
@@ -14,7 +14,7 @@ const RouterModal = ({ children }: any) => {
     <>
       <animate.div
         isAnimate={true}
-        {...fade}
+        variant='Fade/Fade'
         aria-label='modal-wrapper'
         onClick={(e: any) => {
           
@@ -30,7 +30,7 @@ const RouterModal = ({ children }: any) => {
         }}    
       >
         <animate.div
-          {...fadeTop}
+          variant='Fade/FadeTop'
           className="rounded"
           style={{
             background: 'var(--main)',
@@ -39,7 +39,7 @@ const RouterModal = ({ children }: any) => {
         >
           <animate.div
             className="item-block"
-            {...fadeTop}
+            variant='Fade/FadeTop'
           >
             <button onClick={() => navigate(`/${profile}`)}>X</button>
             { children }

@@ -1,9 +1,8 @@
 // import './Modal.css';
 
-import { useRef } from "react";
-import { Outlet, useNavigate, useParams } from "react-router-dom";
-import animate from "../../../utils/Animate/components/anim";
-import { fade, fadeTop } from "../../../utils/Animate/store/fade";
+
+import animate from '../../../utils/Animate/components/Animated/Animated';
+
 
 
 
@@ -13,7 +12,7 @@ const Modal = ({ isVisible, setIsVisible, children }: any) => {
     <>
       <animate.div
         isAnimate={isVisible}
-        {...fade}
+        variant='Fade/Fade'
         aria-label='modal-wrapper'
         onClick={(e: any) => {
           
@@ -29,7 +28,7 @@ const Modal = ({ isVisible, setIsVisible, children }: any) => {
         }}    
       >
         <animate.div
-          {...fadeTop}
+          variant='Fade/FadeTop'
           className="rounded"
           style={{
             background: 'var(--main)',
@@ -38,7 +37,7 @@ const Modal = ({ isVisible, setIsVisible, children }: any) => {
         >
           <animate.div
             className="item-block"
-            {...fadeTop}
+            variant='Fade/FadeTop'
           >
             <button onClick={() => setIsVisible(false)}>X</button>
             { children }
