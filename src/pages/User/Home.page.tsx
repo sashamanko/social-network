@@ -2,7 +2,6 @@
 // __________________________________________________
 import '../../styles/pages/Home.page.scss';
 
-
 const HomePage = () => {
   
   return (

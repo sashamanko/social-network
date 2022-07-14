@@ -5,7 +5,6 @@ import useContextMenu from '../../../../hooks/useContextMenu';
 import date from '../../../../utils/moment';
 import animate from '../../../../utils/Animate/components/Animated/Animated';
 
-
 const AsideMessengerItem = ({ user, chatId }: any) => {
 
   const auth = useAuth();
@@ -19,8 +18,7 @@ const AsideMessengerItem = ({ user, chatId }: any) => {
       onContextMenu={(e: any) => {
 
         const userId = user.users.find((elem: any) => elem.email !== auth.email).id;
-        
-        
+
         setContextMenu('messengerSidebarItem');
         setContextMenuData({
           chatId,

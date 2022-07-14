@@ -8,7 +8,6 @@ const Input = ({ variant, className = '', ...props }: any) => {
   const classList = [ Input, ];
   const variantList = {
     'primary': Primary,
-    // 'secondary': Secondary,
   };
 
   // * Object.keys() - Трансформация обэкт в список с ключами обэкта

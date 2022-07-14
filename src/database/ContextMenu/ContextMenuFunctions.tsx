@@ -1,7 +1,6 @@
 import { collection, deleteDoc, doc, onSnapshot, orderBy, query, updateDoc } from "firebase/firestore";
 import { db, getDocument } from "../../utils/firebase";
 
-
 const messageItem = () => {
 
   const copyMessage = (contextMenuData: any) => {
@@ -23,7 +22,6 @@ const messageItem = () => {
     });
   };
 
-
   return {
     copyMessage,
     delMessage
@@ -42,7 +40,6 @@ const messengerSidebarItem = () => {
     const { userId } = contextMenuData;
     console.log(userId);
     
-
     window.location.hash = `/${userId}`;
   };
 

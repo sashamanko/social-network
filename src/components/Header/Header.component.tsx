@@ -1,7 +1,7 @@
 // Imports | React router
 // __________________________________________________
 import { getAuth, signOut } from 'firebase/auth';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 // Imports | Remix icons
@@ -47,7 +47,7 @@ const Header = () => {
 
         <NavLink 
           to='/'
-          className='font-700 fo'
+          className='font-700'
           style={{
             fontSize: '1.666rem',
           }}

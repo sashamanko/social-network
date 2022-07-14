@@ -8,14 +8,12 @@ const ContextMenu = () => {
   
   const [coord, setCoord] = useState({});
   const outsideRef: any = useRef(null);
-  const {contextMenu, setContextMenu, contextMenuData, setContextMenuData}: any = useContextMenu();
+  const {contextMenu, contextMenuData, setContextMenuData}: any = useContextMenu();
   
 
   const handleClickOutside = (e: any) => {
     
     if (outsideRef?.current && !outsideRef?.current?.contains(e.target)) {
-
-        
       contextMenuData.isRender && setContextMenuData({});
     }
   };

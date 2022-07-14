@@ -9,7 +9,6 @@ import { Button, Input } from "../ui";
 import animate from '../../utils/Animate/components/Animated/Animated';
 import { useState } from "react";
 
-
 const FormSignIn = () => {
   const [bindEmail, email]: any = useInput('');
   const [bindPassword, password]: any = useInput('');

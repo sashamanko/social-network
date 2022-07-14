@@ -1,6 +1,5 @@
 // Imports | Module classes
 // __________________________________________________
-import { useEffect, useRef, useState } from "react";
 import classes from "./Button.ui.module.scss";
 
 interface IButton {
@@ -12,9 +11,9 @@ interface IButton {
   [key: string]: any;
 } 
 
-const Button = ({ variant = '', forms='', animate='', className='', textContent='', size='', children, ...props }: IButton) => {
+const Button = ({ variant = '', className='', size='', children, ...props }: IButton) => {
 
-  const classList = [ classes.btn, classes[variant], classes[forms], classes[animate], classes[size]];
+  const classList = [ classes.btn, classes[variant], classes[size]];
 
   return (
     <button className={ classList.join(' ') + ` ${className}`} { ...props }>

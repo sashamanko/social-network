@@ -10,7 +10,6 @@ const MessengerAsideItem = ({ user, chatId }: any) => {
   const auth = useAuth();
   const { setContextMenu, setContextMenuData }: any = useContextMenu();
   
-
   return (
     <animate.li
       variant='Fade/Fade'
@@ -19,7 +18,6 @@ const MessengerAsideItem = ({ user, chatId }: any) => {
       onContextMenu={(e: any) => {
 
         const userId = user.users.find((elem: any) => elem.email !== auth.email).id;
-        
         
         setContextMenu('messengerSidebarItem');
         setContextMenuData({

@@ -1,10 +1,6 @@
 // import './Modal.css';
-
-
 import animate from '../../../utils/Animate/components/Animated/Animated';
-
-
-
+import CloseLineIcon from 'remixicon-react/CloseLineIcon';
 
 const Modal = ({ isVisible, setIsVisible, children }: any) => {
 
@@ -36,10 +32,14 @@ const Modal = ({ isVisible, setIsVisible, children }: any) => {
           }}
         >
           <animate.div
-            className="item-block"
+            className="item-block flex flex-col"
             variant='Fade/FadeTop'
           >
-            <button onClick={() => setIsVisible(false)}>X</button>
+            <button 
+              className='ml-auto'
+              onClick={() => setIsVisible(false)}>
+              <CloseLineIcon />
+            </button>
             { children }
           </animate.div>
         </animate.div>

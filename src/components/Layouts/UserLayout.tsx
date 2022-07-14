@@ -1,7 +1,7 @@
 // Imports | React router
 // __________________________________________________
 import { useSelector } from "react-redux";
-import { Navigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 // Imports | Components
 // __________________________________________________
@@ -18,7 +18,7 @@ import MessengerLineIcon from 'remixicon-react/MessengerLineIcon';
 
 const UserLayout = () => {
 
-  const {isAuth, status} = useAuth();
+  const {status} = useAuth();
 
   const { id } = useSelector((state: any) => state.user);
 

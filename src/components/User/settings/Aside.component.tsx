@@ -10,7 +10,6 @@ const Aside = () => {
     {label: 'Decor', href: 'decor', icon: <PaletteLineIcon className='mr-4'/>},
   ];
   
-
   return (
     <aside className="mr-1">
       <ul className="list-none">

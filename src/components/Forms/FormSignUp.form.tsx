@@ -9,8 +9,7 @@ import { Button, Input } from "../ui";
 import animate from '../../utils/Animate/components/Animated/Animated';
 import { useState } from "react";
 
-
-const FormSignUp = ({handleClick}: any) => {
+const FormSignUp = () => {
   const [bindDisplayName, displayName]: any = useInput('');
   const [bindEmail, email]: any = useInput('');
   const [bindPassword, password]: any = useInput('');

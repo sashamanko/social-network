@@ -15,21 +15,7 @@ import ChatBoxMessagesListMessageItem from "./ChatBoxMessagesListMessageItem.com
 
 const ChatBoxMessagesList = () => {
 
-  const { chatMessages, selectedChat } = useMessenger();
-
-  const { chatId } = useParams();
-
-  const { email } = useAuth();
-
-  const [selectedMessage, setSelectedMessage]: any = useState('');
-
-  const { setContextMenu, contextMenuData, setContextMenuData }: any = useContextMenu();
-  
-  
-  useEffect(() => {
-    setSelectedMessage(contextMenuData?.id);
-  }, [contextMenuData]);
-  
+  const { chatMessages } = useMessenger();
 
   return (
     <>

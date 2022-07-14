@@ -6,7 +6,6 @@ import useMessenger from "../../hooks/useMessenger";
 import { Button, Input } from "../ui";
 import SendPlaneLineIcon from "remixicon-react/SendPlaneFillIcon";
 
-
 const FormChatBox = () => {
 
   const [bindValue, value, restValue] = useInput('');

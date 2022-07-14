@@ -1,8 +1,8 @@
 // import './Modal.css';
 
-import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import animate from '../../../utils/Animate/components/Animated/Animated';
+import CloseLineIcon from 'remixicon-react/CloseLineIcon';
 
 
 const RouterModal = ({ children }: any) => {
@@ -38,10 +38,14 @@ const RouterModal = ({ children }: any) => {
           }}
         >
           <animate.div
-            className="item-block"
+            className="item-block flex flex-col"
             variant='Fade/FadeTop'
           >
-            <button onClick={() => navigate(`/${profile}`)}>X</button>
+            <button
+              className="ml-auto"
+              onClick={() => navigate(`/${profile}`)}>
+              <CloseLineIcon />
+            </button>
             { children }
           </animate.div>
         </animate.div>

@@ -11,7 +11,6 @@ const ProfileAttributes = ({ getProfile }: any) => {
 
   const navigate = useNavigate();
 
-  
   return (
     <>
       <div className="profileInfo flex item-block">

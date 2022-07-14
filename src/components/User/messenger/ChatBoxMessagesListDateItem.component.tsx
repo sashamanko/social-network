@@ -1,5 +1,4 @@
 import date from '../../../utils/moment';
-import ColorBlock from '../Settings/ColorBlock.component copy';
 // import './ChatBoxMessagesListDateItem.css';
 
 const ChatBoxMessagesListDateItem = ({ seconds, textContent }: any) => {

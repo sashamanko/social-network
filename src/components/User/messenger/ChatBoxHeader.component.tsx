@@ -22,7 +22,6 @@ import useMessenger from '../../../hooks/useMessenger';
 // __________________________________________________
 import MoreLineIcon from "remixicon-react/MoreLineIcon";
 
-
 const ChatBoxHeader = () => {
 
   const { selectedUser } = useMessenger();

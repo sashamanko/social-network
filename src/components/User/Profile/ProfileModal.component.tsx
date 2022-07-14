@@ -4,10 +4,9 @@ import Modal from '../../ui/Modal/RouterModal.ui';
 // import './ProfileModal.css';
 
 const ProfileModal = () => {
-  const { subOrFoll, profile }: any = useParams();
+  const { subOrFoll }: any = useParams();
   const getProfile: any = useProfile();
   
-
   return (
     <Modal>
       <ul className='list-none'>

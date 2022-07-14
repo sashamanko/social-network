@@ -1,6 +1,6 @@
 // import './Settings.page.scss';
 
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Aside from '../../components/User/Settings/Aside.component';
 
 const SettingsPage = () => {
