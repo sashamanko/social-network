@@ -15,10 +15,7 @@ interface IButton {
 
 const ButtonCircle = ({ variant = '', forms='', animate='', className='', textContent='', children, ...props }: IButton): JSX.Element => {
 
-  const classList = [ classes.btn, classes[variant], classes[forms], classes[animate]];
-
-  console.log(classes);
-  
+  const classList = [ classes.btn, classes[variant], classes[forms], classes[animate]];  
 
   const spanRef: any = useRef(null);
   const btnRef: any = useRef(null);
