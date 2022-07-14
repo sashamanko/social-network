@@ -68,7 +68,6 @@ const useMessenger = () => {
   const newChat = async (user: any) => {
 
     const i: any = chatList.find((doc: any) => {
-      console.log(doc.data().users);
       
       if (doc.data().users[0].email === user.email || doc.data().users[1].email === user.email) {
         navigate(`/messenger/${doc.id}`);

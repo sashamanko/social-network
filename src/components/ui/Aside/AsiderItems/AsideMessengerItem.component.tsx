@@ -1,15 +1,15 @@
 import { NavLink } from 'react-router-dom';
-import { useAuth } from '../../../hooks';
-import useContextMenu from '../../../hooks/useContextMenu';
-import '../../../styles/components/User/messenger/MessengerAsideItem.subcomponent.scss';
-import date from '../../../utils/moment';
-import animate from '../../../utils/Animate/components/Animated/Animated';
+import { useAuth } from '../../../../hooks';
+import useContextMenu from '../../../../hooks/useContextMenu';
+// import '../../../styles/components/User/messenger/MessengerAsideItem.subcomponent.scss';
+import date from '../../../../utils/moment';
+import animate from '../../../../utils/Animate/components/Animated/Animated';
 
-const MessengerAsideItem = ({ user, chatId }: any) => {
+
+const AsideMessengerItem = ({ user, chatId }: any) => {
 
   const auth = useAuth();
   const { setContextMenu, setContextMenuData }: any = useContextMenu();
-  
 
   return (
     <animate.li
@@ -77,4 +77,4 @@ const MessengerAsideItem = ({ user, chatId }: any) => {
   );
 };
 
-export default MessengerAsideItem;
+export default AsideMessengerItem;

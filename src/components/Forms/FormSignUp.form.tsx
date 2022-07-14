@@ -6,12 +6,18 @@ import { useNavigate } from "react-router-dom";
 import useInput from "../../hooks/useInput";
 import { fetchAddUser, fetchUser } from "../../redux/user/asyncActions";
 import { Button, Input } from "../ui";
+import animate from '../../utils/Animate/components/Animated/Animated';
+import { useState } from "react";
+
 
 const FormSignUp = ({handleClick}: any) => {
   const [bindDisplayName, displayName]: any = useInput('');
   const [bindEmail, email]: any = useInput('');
   const [bindPassword, password]: any = useInput('');
   const navigate = useNavigate();
+
+  const [isInvalidUser, setIsInvalidUser] = useState(false);
+
 
   const dispatch = useDispatch();
   const auth: any = getAuth();
@@ -26,18 +32,37 @@ const FormSignUp = ({handleClick}: any) => {
         }).then(console.log).catch(error => console.log(error, 'da oshibka'));
         dispatch(fetchAddUser({ displayName, email }));
         dispatch(fetchUser(user));
+
+        setTimeout(() => {
+          navigate('/');
+        }, 200);
       })
-      .catch(() => alert('This user registred'));
+      .catch(() => {
+        setIsInvalidUser(true);
+      });
   };
 
   return (
     <form className="flex flex-col align-center w-100">
-      <Input 
-        type="text"
-        placeholder='Display Name'
-        variant='primary'
-        {...bindDisplayName}
-      />
+      <div className="flex flex-col w-100">
+        <Input 
+          type="text"
+          placeholder='Display Name'
+          variant='primary'
+          {...bindDisplayName}
+        />
+
+        <animate.div
+          isAnimate={isInvalidUser}
+          style={{
+            color: '#ff4444',
+          }}
+          variant='Fade/Fade'
+          className='ml-2'
+        >
+          This user registred
+        </animate.div>
+      </div>
       <Input 
         type="email"
         placeholder='Email'
@@ -56,7 +81,6 @@ const FormSignUp = ({handleClick}: any) => {
         onClick={(e: any) => {
           e.preventDefault();
           handleRegister(displayName, email, password);
-          navigate('/');
         }}
         className='my-1 w-50'
       >
@@ -67,3 +91,5 @@ const FormSignUp = ({handleClick}: any) => {
 };
 
 export default FormSignUp;
+
+

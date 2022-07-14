@@ -1,8 +1,8 @@
 import './Aside.ui.scss';
 
-const Aside = ({ children }: any): JSX.Element => {
+const Aside = ({ className, children }: any): JSX.Element => {
   return (
-    <aside className="Aside ml-1">
+    <aside className={'Aside ' + className}>
       <ul className="list-none">
         {
           children

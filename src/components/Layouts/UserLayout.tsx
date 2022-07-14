@@ -36,7 +36,9 @@ const UserLayout = () => {
         { status === 1 &&
           <>
             <Outlet />
-            <Aside>
+            <Aside
+              className='ml-1'
+            >
               {
                 sidebarItems.map((item) => {
                   return (<Sidebar.HomeItem key={item.to} to={item.to}>

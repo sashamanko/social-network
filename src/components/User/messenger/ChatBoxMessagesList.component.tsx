@@ -1,13 +1,21 @@
-import { useState } from "react";
+// Imports | React, React router 
+// __________________________________________________
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useAuth } from "../../../hooks";
-import useContextMenu from "../../../hooks/useContextMenu";
-import useMessenger from "../../../hooks/useMessenger";
+
+// Imports | Hooks
+// __________________________________________________
+import { useAuth, useContextMenu, useMessenger } from "../../../hooks";
+
+// Imports | Utils
+// __________________________________________________
 import date from "../../../utils/moment";
+import ChatBoxMessagesListDateItem from "./ChatBoxMessagesListDateItem.component";
+import ChatBoxMessagesListMessageItem from "./ChatBoxMessagesListMessageItem.component";
 
 const ChatBoxMessagesList = () => {
 
-  const { chatMessages, delMessage } = useMessenger();
+  const { chatMessages, selectedChat } = useMessenger();
 
   const { chatId } = useParams();
 
@@ -17,48 +25,64 @@ const ChatBoxMessagesList = () => {
 
   const { setContextMenu, contextMenuData, setContextMenuData }: any = useContextMenu();
   
+  
+  useEffect(() => {
+    setSelectedMessage(contextMenuData?.id);
+  }, [contextMenuData]);
+  
 
   return (
     <>
-      <ul className="Home__message-list flex flex-col w-100 mt-1">
-        {chatMessages && chatMessages.map(((m: any) => {
+      <ul className="Home__message-list flex flex-col w-100 mt-1 list-none">
+        {chatMessages && chatMessages.map(((m: any, index: number) => {
+         
+          if (chatMessages[index - 1] !== undefined) {
+            if (date(m?.data?.createAt?.seconds, 'messegerMessageDay') > date(chatMessages[index - 1]?.data?.createAt?.seconds, 'messegerMessageDay')) {
+
+              return (
+                <>
+                  <ChatBoxMessagesListDateItem seconds={m?.data?.createAt?.seconds} />
+                
+                  <ChatBoxMessagesListMessageItem message={m} />
+                </>
+              );
+
+            }
+          } else if (chatMessages[index - 1] === undefined && chatMessages.length !== 0  ) {
+
+            return (
+              <>
+                <ChatBoxMessagesListDateItem textContent='Chat created ' seconds={m?.data?.createAt?.seconds} />
+
+              
+                <ChatBoxMessagesListMessageItem message={m} />
+              </>
+            );
+
+          }
+          
+
           return (
             <>
-              <li
-                onContextMenu={(e: any) => {
-                  if (m.data.userFrom === email) {
-                    e.preventDefault();
-
-                    setSelectedMessage(m.id);
-                    
-                    setContextMenu('messageItem');
-                    setContextMenuData({
-                      ...m,
-                      chatId,
-                      isRender: true,
-                      mouseEvent: e,
-                    });
-                  }                
-                }}
-                key={m.id}
-                style={{
-                  transition: 'all var(--transition)',
-                  background: selectedMessage === m.id && contextMenuData.isRender ? '#ffffff10' : 'transparent',
-                }}
-                className='flex mt-3'
-              >
-                <span
-                  className={`Home__message-list__item flex p-2 rounded align-end ${ m.data.userFrom === email ? 'ml-auto right' : 'mr-auto' } bg-block`}
-                >
-                  <p className="mr-3 font-500">{m.data.text}</p>
-                  { m.data.createAt?.seconds &&
-                    <span style={{wordBreak: 'normal'}} className="font-xs font-500">{ date(m.data.createAt.seconds, 'messegerMessage') }</span>
-                  }
-                </span>
-              </li>
+              <ChatBoxMessagesListMessageItem message={m} />
             </>
           );
+
         }))}
+        { chatMessages.length === 0 &&
+
+          <li 
+            className='item-block mx-auto rounded-fill font-600 font-sm'
+            style={{
+              background: 'var(--main)',
+              color: 'white',
+              padding: '4px 6px',
+            }}
+          >
+            Chat cteated
+          </li>
+
+        }
       </ul>
     </>
 

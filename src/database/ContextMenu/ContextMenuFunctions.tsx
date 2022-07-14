@@ -1,11 +1,14 @@
-import { async } from "@firebase/util";
-import { collection, deleteDoc, doc, getDocs, onSnapshot, orderBy, query, updateDoc } from "firebase/firestore";
-import useMessenger from "../../hooks/useMessenger";
-import { db } from "../../utils/firebase";
+import { collection, deleteDoc, doc, onSnapshot, orderBy, query, updateDoc } from "firebase/firestore";
+import { db, getDocument } from "../../utils/firebase";
 
 
 const messageItem = () => {
-  
+
+  const copyMessage = (contextMenuData: any) => {
+    const { data } = contextMenuData;
+    
+    navigator.clipboard.writeText(data.text);
+  };
 
   const delMessage = async (contextMenuData: any) => {
     const { chatId , id } = contextMenuData;
@@ -18,20 +21,51 @@ const messageItem = () => {
         'lastMessageTime': snapshot.docs[snapshot.docs.length - 1].data().createAt,
       });
     });
-    
-
-    // await updateDoc(doc( db, 'messenger', `${chatId}`), {
-    //   'lastMessage': i.docs[i.size - 1],
-    //   // 'lastMessageTime': serverTimestamp(),
-    // });
   };
 
 
   return {
+    copyMessage,
     delMessage
   };
 };
 
+const messengerSidebarItem = () => {
+  
+  const openLinkInNewTab = (contextMenuData: any) => {
+    const { chatId } = contextMenuData;
+
+    window.open(`${window.location.origin}${window.location.pathname}#/messenger/${chatId}`, '_blank');
+  };
+
+  const visitUser = (contextMenuData: any) => {
+    const { userId } = contextMenuData;
+    console.log(userId);
+    
+
+    window.location.hash = `/${userId}`;
+  };
+
+  const delChat = async (contextMenuData: any) => {
+    const { chatId } = contextMenuData;
+
+    await deleteDoc(doc(db, 'messenger', `${chatId}`));
+    (await getDocument(`messenger/${chatId}/messages`)).docs.forEach(docElem => {
+      deleteDoc(doc(db, `messenger/${chatId}/messages`, `${docElem.id}`));
+    });
+
+    window.location.hash = '/messenger';
+  };
+
+  return {
+    openLinkInNewTab,
+    visitUser,
+    delChat,
+  };
+
+};
+
 export {
   messageItem,
+  messengerSidebarItem,
 };

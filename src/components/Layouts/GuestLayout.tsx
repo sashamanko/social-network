@@ -7,10 +7,6 @@ import { Navigate, Outlet } from "react-router-dom";
 import Header from "../Header/Header.component";
 import { useAuth } from "../../hooks";
 
-// SCSS | My
-// __________________________________________________
-// import './Layout.scss';
-
 const GuestLayout = () => {
 
   return (

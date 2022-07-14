@@ -1,9 +1,26 @@
+// Imports | React, React router
+// __________________________________________________
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Dropdown } from '../../ui';
+
+// Imports | Firebase
+// __________________________________________________
 import { deleteDoc, doc } from "firebase/firestore";
-import MoreLineIcon from "remixicon-react/MoreLineIcon";
-import useMessenger from '../../../hooks/useMessenger';
+
+// Imports | Utils 
+// __________________________________________________
 import { db, getDocument } from '../../../utils/firebase';
+
+// Imports | Ui
+// __________________________________________________
+import { Dropdown } from '../../ui';
+
+// Imports | Hooks 
+// __________________________________________________
+import useMessenger from '../../../hooks/useMessenger';
+
+// Imports | Remix icons
+// __________________________________________________
+import MoreLineIcon from "remixicon-react/MoreLineIcon";
 
 
 const ChatBoxHeader = () => {
